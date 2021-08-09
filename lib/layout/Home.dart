@@ -19,11 +19,11 @@ class _MyHomePageState extends State<MyHomePage> {
   int current = 0;
   bool isOffers = false;
   bool isInsure = false;
-  bool isLogin = false;
+  bool isLogin = true;
   final List<Widget> Loginpages = [
     home(true),
     Offers(),
-    Insuranc(),
+    InsuranceScreen(),
   ];
   final List<Widget> notLoginpages = [
     home(false),
