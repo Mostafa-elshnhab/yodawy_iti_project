@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app_test/shared/Doctors.dart';
 import 'package:flutter_app_test/shared/Drower.dart';
 import 'package:flutter_app_test/shared/icon.dart';
 import 'package:flutter_app_test/shared/notLoginDrower.dart';
 import 'package:hexcolor/hexcolor.dart';
-
+import 'package:flutter_app_test/models/Doctors_models.dart';
 import 'Offers.dart';
 import 'Insurance.dart';
 import 'insuranceNotLogin.dart';
@@ -23,7 +24,7 @@ class _MyHomePageState extends State<MyHomePage> {
   final List<Widget> Loginpages = [
     home(true),
     Offers(),
-    InsuranceScreen(),
+    InsuranceScreen(false),
   ];
   final List<Widget> notLoginpages = [
     home(false),
@@ -168,39 +169,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 ),
               ),
             )
-          : isLogin
-              ? PreferredSize(
-                  preferredSize: Size.fromHeight(60.0),
-                  child: Container(
-                    decoration: BoxDecoration(
-                      gradient: LinearGradient(
-                        begin: Alignment.topLeft,
-                        end: Alignment.bottomRight,
-                        colors: <Color>[
-                          Color(0xFF179FDB),
-                          Color(0xFF179FDB),
-                          Color(0xFF21B3E4),
-                          Color(0xFF2ECBEE),
-                        ],
-                        tileMode: TileMode.clamp,
-                      ),
-                    ),
-                    child: AppBar(
-                      backgroundColor: Colors.transparent,
-                      elevation: 0,
-                      leadingWidth: 30,
-                      centerTitle: isOffers ? true : false,
-                      title: Text(
-                        'Insurance Companies',
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          fontSize: 20,
-                        ),
-                      ),
-                    ),
-                  ),
-                )
-              : null,
+          : null,
       body: isLogin ? Loginpages[current] : notLoginpages[current],
     );
   }
@@ -474,7 +443,12 @@ class home extends StatelessWidget {
                   child: Container(
                     alignment: AlignmentDirectional.centerEnd,
                     child: TextButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => InsuranceScreen(true)));
+                        },
                         child: Text(
                           'View All',
                           style: TextStyle(
@@ -513,7 +487,12 @@ class home extends StatelessWidget {
                   child: Container(
                     alignment: AlignmentDirectional.centerEnd,
                     child: TextButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => Doctors()));
+                        },
                         child: Text(
                           'View All',
                           style: TextStyle(
@@ -719,13 +698,6 @@ class insuranceCard extends StatelessWidget {
       ),
     );
   }
-}
-
-class Doctor {
-  const Doctor({this.title, this.path, this.color});
-  final String? title;
-  final String? path;
-  final String? color;
 }
 
 const List<Doctor> doctor = const <Doctor>[
