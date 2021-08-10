@@ -1,10 +1,45 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_app_test/shared/Drower.dart';
 
 class InsuranceScreen extends StatelessWidget {
+  bool view = false;
+  InsuranceScreen(this.view);
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      drawer: !view ? createDrawer(context) : null,
+      appBar: PreferredSize(
+        preferredSize: Size.fromHeight(60.0),
+        child: Container(
+          decoration: BoxDecoration(
+            gradient: LinearGradient(
+              begin: Alignment.topLeft,
+              end: Alignment.bottomRight,
+              colors: <Color>[
+                Color(0xFF179FDB),
+                Color(0xFF179FDB),
+                Color(0xFF21B3E4),
+                Color(0xFF2ECBEE),
+              ],
+              tileMode: TileMode.clamp,
+            ),
+          ),
+          child: AppBar(
+            backgroundColor: Colors.transparent,
+            elevation: 0,
+            leadingWidth: 30,
+            centerTitle: true,
+            title: Text(
+              'Insurance Companies',
+              style: TextStyle(
+                fontWeight: FontWeight.bold,
+                fontSize: 20,
+              ),
+            ),
+          ),
+        ),
+      ),
       body: ListView(
         children: [
           Padding(
