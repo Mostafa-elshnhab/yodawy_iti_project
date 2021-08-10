@@ -140,7 +140,7 @@ class doctorCard extends StatelessWidget {
                       '${doctor!.title}',
                       style: TextStyle(fontSize: 20, fontWeight: FontWeight.w900
 //                                    color: HexColor('#545566')
-                      ),
+                          ),
                     ),
                     SizedBox(
                       height: 18,
