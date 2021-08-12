@@ -30,14 +30,14 @@ packages:
     source: hosted
     version: "2.1.0"
   carousel_pro_nullsafety:
-    dependency: "direct dev"
+    dependency: "direct main"
     description:
       name: carousel_pro_nullsafety
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.0.2"
   carousel_slider:
-    dependency: "direct dev"
+    dependency: "direct main"
     description:
       name: carousel_slider
       url: "https://pub.dartlang.org"
@@ -72,7 +72,7 @@ packages:
     source: hosted
     version: "1.15.0"
   country_list_pick:
-    dependency: "direct dev"
+    dependency: "direct main"
     description:
       name: country_list_pick
       url: "https://pub.dartlang.org"
@@ -118,8 +118,15 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
+  flutter_image_slideshow:
+    dependency: "direct main"
+    description:
+      name: flutter_image_slideshow
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.1.1"
   flutter_native_splash:
-    dependency: "direct dev"
+    dependency: "direct main"
     description:
       name: flutter_native_splash
       url: "https://pub.dartlang.org"
@@ -131,7 +138,7 @@ packages:
     source: sdk
     version: "0.0.0"
   flutter_verification_code:
-    dependency: "direct dev"
+    dependency: "direct main"
     description:
       name: flutter_verification_code
       url: "https://pub.dartlang.org"
@@ -143,7 +150,7 @@ packages:
     source: sdk
     version: "0.0.0"
   hexcolor:
-    dependency: "direct dev"
+    dependency: "direct main"
     description:
       name: hexcolor
       url: "https://pub.dartlang.org"
@@ -234,7 +241,7 @@ packages:
     source: hosted
     version: "4.2.3"
   shared_preferences:
-    dependency: "direct dev"
+    dependency: "direct main"
     description:
       name: shared_preferences
       url: "https://pub.dartlang.org"
@@ -288,7 +295,7 @@ packages:
     source: hosted
     version: "1.8.1"
   splashscreen:
-    dependency: "direct dev"
+    dependency: "direct main"
     description:
       name: splashscreen
       url: "https://pub.dartlang.org"
