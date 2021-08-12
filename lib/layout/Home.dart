@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_app_test/layout/offers.dart';
+import 'package:flutter_app_test/modules/offers/offers.dart';
 import 'package:flutter_app_test/shared/Doctors.dart';
 import 'package:flutter_app_test/shared/Drower.dart';
 import 'package:flutter_app_test/shared/icon.dart';
