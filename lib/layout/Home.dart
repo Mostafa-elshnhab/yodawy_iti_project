@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app_test/layout/offers.dart';
 import 'package:flutter_app_test/shared/Doctors.dart';
 import 'package:flutter_app_test/shared/Drower.dart';
 import 'package:flutter_app_test/shared/icon.dart';
 import 'package:flutter_app_test/shared/notLoginDrower.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:flutter_app_test/models/Doctors_models.dart';
-import 'Offers.dart';
+
 import 'Insurance.dart';
 import 'insuranceNotLogin.dart';
 
