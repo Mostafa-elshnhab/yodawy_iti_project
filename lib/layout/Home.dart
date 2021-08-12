@@ -6,7 +6,6 @@ import 'package:flutter_app_test/shared/icon.dart';
 import 'package:flutter_app_test/shared/notLoginDrower.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:flutter_app_test/models/Doctors_models.dart';
-
 import 'Insurance.dart';
 import 'insuranceNotLogin.dart';
 
@@ -602,9 +601,7 @@ class CategoryCard extends StatelessWidget {
           children: <Widget>[
             Expanded(
               child: GestureDetector(
-                onTap: () {
-                  print('sasa');
-                },
+                onTap: () {},
                 child: Padding(
                   padding: const EdgeInsets.all(3.0),
                   child: Container(

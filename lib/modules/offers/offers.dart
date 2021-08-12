@@ -7,7 +7,6 @@ import 'package:flutter_app_test/modules/offers/components/carousel.dart';
 import 'package:flutter_app_test/modules/offers/components/offers_of_day.dart';
 import 'package:flutter_app_test/modules/offers/components/toppicks.dart';
 
-
 class Offers extends StatefulWidget {
   const Offers({Key? key}) : super(key: key);
 
@@ -19,7 +18,6 @@ class _OffersState extends State<Offers> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
       body: Padding(
         padding: const EdgeInsets.all(12.0),
         child: SingleChildScrollView(
