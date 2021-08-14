@@ -8,6 +8,7 @@ import 'package:flutter_app_test/shared/notLoginDrower.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:flutter_app_test/models/Doctors_models.dart';
 import 'Insurance.dart';
+import 'Medication.dart';
 import 'insuranceNotLogin.dart';
 
 class MyHomePage extends StatefulWidget {
@@ -280,9 +281,10 @@ class home extends StatelessWidget {
                 Expanded(
                   child: GestureDetector(
                     onTap: () {
-//                          setState(() {
-//                            ismale=true;
-//                          });
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => Medication()));
                     },
                     child: Container(
                       decoration: BoxDecoration(
@@ -602,13 +604,9 @@ class CategoryCard extends StatelessWidget {
           children: <Widget>[
             Expanded(
               child: GestureDetector(
-                onTap: ()
-                {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) =>Category()));
-
+                onTap: () {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => Category()));
                 },
                 child: Padding(
                   padding: const EdgeInsets.all(3.0),
