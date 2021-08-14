@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app_test/modules/category/category.dart';
 import 'package:flutter_app_test/modules/offers/offers.dart';
 import 'package:flutter_app_test/shared/Doctors.dart';
 import 'package:flutter_app_test/shared/Drower.dart';
@@ -601,7 +602,14 @@ class CategoryCard extends StatelessWidget {
           children: <Widget>[
             Expanded(
               child: GestureDetector(
-                onTap: () {},
+                onTap: ()
+                {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) =>Category()));
+
+                },
                 child: Padding(
                   padding: const EdgeInsets.all(3.0),
                   child: Container(
