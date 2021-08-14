@@ -6,6 +6,7 @@ import 'package:flutter_app_test/shared/components.dart';
 import 'package:hexcolor/hexcolor.dart';
 
 import 'Insurance.dart';
+import 'Product/Products.dart';
 
 class Medication extends StatelessWidget {
   const Medication({Key? key}) : super(key: key);
@@ -101,21 +102,21 @@ class Medication extends StatelessWidget {
                 ),
                 Wrap(
                   children: [
-                    child('Panadol'),
-                    child('Bepanthen'),
-                    child('Zitharomx'),
-                    child('Zinc'),
-                    child('Pravotin'),
-                    child('Omega 3'),
-                    child('Dentinox'),
-                    child('C Retard'),
-                    child('Panthenol'),
-                    child('Centrum'),
-                    child('Vitamine C'),
-                    child('Fucidin'),
-                    child('Ectomethrin'),
-                    child('Augmentin'),
-                    child('Antinal'),
+                    child('Panadol', context),
+                    child('Bepanthen', context),
+                    child('Zitharomx', context),
+                    child('Zinc', context),
+                    child('Pravotin', context),
+                    child('Omega 3', context),
+                    child('Dentinox', context),
+                    child('C Retard', context),
+                    child('Panthenol', context),
+                    child('Centrum', context),
+                    child('Vitamine C', context),
+                    child('Fucidin', context),
+                    child('Ectomethrin', context),
+                    child('Augmentin', context),
+                    child('Antinal', context),
                     GestureDetector(
                       child: Container(
                         margin: EdgeInsets.only(top: 10),
@@ -184,16 +185,22 @@ class Medication extends StatelessWidget {
         ));
   }
 
-  Widget child(String txt) {
+  Widget child(String txt, context) {
     return Container(
       margin: EdgeInsets.only(top: 10, left: 10),
       decoration: BoxDecoration(
           color: Color(0xeeeeedff), borderRadius: BorderRadius.circular(50)),
-      child: Container(
-        margin: EdgeInsets.all(10),
-        child: Text(
-          txt,
-          style: TextStyle(fontSize: 16),
+      child: GestureDetector(
+        onTap: () {
+          Navigator.push(
+              context, MaterialPageRoute(builder: (context) => Products(txt)));
+        },
+        child: Container(
+          margin: EdgeInsets.all(10),
+          child: Text(
+            txt,
+            style: TextStyle(fontSize: 16),
+          ),
         ),
       ),
     );

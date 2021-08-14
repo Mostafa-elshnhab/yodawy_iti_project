@@ -7,6 +7,7 @@ import 'package:flutter_app_test/shared/icon.dart';
 import 'package:flutter_app_test/shared/notLoginDrower.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:flutter_app_test/models/Doctors_models.dart';
+import 'Cart/CartPage.dart';
 import 'Insurance.dart';
 import 'Medication.dart';
 import 'insuranceNotLogin.dart';
@@ -134,7 +135,12 @@ class _MyHomePageState extends State<MyHomePage> {
                                 color: HexColor('#22C4EC'),
                                 size: 20,
                               ),
-                              onPressed: () {},
+                              onPressed: () {
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) => CartPage()));
+                              },
                             ),
                             width: 50,
                           ),
@@ -605,8 +611,10 @@ class CategoryCard extends StatelessWidget {
             Expanded(
               child: GestureDetector(
                 onTap: () {
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => Category()));
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => Category(choice!.title)));
                 },
                 child: Padding(
                   padding: const EdgeInsets.all(3.0),

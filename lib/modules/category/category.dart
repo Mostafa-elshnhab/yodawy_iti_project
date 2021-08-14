@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app_test/layout/Product/Products.dart';
 import 'package:flutter_app_test/models/brand_model.dart';
 import 'package:flutter_app_test/models/category_model.dart';
 import 'package:flutter_app_test/modules/brands/brandspage.dart';
@@ -6,11 +7,13 @@ import 'package:flutter_app_test/modules/category/components/brand_item.dart';
 import 'package:flutter_app_test/modules/category/components/category_item.dart';
 import 'package:flutter_app_test/shared/components.dart';
 
-
+String? titele;
 
 class Category extends StatefulWidget {
-  const Category({Key? key}) : super(key: key);
-
+  String? tite;
+  Category(this.tite) {
+    titele = this.tite;
+  }
   @override
   _CategoryState createState() => _CategoryState();
 }
@@ -21,7 +24,7 @@ class _CategoryState extends State<Category> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: appBarBuilder('Covid Essential'),
+      appBar: appBarBuilder('$titele'),
       body: Padding(
         padding: const EdgeInsets.all(12.0),
         child: SingleChildScrollView(
@@ -113,7 +116,13 @@ class _CategoryState extends State<Category> {
                   itemBuilder: (context, index) {
                     return CategoryIteM(
                         category: category[index],
-                        press: () => print('${category[index].title}'));
+                        press: () => {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) =>
+                                          Products(category[index].title)))
+                            });
                   }),
             ],
           ),
