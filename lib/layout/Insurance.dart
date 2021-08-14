@@ -61,154 +61,185 @@ class InsuranceScreen extends StatelessWidget {
                   children: [
                     Row(
                       children: [
-                        Container(
-                          width: 170.0,
-                          height: 150.0,
-                          decoration: BoxDecoration(
-                              border: Border.all(color: Colors.grey.shade300),
-                              borderRadius: BorderRadius.circular(10)),
-                          child: Padding(
-                            padding: const EdgeInsets.all(20.0),
-                            child: Image(
-                              image: NetworkImage(
-                                  'https://archive.org/download/metlife-new-logo-500/metlife-new-logo-500.jpg'),
-                              width: 200.0,
-                              height: 200.0,
-                              fit: BoxFit.cover,
+                        Expanded(
+                          child: Container(
+                            height: 150.0,
+                            decoration: BoxDecoration(
+                                border: Border.all(color: Colors.grey.shade300),
+                                borderRadius: BorderRadius.circular(10)),
+                            child: Padding(
+                              padding: const EdgeInsets.all(20.0),
+                              child: Image(
+                                image: NetworkImage(
+                                    'https://archive.org/download/metlife-new-logo-500/metlife-new-logo-500.jpg'),
+                                width: 200.0,
+                                height: 200.0,
+                                fit: BoxFit.cover,
+                              ),
                             ),
                           ),
                         ),
-                        Container(
-                          width: 170.0,
-                          height: 150.0,
-                          decoration: BoxDecoration(
-                              border: Border.all(color: Colors.grey.shade300),
-                              borderRadius: BorderRadius.circular(7)),
-                          child: Padding(
-                            padding: const EdgeInsets.all(20.0),
-                            child: Image(
-                              image: NetworkImage(
-                                  'https://www.stratumn.com/medias/32024-1600165209-logo-axa.jpg?lossless=true&auto=format&fm=webp,png&w=1460'),
-                              width: 200.0,
-                              height: 200.0,
-                              fit: BoxFit.cover,
-                            ),
-                          ),
+                        SizedBox(
+                          width: 10,
                         ),
-                      ],
-                    ),
-                    Row(
-                      children: [
-                        Container(
-                          width: 170.0,
-                          height: 150.0,
-                          decoration: BoxDecoration(
-                              border: Border.all(color: Colors.grey.shade300),
-                              borderRadius: BorderRadius.circular(7)),
-                          child: Padding(
-                            padding: const EdgeInsets.all(20.0),
-                            child: Image(
-                              image: NetworkImage(
-                                  'https://s3-eu-west-1.amazonaws.com/wuzzuf/files/company_logo/NEXtCARE-Egypt-23989-1625587858.png'),
-                              width: 100.0,
-                              height: 100.0,
-                            ),
-                          ),
-                        ),
-                        Container(
-                          width: 170.0,
-                          height: 150.0,
-                          decoration: BoxDecoration(
-                              border: Border.all(color: Colors.grey.shade300),
-                              borderRadius: BorderRadius.circular(7)),
-                          child: Padding(
-                            padding: const EdgeInsets.all(20.0),
-                            child: Image(
-                              image: NetworkImage(
-                                  'https://csscf.b8cdn.com/120x120/images/logo/66/x1491866_logo_1576487345_n.png.pagespeed.ic.lygXrpNvfc.webp'),
-                              width: 200.0,
-                              height: 200.0,
-                              fit: BoxFit.cover,
+                        Expanded(
+                          child: Container(
+                            height: 150.0,
+                            decoration: BoxDecoration(
+                                border: Border.all(color: Colors.grey.shade300),
+                                borderRadius: BorderRadius.circular(7)),
+                            child: Padding(
+                              padding: const EdgeInsets.all(20.0),
+                              child: Image(
+                                image: NetworkImage(
+                                    'https://www.stratumn.com/medias/32024-1600165209-logo-axa.jpg?lossless=true&auto=format&fm=webp,png&w=1460'),
+                                width: 200.0,
+                                height: 200.0,
+                                fit: BoxFit.cover,
+                              ),
                             ),
                           ),
                         ),
                       ],
                     ),
+                    SizedBox(
+                      height: 10,
+                    ),
                     Row(
                       children: [
-                        Container(
-                          width: 170.0,
-                          height: 150.0,
-                          decoration: BoxDecoration(
-                              border: Border.all(color: Colors.grey.shade300),
-                              borderRadius: BorderRadius.circular(7)),
-                          child: Padding(
-                            padding: const EdgeInsets.all(20.0),
-                            child: Image(
-                              image: NetworkImage(
-                                  'https://scontent-hbe1-1.xx.fbcdn.net/v/t1.6435-9/204018665_326063172428226_9185403464257846728_n.jpg?_nc_cat=109&ccb=1-4&_nc_sid=973b4a&_nc_ohc=qljqKlAoTEYAX-e6R8w&_nc_ht=scontent-hbe1-1.xx&oh=9153621d19e058c1870be84788d1d18b&oe=6137DB28'),
-                              width: 200.0,
-                              height: 200.0,
-                              fit: BoxFit.cover,
+                        Expanded(
+                          child: Container(
+                            height: 150.0,
+                            decoration: BoxDecoration(
+                                border: Border.all(color: Colors.grey.shade300),
+                                borderRadius: BorderRadius.circular(10)),
+                            child: Padding(
+                              padding: const EdgeInsets.all(20.0),
+                              child: Image(
+                                image: NetworkImage(
+                                    'https://s3-eu-west-1.amazonaws.com/wuzzuf/files/company_logo/NEXtCARE-Egypt-23989-1625587858.png'),
+                                fit: BoxFit.fitWidth,
+                              ),
                             ),
                           ),
                         ),
-                        Container(
-                          width: 170.0,
-                          height: 150.0,
-                          decoration: BoxDecoration(
-                              border: Border.all(color: Colors.grey.shade300),
-                              borderRadius: BorderRadius.circular(7)),
-                          child: Padding(
-                            padding: const EdgeInsets.all(20.0),
-                            child: Image(
-                              image: NetworkImage(
-                                  'http://logok.org/wp-content/uploads/2015/03/Roche-logo-880x660.png'),
-                              width: 200.0,
-                              height: 200.0,
-                              fit: BoxFit.cover,
+                        SizedBox(
+                          width: 10,
+                        ),
+                        Expanded(
+                          child: Container(
+                            height: 150.0,
+                            decoration: BoxDecoration(
+                                border: Border.all(color: Colors.grey.shade300),
+                                borderRadius: BorderRadius.circular(7)),
+                            child: Padding(
+                              padding: const EdgeInsets.all(20.0),
+                              child: Image(
+                                image: NetworkImage(
+                                    'https://csscf.b8cdn.com/120x120/images/logo/66/x1491866_logo_1576487345_n.png.pagespeed.ic.lygXrpNvfc.webp'),
+                                width: 200.0,
+                                height: 200.0,
+                                fit: BoxFit.cover,
+                              ),
                             ),
                           ),
                         ),
                       ],
                     ),
+                    SizedBox(
+                      height: 10,
+                    ),
                     Row(
                       children: [
-                        Container(
-                          width: 170.0,
-                          height: 150.0,
-                          decoration: BoxDecoration(
-                              border: Border.all(color: Colors.grey.shade300),
-                              borderRadius: BorderRadius.circular(7)),
-                          child: Padding(
-                            padding: const EdgeInsets.all(20.0),
-                            child: Image(
-                              image: NetworkImage(
-                                  'https://s3-eu-west-1.amazonaws.com/wuzzuf/files/company_logo/Mediconsult-Egypt-13897.png'),
-                              width: 200.0,
-                              height: 200.0,
-                              fit: BoxFit.cover,
+                        Expanded(
+                          child: Container(
+                            height: 150.0,
+                            decoration: BoxDecoration(
+                                border: Border.all(color: Colors.grey.shade300),
+                                borderRadius: BorderRadius.circular(10)),
+                            child: Padding(
+                              padding: const EdgeInsets.all(20.0),
+                              child: Image(
+                                image: NetworkImage(
+                                    'https://scontent-hbe1-1.xx.fbcdn.net/v/t1.6435-9/204018665_326063172428226_9185403464257846728_n.jpg?_nc_cat=109&ccb=1-4&_nc_sid=973b4a&_nc_ohc=qljqKlAoTEYAX-e6R8w&_nc_ht=scontent-hbe1-1.xx&oh=9153621d19e058c1870be84788d1d18b&oe=6137DB28'),
+                                width: 200.0,
+                                height: 200.0,
+                                fit: BoxFit.cover,
+                              ),
                             ),
                           ),
                         ),
-                        Container(
-                          width: 170.0,
-                          height: 150.0,
-                          decoration: BoxDecoration(
-                              border: Border.all(color: Colors.grey.shade300),
-                              borderRadius: BorderRadius.circular(7)),
-                          child: Padding(
-                            padding: const EdgeInsets.all(20.0),
-                            child: Image(
-                              image: NetworkImage(
-                                  'https://scontent-hbe1-1.xx.fbcdn.net/v/t1.6435-9/51590767_2370739323154908_6668983354735460352_n.png?_nc_cat=103&ccb=1-4&_nc_sid=973b4a&_nc_ohc=gbP26FsFjT8AX-YBxUW&_nc_ht=scontent-hbe1-1.xx&oh=ed0691781f07ee6705c68299cf292978&oe=6137D81A'),
-                              width: 200.0,
-                              height: 200.0,
-                              fit: BoxFit.cover,
+                        SizedBox(
+                          width: 10,
+                        ),
+                        Expanded(
+                          child: Container(
+                            height: 150.0,
+                            decoration: BoxDecoration(
+                                border: Border.all(color: Colors.grey.shade300),
+                                borderRadius: BorderRadius.circular(7)),
+                            child: Padding(
+                              padding: const EdgeInsets.all(20.0),
+                              child: Image(
+                                image: NetworkImage(
+                                    'http://logok.org/wp-content/uploads/2015/03/Roche-logo-880x660.png'),
+                                width: 200.0,
+                                height: 200.0,
+                                fit: BoxFit.cover,
+                              ),
                             ),
                           ),
                         ),
                       ],
+                    ),
+                    SizedBox(
+                      height: 10,
+                    ),
+                    Row(
+                      children: [
+                        Expanded(
+                          child: Container(
+                            height: 150.0,
+                            decoration: BoxDecoration(
+                                border: Border.all(color: Colors.grey.shade300),
+                                borderRadius: BorderRadius.circular(10)),
+                            child: Padding(
+                              padding: const EdgeInsets.all(20.0),
+                              child: Image(
+                                image: NetworkImage(
+                                    'https://s3-eu-west-1.amazonaws.com/wuzzuf/files/company_logo/Mediconsult-Egypt-13897.png'),
+                                width: 200.0,
+                                height: 200.0,
+                                fit: BoxFit.cover,
+                              ),
+                            ),
+                          ),
+                        ),
+                        SizedBox(
+                          width: 10,
+                        ),
+                        Expanded(
+                          child: Container(
+                            height: 150.0,
+                            decoration: BoxDecoration(
+                                border: Border.all(color: Colors.grey.shade300),
+                                borderRadius: BorderRadius.circular(7)),
+                            child: Padding(
+                              padding: const EdgeInsets.all(20.0),
+                              child: Image(
+                                image: NetworkImage(
+                                    'https://scontent-hbe1-1.xx.fbcdn.net/v/t1.6435-9/51590767_2370739323154908_6668983354735460352_n.png?_nc_cat=103&ccb=1-4&_nc_sid=973b4a&_nc_ohc=gbP26FsFjT8AX-YBxUW&_nc_ht=scontent-hbe1-1.xx&oh=ed0691781f07ee6705c68299cf292978&oe=6137D81A'),
+                                width: 200.0,
+                                height: 200.0,
+                                fit: BoxFit.cover,
+                              ),
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                    SizedBox(
+                      height: 10,
                     ),
                   ],
                 ),
@@ -226,7 +257,8 @@ class InsuranceScreen extends StatelessWidget {
 //  @override
 //  Widget build(BuildContext context) {
 //    return Scaffold(
-//      body: ListView(
+//      body:
+//      ListView(
 //        children: [
 //          Padding(
 //            padding: const EdgeInsets.only(top: 20.0, left: 15.0),
