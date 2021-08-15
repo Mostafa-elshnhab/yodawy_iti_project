@@ -37,33 +37,60 @@ class _QuestionScreenState extends State<QuestionScreen> {
 
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        toolbarHeight: 100,
-        // backgroundColor: Colors.redAccent,
-        title: Container(
 
+      appBar: PreferredSize(
+        preferredSize: Size.fromHeight(125.0),
+        child: Container(
+          decoration: BoxDecoration(
+            gradient: LinearGradient(
+              begin: Alignment.topLeft,
+              end: Alignment.bottomRight,
+              colors: <Color>[
+                Color(0xFF179FDB),
+                Color(0xFF179FDB),
+                Color(0xFF21B3E4),
+                Color(0xFF2ECBEE),
+              ],
+              tileMode: TileMode.clamp,
+            ),
+          ),
           child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-
             children: [
-              GestureDetector(
-                child: Icon(
-                  Icons.arrow_back_ios_rounded ,
-                ),
-                onTap: (){
-                  Navigator.pop(context);
-                },
-              ),
-              SizedBox(height: 15,) ,
+              AppBar(
+                toolbarHeight: 100 ,
+                automaticallyImplyLeading: false,
+                backgroundColor: Colors.transparent,
+                elevation: 0,
+                //leadingWidth: 30,
+                title: Container(
+                  width: double.infinity ,
+                  // height: 100,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      GestureDetector(
+                        child: Icon(
+                          Icons.arrow_back_ios_rounded ,
+                        ),
+                        onTap: (){
+                          Navigator.pop(context);
+                        },
+                      ),
+                      SizedBox(height: 10,) ,
 
-              Text('Frequently asked questions' , style: TextStyle(fontSize: 22 , fontWeight: FontWeight.w600), ),
-              Text('Some questions that will help you' , style: TextStyle(fontSize: 16  ,
-              ), ),
+                      Text('Frequently asked questions' , style: TextStyle(fontSize: 20 , fontWeight: FontWeight.w600), ),
+                      Text('Some questions that will help you' , style: TextStyle(fontSize: 18  ,
+                      ), ),
+                    ],
+                  ),
+
+                ),
+
+              ),
+
             ],
           ),
         ),
-        automaticallyImplyLeading: false,
-
       ),
 
 
@@ -72,8 +99,8 @@ class _QuestionScreenState extends State<QuestionScreen> {
           child: Column(
             children: [
               Accordion('Is Esteshara certified from the ministry of health?',
-              'All the doctors of estshara are certified from'
-                  'the ministry of health .'),
+                  'All the doctors of estshara are certified from'
+                      'the ministry of health .'),
               Accordion('Can you provide sick notes and Prescriptions after the phone consultation?',
                   'Estshara\' doctor will send you a recommendation '
                       'after the consultations'),
@@ -91,13 +118,13 @@ class _QuestionScreenState extends State<QuestionScreen> {
                   'the application only .') ,
 
               Accordion('Are there doctors available to answer the consultation ? And are they qualified?',
-              'Estshara doctors are online and ready to answer the consultations 24/7.'
-                  'All estshara\'doctors hold at least a master\'degree and holding an operating license '
-                  'from the ministry of health.'
-                  'And to deal in remote medical consultations.') ,
+                  'Estshara doctors are online and ready to answer the consultations 24/7.'
+                      'All estshara\'doctors hold at least a master\'degree and holding an operating license '
+                      'from the ministry of health.'
+                      'And to deal in remote medical consultations.') ,
 
               Accordion('Can you help with sending the medicines needed after consultation?' ,
-              'You can order the needed medicine after consultation from Yodawy.' )
+                  'You can order the needed medicine after consultation from Yodawy.' )
             ],
           ),
 
