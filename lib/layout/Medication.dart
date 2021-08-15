@@ -7,6 +7,7 @@ import 'package:hexcolor/hexcolor.dart';
 
 import 'Insurance.dart';
 import 'Product/Products.dart';
+import 'TalkToDoctor/requestScreen.dart';
 
 class Medication extends StatelessWidget {
   const Medication({Key? key}) : super(key: key);
@@ -242,9 +243,11 @@ class doctorCard extends StatelessWidget {
             width: double.infinity,
             child: GestureDetector(
               onTap: () {
-//                          setState(() {
-//                            ismale=true;
-//                          });
+
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) =>  RequestScreen() ),
+                );
               },
               child: Container(
                 decoration: BoxDecoration(
