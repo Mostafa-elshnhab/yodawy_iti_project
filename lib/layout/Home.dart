@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app_test/models/HomePrandsModel.dart';
 import 'package:flutter_app_test/modules/category/category.dart';
 import 'package:flutter_app_test/modules/offers/offers.dart';
 import 'package:flutter_app_test/shared/Doctors.dart';
@@ -7,6 +8,7 @@ import 'package:flutter_app_test/shared/icon.dart';
 import 'package:flutter_app_test/shared/notLoginDrower.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:flutter_app_test/models/Doctors_models.dart';
+import 'AllPrandes.dart';
 import 'Cart/CartPage.dart';
 import 'Insurance.dart';
 import 'Medication.dart';
@@ -541,7 +543,12 @@ class home extends StatelessWidget {
                   child: Container(
                     alignment: AlignmentDirectional.centerEnd,
                     child: TextButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => AllPrands()));
+                        },
                         child: Text(
                           'View All',
                           style: TextStyle(
@@ -802,10 +809,6 @@ class doctorCard extends StatelessWidget {
 }
 
 ////////////////////////////////
-class Prands {
-  const Prands({this.path});
-  final String? path;
-}
 
 const List<Prands> prands = const <Prands>[
   const Prands(path: 'assets/images/laroch.png'),
