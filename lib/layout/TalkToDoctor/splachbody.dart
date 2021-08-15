@@ -80,7 +80,7 @@ class _BodySplashScreenState extends State<BodySplashScreen> {
          color: Colors.black54  ,
          // color: Color.fromARGB(127, 127 , 127, 127) ,
          // alignment: Alignment.center,
-         height: 410,
+         height: 500,
           width: double.infinity ,
 
 
@@ -89,7 +89,7 @@ class _BodySplashScreenState extends State<BodySplashScreen> {
               width: 10 ,
                height: 10 ,
 
-              child: Image.asset('assets/images/yoy.png' , scale: 4,) ,),
+              child: Image.asset('assets/images/Yoy.png' , scale: 4,) ,),
 
         ),
       ),
