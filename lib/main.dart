@@ -11,7 +11,10 @@ void main() {
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(debugShowCheckedModeBanner: false, home: SplashScreen());
+    return MaterialApp(
+        debugShowCheckedModeBanner: false,
+        home: SplashScreen(),
+       );
   }
 }
 
@@ -36,6 +39,7 @@ class splash extends State<SplashScreen> {
     return Scaffold(
       backgroundColor: Colors.white,
       body: Center(child: Image.asset('assets/images/splash.png')),
+
     );
   }
 }
