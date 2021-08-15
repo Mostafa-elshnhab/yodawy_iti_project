@@ -120,8 +120,8 @@ class _CategoryState extends State<Category> {
                               Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                      builder: (context) =>
-                                          Products(category[index].title)))
+                                      builder: (context) => Products(
+                                          Text: category[index].title)))
                             });
                   }),
             ],

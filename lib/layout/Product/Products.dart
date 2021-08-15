@@ -3,16 +3,17 @@ import 'package:flutter_app_test/layout/Cart/CartData.dart';
 import 'package:flutter_app_test/layout/Cart/CartPage.dart';
 import 'package:flutter_app_test/layout/Product/pandoalData.dart';
 import 'package:flutter_app_test/layout/Product/product_detalis.dart';
+import 'package:flutter_app_test/shared/components.dart';
 import 'package:hexcolor/hexcolor.dart';
 
 import 'dart:math' as math;
 
-String? SerchText;
+String? text;
 
 class Products extends StatefulWidget {
-  String Text;
-  Products(this.Text) {
-    SerchText = this.Text;
+  String? Text;
+  Products({@required this.Text}) {
+    text = this.Text!;
   }
 
   @override
@@ -58,86 +59,7 @@ class _ProductsState extends State<Products> {
 //          ),
 //        ),
 //      ),
-      appBar: PreferredSize(
-        preferredSize: Size.fromHeight(125.0),
-        child: Container(
-          decoration: BoxDecoration(
-            gradient: LinearGradient(
-              begin: Alignment.topLeft,
-              end: Alignment.bottomRight,
-              colors: <Color>[
-                Color(0xFF179FDB),
-                Color(0xFF179FDB),
-                Color(0xFF21B3E4),
-                Color(0xFF2ECBEE),
-              ],
-              tileMode: TileMode.clamp,
-            ),
-          ),
-          child: Column(
-            children: [
-              AppBar(
-                backgroundColor: Colors.transparent,
-                elevation: 0,
-                leadingWidth: 30,
-                title: Container(
-                  width: 120,
-                  height: 30,
-                  child: Image.asset('assets/images/logo.png'),
-                ),
-                actions: [
-                  Padding(
-                    padding: const EdgeInsets.all(10.0),
-                    child: Container(
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(20),
-                          color: Colors.white),
-                      child: IconButton(
-                        icon: Icon(
-                          Icons.shopping_cart_rounded,
-                          color: HexColor('#22C4EC'),
-                          size: 20,
-                        ),
-                        onPressed: () {
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => CartPage()));
-                        },
-                      ),
-                      width: 50,
-                    ),
-                  )
-                ],
-              ),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 15),
-                child: Container(
-                  margin: EdgeInsets.symmetric(vertical: 5),
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(7),
-                    color: Colors.white,
-                  ),
-                  child: TextField(
-                      showCursor: false,
-                      decoration: InputDecoration(
-                        border: InputBorder.none,
-                        hintText: '$SerchText',
-                        hintStyle: TextStyle(
-                          color: Colors.grey[500],
-                          fontSize: 15,
-                        ),
-                        prefixIcon: Icon(
-                          Icons.search_rounded,
-                          color: Colors.grey[400],
-                        ),
-                      )),
-                ),
-              )
-            ],
-          ),
-        ),
-      ),
+      appBar: appBarBuilder('$text'),
       body: Column(
 //        crossAxisAlignment: CrossAxisAlignment.center,
 //        mainAxisSize: MainAxisSize.max,
