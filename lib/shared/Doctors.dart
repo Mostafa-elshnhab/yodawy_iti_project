@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app_test/layout/TalkToDoctor/requestScreen.dart';
 import 'package:flutter_app_test/models/Doctors_models.dart';
 import 'package:hexcolor/hexcolor.dart';
 
@@ -97,9 +98,8 @@ class doctorCard extends StatelessWidget {
             width: double.infinity,
             child: GestureDetector(
               onTap: () {
-//                          setState(() {
-//                            ismale=true;
-//                          });
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => RequestScreen()));
               },
               child: Container(
                 decoration: BoxDecoration(

@@ -7,7 +7,7 @@ class AllPrands extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: appBarBuilder('Prands'),
+        appBar: appBarBuilder('Prands', context),
         body: SingleChildScrollView(
           scrollDirection: Axis.vertical,
           child: Padding(

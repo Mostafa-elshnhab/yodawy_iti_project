@@ -59,7 +59,7 @@ class _ProductsState extends State<Products> {
 //          ),
 //        ),
 //      ),
-      appBar: appBarBuilder('$text'),
+      appBar: appBarBuilder('$text', context),
       body: Column(
 //        crossAxisAlignment: CrossAxisAlignment.center,
 //        mainAxisSize: MainAxisSize.max,
