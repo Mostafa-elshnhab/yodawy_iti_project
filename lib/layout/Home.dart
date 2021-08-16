@@ -625,6 +625,7 @@ class CategoryCard extends StatelessWidget {
             Expanded(
               child: GestureDetector(
                 onTap: () {
+                  print('hamada');
                   if (index == 0) {
                     current = 1;
                     Navigator.push(context,
