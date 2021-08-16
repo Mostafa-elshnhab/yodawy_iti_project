@@ -18,6 +18,8 @@ import 'Insurance.dart';
 import 'Medication.dart';
 import 'insuranceNotLogin.dart';
 
+int current = 0;
+
 class MyHomePage extends StatefulWidget {
   const MyHomePage({Key? key}) : super(key: key);
 
@@ -26,7 +28,6 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  int current = 0;
   bool isOffers = false;
   bool isInsure = false;
   bool isLogin = true;
@@ -40,8 +41,6 @@ class _MyHomePageState extends State<MyHomePage> {
     Offers(),
     InsuranceNotLogin(),
   ];
-
-
 
   @override
   Widget build(BuildContext context) {
@@ -202,19 +201,17 @@ class home extends StatefulWidget {
 }
 
 class _homeState extends State<home> {
-
   File? camImage;
-  Future pickImage(ImageSource source) async{
+  Future pickImage(ImageSource source) async {
     try {
-      final camImage = await ImagePicker().pickImage(
-          source: source);
+      final camImage = await ImagePicker().pickImage(source: source);
       if (camImage == null) return;
 
       final ImageTemp = File(camImage.path);
       setState(() {
         this.camImage = ImageTemp;
       });
-    } on PlatformException catch(e) {
+    } on PlatformException catch (e) {
       print('Failed To Pick An Image: $e');
     }
   }
@@ -245,7 +242,9 @@ class _homeState extends State<home> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Text(
-                        widget.isLogin! ? 'YOU EAENED EGP30' : 'SIGN & GET EGP30',
+                        widget.isLogin!
+                            ? 'YOU EAENED EGP30'
+                            : 'SIGN & GET EGP30',
                         style: TextStyle(
                           fontSize: 25,
                           fontWeight: FontWeight.w900,
@@ -387,232 +386,298 @@ class _homeState extends State<home> {
                   child: GestureDetector(
                     onTap: () {
                       showModalBottomSheet(
-                        isScrollControlled: true,
+                          isScrollControlled: true,
                           context: context,
-                          builder: (context){
-                        return Container(
-                          height: 320.0,
-                          color: Color(0xFF737373),
-                          child: Container(
-                            decoration: BoxDecoration(
-                              color: Colors.white,
-                              borderRadius: BorderRadius.only(
-                                topRight: Radius.circular(20.0),
-                                topLeft: Radius.circular(20.0),
-                              ),
-                            ),
-                            child: Padding(
-                              padding: const EdgeInsets.all(20.0),
-                              child: Column(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                crossAxisAlignment: CrossAxisAlignment.center,
-                                children: [
-                                  Image.asset(
-                                      'assets/images/prescription.jpg',
-                                    width: 130.0,
-                                    height: 130.0,
+                          builder: (context) {
+                            return Container(
+                              height: 320.0,
+                              color: Color(0xFF737373),
+                              child: Container(
+                                decoration: BoxDecoration(
+                                  color: Colors.white,
+                                  borderRadius: BorderRadius.only(
+                                    topRight: Radius.circular(20.0),
+                                    topLeft: Radius.circular(20.0),
                                   ),
-                                  SizedBox(height: 20.0,),
-                                  Text(
-                                    'Do you want to use your insurance to upload a prescription?',
-                                    textAlign: TextAlign.center,
-                                    style: TextStyle(
-                                      fontSize: 20.0,
-                                      fontWeight: FontWeight.bold,
-                                    ),
-                                  ),
-                                  SizedBox(height: 20.0,),
-                                  Row(
+                                ),
+                                child: Padding(
+                                  padding: const EdgeInsets.all(20.0),
+                                  child: Column(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.center,
                                     children: [
-                                      Expanded(
-                                        child: Container(
-                                          decoration: BoxDecoration(
-                                            color: Colors.white,
-                                            borderRadius: BorderRadius.circular(5.0),
-                                            border: Border.all(
-                                              color: Colors.orange,
-                                            ),
-                                          ),
-                                          child: MaterialButton(
-                                              onPressed: (){
-                                                Navigator.push(context,
-                                                    MaterialPageRoute(builder: (context) => InsuranceScreen(true))
-                                                );
-                                              },
-                                            elevation: 0.0,
-                                            textColor: Colors.orange,
-                                            child: Text(
-                                              'YES',
-                                              textAlign: TextAlign.center,
-                                              style: TextStyle(
-                                                fontSize: 20.0,
-                                                fontWeight: FontWeight.bold,
+                                      Image.asset(
+                                        'assets/images/prescription.jpg',
+                                        width: 130.0,
+                                        height: 130.0,
+                                      ),
+                                      SizedBox(
+                                        height: 20.0,
+                                      ),
+                                      Text(
+                                        'Do you want to use your insurance to upload a prescription?',
+                                        textAlign: TextAlign.center,
+                                        style: TextStyle(
+                                          fontSize: 20.0,
+                                          fontWeight: FontWeight.bold,
+                                        ),
+                                      ),
+                                      SizedBox(
+                                        height: 20.0,
+                                      ),
+                                      Row(
+                                        children: [
+                                          Expanded(
+                                            child: Container(
+                                              decoration: BoxDecoration(
+                                                color: Colors.white,
+                                                borderRadius:
+                                                    BorderRadius.circular(5.0),
+                                                border: Border.all(
+                                                  color: Colors.orange,
+                                                ),
+                                              ),
+                                              child: MaterialButton(
+                                                onPressed: () {
+                                                  Navigator.push(
+                                                      context,
+                                                      MaterialPageRoute(
+                                                          builder: (context) =>
+                                                              InsuranceScreen(
+                                                                  true)));
+                                                },
+                                                elevation: 0.0,
+                                                textColor: Colors.orange,
+                                                child: Text(
+                                                  'YES',
+                                                  textAlign: TextAlign.center,
+                                                  style: TextStyle(
+                                                    fontSize: 20.0,
+                                                    fontWeight: FontWeight.bold,
+                                                  ),
+                                                ),
                                               ),
                                             ),
                                           ),
-                                        ),
-                                      ),
-                                      SizedBox(width: 10.0,),
-                                      Expanded(
-                                        child: Container(
-                                          decoration: BoxDecoration(
-                                            color: Colors.orange,
-                                            borderRadius: BorderRadius.circular(5.0),
-                                            border: Border.all(
-                                              color: Colors.orange,
-                                            ),
+                                          SizedBox(
+                                            width: 10.0,
                                           ),
-                                          child: MaterialButton(
-                                            onPressed: (){
-                                              Navigator.pop(context);
-                                              showModalBottomSheet(
-                                                isScrollControlled: true,
-                                                  context: context,
-                                                  builder: (context){
-                                                    return Container(
-                                                      color: Color(0xFF737373),
-                                                      child: Container(
-                                                        decoration: BoxDecoration(
-                                                          color: Colors.white,
-                                                          borderRadius: BorderRadius.only(
-                                                            topRight: Radius.circular(20.0),
-                                                            topLeft: Radius.circular(20.0),
-                                                          ),
-                                                        ),
-                                                        child: Wrap(
-                                                          children: [
-                                                            Padding(
-                                                              padding: const EdgeInsets.all(20.0),
-                                                              child: Column(
-                                                                mainAxisAlignment: MainAxisAlignment.center,
-                                                                crossAxisAlignment: CrossAxisAlignment.center,
-                                                                children: [
-                                                                  Padding(
-                                                                    padding: const EdgeInsets.all(10.0),
-                                                                    child: Text(
-                                                                        'Upload Prescription',
-                                                                      style: TextStyle(
-                                                                        color: Colors.grey,
-                                                                        fontSize: 20.0,
-                                                                        fontWeight: FontWeight.bold,
-                                                                      ),
-                                                                    ),
-                                                                  ),
-                                                                  SizedBox(height: 15.0,),
-                                                                  Container(
-                                                                    height: 1.0,
-                                                                    color: Colors.black12,
-                                                                  ),
-                                                                  SizedBox(height: 15.0,),
-                                                                  GestureDetector(
-                                                                    onTap: (){
-                                                                      pickImage(ImageSource.camera);
-                                                                      },
-                                                                    child: Row(
-                                                                      mainAxisAlignment: MainAxisAlignment.center,
-                                                                      children: [
-                                                                        Icon(
-                                                                            Icons.camera_alt,
-                                                                          color: Colors.orange,
-                                                                          size: 25.0,
-                                                                        ),
-                                                                        SizedBox(width: 10.0,),
-                                                                        Text(
-                                                                            'Camera',
-                                                                          style: TextStyle(
-                                                                            fontSize: 20.0,
-                                                                          ),
-                                                                        ),
-                                                                      ],
-                                                                    ),
-                                                                  ),
-                                                                  SizedBox(height: 15.0,),
-                                                                  Container(
-                                                                    height: 1.0,
-                                                                    color: Colors.black12,
-                                                                  ),
-                                                                  SizedBox(height: 15.0,),
-                                                                  GestureDetector(
-                                                                    onTap: (){
-                                                                      pickImage(ImageSource.gallery);
-                                                                    },
-                                                                    child: Row(
-                                                                      mainAxisAlignment: MainAxisAlignment.center,
-                                                                      children: [
-                                                                        Icon(
-                                                                          Icons.image,
-                                                                          color: Colors.orange,
-                                                                          size: 25.0,
-                                                                        ),
-                                                                        SizedBox(width: 10.0,),
-                                                                        Text(
-                                                                          'Gallery',
-                                                                          style: TextStyle(
-                                                                            fontSize: 20.0,
-                                                                          ),
-                                                                        ),
-                                                                      ],
-                                                                    ),
-                                                                  ),
-                                                                  SizedBox(height: 30.0,),
-                                                                  Row(
+                                          Expanded(
+                                            child: Container(
+                                              decoration: BoxDecoration(
+                                                color: Colors.orange,
+                                                borderRadius:
+                                                    BorderRadius.circular(5.0),
+                                                border: Border.all(
+                                                  color: Colors.orange,
+                                                ),
+                                              ),
+                                              child: MaterialButton(
+                                                onPressed: () {
+                                                  Navigator.pop(context);
+                                                  showModalBottomSheet(
+                                                      isScrollControlled: true,
+                                                      context: context,
+                                                      builder: (context) {
+                                                        return Container(
+                                                          color:
+                                                              Color(0xFF737373),
+                                                          child: Container(
+                                                            decoration:
+                                                                BoxDecoration(
+                                                              color:
+                                                                  Colors.white,
+                                                              borderRadius:
+                                                                  BorderRadius
+                                                                      .only(
+                                                                topRight: Radius
+                                                                    .circular(
+                                                                        20.0),
+                                                                topLeft: Radius
+                                                                    .circular(
+                                                                        20.0),
+                                                              ),
+                                                            ),
+                                                            child: Wrap(
+                                                              children: [
+                                                                Padding(
+                                                                  padding:
+                                                                      const EdgeInsets
+                                                                              .all(
+                                                                          20.0),
+                                                                  child: Column(
+                                                                    mainAxisAlignment:
+                                                                        MainAxisAlignment
+                                                                            .center,
+                                                                    crossAxisAlignment:
+                                                                        CrossAxisAlignment
+                                                                            .center,
                                                                     children: [
-                                                                      Expanded(
-                                                                        child: Container(
-                                                                          decoration: BoxDecoration(
-                                                                            color: Colors.white,
-                                                                            borderRadius: BorderRadius.circular(5.0),
-                                                                            border: Border.all(
-                                                                              color: Colors.orange,
-                                                                            ),
+                                                                      Padding(
+                                                                        padding:
+                                                                            const EdgeInsets.all(10.0),
+                                                                        child:
+                                                                            Text(
+                                                                          'Upload Prescription',
+                                                                          style:
+                                                                              TextStyle(
+                                                                            color:
+                                                                                Colors.grey,
+                                                                            fontSize:
+                                                                                20.0,
+                                                                            fontWeight:
+                                                                                FontWeight.bold,
                                                                           ),
-                                                                          child: MaterialButton(
-                                                                            onPressed: (){
-                                                                             Navigator.pop(context);
-                                                                            },
-                                                                            elevation: 0.0,
-                                                                            textColor: Colors.orange,
-                                                                            child: Text(
-                                                                              'CANCEL',
-                                                                              textAlign: TextAlign.center,
+                                                                        ),
+                                                                      ),
+                                                                      SizedBox(
+                                                                        height:
+                                                                            15.0,
+                                                                      ),
+                                                                      Container(
+                                                                        height:
+                                                                            1.0,
+                                                                        color: Colors
+                                                                            .black12,
+                                                                      ),
+                                                                      SizedBox(
+                                                                        height:
+                                                                            15.0,
+                                                                      ),
+                                                                      GestureDetector(
+                                                                        onTap:
+                                                                            () {
+                                                                          pickImage(
+                                                                              ImageSource.camera);
+                                                                        },
+                                                                        child:
+                                                                            Row(
+                                                                          mainAxisAlignment:
+                                                                              MainAxisAlignment.center,
+                                                                          children: [
+                                                                            Icon(
+                                                                              Icons.camera_alt,
+                                                                              color: Colors.orange,
+                                                                              size: 25.0,
+                                                                            ),
+                                                                            SizedBox(
+                                                                              width: 10.0,
+                                                                            ),
+                                                                            Text(
+                                                                              'Camera',
                                                                               style: TextStyle(
-                                                                                fontSize: 18.0,
+                                                                                fontSize: 20.0,
+                                                                              ),
+                                                                            ),
+                                                                          ],
+                                                                        ),
+                                                                      ),
+                                                                      SizedBox(
+                                                                        height:
+                                                                            15.0,
+                                                                      ),
+                                                                      Container(
+                                                                        height:
+                                                                            1.0,
+                                                                        color: Colors
+                                                                            .black12,
+                                                                      ),
+                                                                      SizedBox(
+                                                                        height:
+                                                                            15.0,
+                                                                      ),
+                                                                      GestureDetector(
+                                                                        onTap:
+                                                                            () {
+                                                                          pickImage(
+                                                                              ImageSource.gallery);
+                                                                        },
+                                                                        child:
+                                                                            Row(
+                                                                          mainAxisAlignment:
+                                                                              MainAxisAlignment.center,
+                                                                          children: [
+                                                                            Icon(
+                                                                              Icons.image,
+                                                                              color: Colors.orange,
+                                                                              size: 25.0,
+                                                                            ),
+                                                                            SizedBox(
+                                                                              width: 10.0,
+                                                                            ),
+                                                                            Text(
+                                                                              'Gallery',
+                                                                              style: TextStyle(
+                                                                                fontSize: 20.0,
+                                                                              ),
+                                                                            ),
+                                                                          ],
+                                                                        ),
+                                                                      ),
+                                                                      SizedBox(
+                                                                        height:
+                                                                            30.0,
+                                                                      ),
+                                                                      Row(
+                                                                        children: [
+                                                                          Expanded(
+                                                                            child:
+                                                                                Container(
+                                                                              decoration: BoxDecoration(
+                                                                                color: Colors.white,
+                                                                                borderRadius: BorderRadius.circular(5.0),
+                                                                                border: Border.all(
+                                                                                  color: Colors.orange,
+                                                                                ),
+                                                                              ),
+                                                                              child: MaterialButton(
+                                                                                onPressed: () {
+                                                                                  Navigator.pop(context);
+                                                                                },
+                                                                                elevation: 0.0,
+                                                                                textColor: Colors.orange,
+                                                                                child: Text(
+                                                                                  'CANCEL',
+                                                                                  textAlign: TextAlign.center,
+                                                                                  style: TextStyle(
+                                                                                    fontSize: 18.0,
+                                                                                  ),
+                                                                                ),
                                                                               ),
                                                                             ),
                                                                           ),
-                                                                        ),
+                                                                        ],
                                                                       ),
                                                                     ],
                                                                   ),
-                                                                ],
-                                                              ),
+                                                                ),
+                                                              ],
                                                             ),
-                                                          ],
-                                                        ),
-                                                      ),
-                                                    );
-                                                  });
-                                            },
-                                            elevation: 0.0,
-                                            textColor: Colors.white,
-                                            child: Text(
-                                              'NO',
-                                              textAlign: TextAlign.center,
-                                              style: TextStyle(
-                                                fontSize: 20.0,
-                                                fontWeight: FontWeight.bold,
+                                                          ),
+                                                        );
+                                                      });
+                                                },
+                                                elevation: 0.0,
+                                                textColor: Colors.white,
+                                                child: Text(
+                                                  'NO',
+                                                  textAlign: TextAlign.center,
+                                                  style: TextStyle(
+                                                    fontSize: 20.0,
+                                                    fontWeight: FontWeight.bold,
+                                                  ),
+                                                ),
                                               ),
                                             ),
                                           ),
-                                        ),
+                                        ],
                                       ),
                                     ],
                                   ),
-                                ],
+                                ),
                               ),
-                            ),
-                          ),
-                        );
+                            );
                           });
                     },
                     child: Container(
@@ -692,7 +757,10 @@ class _homeState extends State<home> {
                 mainAxisSpacing: 8.0,
                 children: List.generate(choices.length, (index) {
                   return Center(
-                    child: CategoryCard(choice: choices[index]),
+                    child: CategoryCard(
+                      choice: choices[index],
+                      index: index,
+                    ),
                   );
                 })),
             SizedBox(
@@ -859,8 +927,9 @@ const List<Choice> choices = const <Choice>[
 ];
 
 class CategoryCard extends StatelessWidget {
-  const CategoryCard({Key? key, this.choice}) : super(key: key);
+  const CategoryCard({Key? key, this.choice, this.index}) : super(key: key);
   final Choice? choice;
+  final int? index;
 
   @override
   Widget build(BuildContext context) {
