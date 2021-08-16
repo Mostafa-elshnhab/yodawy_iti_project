@@ -952,11 +952,6 @@ class CategoryCard extends StatelessWidget {
                         MaterialPageRoute(
                             builder: (context) => Category(choice!.title)));
                   }
-
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => Category(choice!.title)));
                 },
                 child: Padding(
                   padding: const EdgeInsets.all(3.0),
