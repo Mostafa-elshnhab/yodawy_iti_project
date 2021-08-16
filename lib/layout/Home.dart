@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app_test/layout/Product/Products.dart';
 import 'package:flutter_app_test/models/HomePrandsModel.dart';
 import 'package:flutter_app_test/modules/category/category.dart';
 import 'package:flutter_app_test/modules/offers/offers.dart';
@@ -12,7 +13,10 @@ import 'AllPrandes.dart';
 import 'Cart/CartPage.dart';
 import 'Insurance.dart';
 import 'Medication.dart';
+import 'TalkToDoctor/requestScreen.dart';
 import 'insuranceNotLogin.dart';
+
+int current = 0;
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({Key? key}) : super(key: key);
@@ -22,7 +26,6 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  int current = 0;
   bool isOffers = false;
   bool isInsure = false;
   bool isLogin = true;
@@ -438,7 +441,10 @@ class home extends StatelessWidget {
                 mainAxisSpacing: 8.0,
                 children: List.generate(choices.length, (index) {
                   return Center(
-                    child: CategoryCard(choice: choices[index]),
+                    child: CategoryCard(
+                      choice: choices[index],
+                      index: index,
+                    ),
                   );
                 })),
             SizedBox(
@@ -605,8 +611,9 @@ const List<Choice> choices = const <Choice>[
 ];
 
 class CategoryCard extends StatelessWidget {
-  const CategoryCard({Key? key, this.choice}) : super(key: key);
+  const CategoryCard({Key? key, this.choice, this.index}) : super(key: key);
   final Choice? choice;
+  final int? index;
 
   @override
   Widget build(BuildContext context) {
@@ -618,10 +625,16 @@ class CategoryCard extends StatelessWidget {
             Expanded(
               child: GestureDetector(
                 onTap: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => Category(choice!.title)));
+                  if (index == 0) {
+                    current = 1;
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => MyHomePage()));
+                  } else {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => Category(choice!.title)));
+                  }
                 },
                 child: Padding(
                   padding: const EdgeInsets.all(3.0),
@@ -749,9 +762,8 @@ class doctorCard extends StatelessWidget {
             width: double.infinity,
             child: GestureDetector(
               onTap: () {
-//                          setState(() {
-//                            ismale=true;
-//                          });
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => RequestScreen()));
               },
               child: Container(
                 decoration: BoxDecoration(
@@ -811,15 +823,15 @@ class doctorCard extends StatelessWidget {
 ////////////////////////////////
 
 const List<Prands> prands = const <Prands>[
-  const Prands(path: 'assets/images/laroch.png'),
-  const Prands(path: 'assets/images/Vichy.png'),
-  const Prands(path: 'assets/images/loreal.png'),
-  const Prands(path: 'assets/images/axe.png'),
-  const Prands(path: 'assets/images/garnierpng.png'),
-  const Prands(path: 'assets/images/always.png'),
-  const Prands(path: 'assets/images/bioderma.png'),
-  const Prands(path: 'assets/images/johns.png'),
-  const Prands(path: 'assets/images/lux.png'),
+  const Prands(path: 'assets/images/laroch.png', titel: 'La Roche Posay'),
+  const Prands(path: 'assets/images/Vichy.png', titel: 'Vichy'),
+  const Prands(path: 'assets/images/loreal.png', titel: 'L\'Oreal Parise'),
+  const Prands(path: 'assets/images/axe.png', titel: 'Axe'),
+  const Prands(path: 'assets/images/garnierpng.png', titel: 'Garnier'),
+  const Prands(path: 'assets/images/always.png', titel: 'Always'),
+  const Prands(path: 'assets/images/bioderma.png', titel: 'Bioderma'),
+  const Prands(path: 'assets/images/johns.png', titel: 'The New Johnson\'s'),
+  const Prands(path: 'assets/images/lux.png', titel: 'Lux'),
 ];
 
 class prandsCard extends StatelessWidget {
@@ -829,6 +841,14 @@ class prandsCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
+      onTap: () {
+        Navigator.push(
+            context,
+            MaterialPageRoute(
+                builder: (context) => Products(
+                      Text: '${prands!.titel}',
+                    )));
+      },
       child: Container(
         width: double.infinity,
         height: 50,

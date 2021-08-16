@@ -1,11 +1,10 @@
 import 'package:carousel_pro_nullsafety/carousel_pro_nullsafety.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_app_test/layout/Product/Products.dart';
 import 'package:flutter_app_test/models/carouselmodel.dart';
 
-
 class CarouselItem extends StatelessWidget {
-  final Function press;
-  const CarouselItem({Key? key, required this.press}) : super(key: key);
+  const CarouselItem({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -18,16 +17,22 @@ class CarouselItem extends StatelessWidget {
       dotIncreaseSize: 1.5,
       images: carouselItem.map((e) {
         return GestureDetector(
-          child: Container(
-            child: Image.asset(
-              '${e.carouselImg}',
-              fit: BoxFit.cover,
-              width: double.infinity,
-              height: 200.0,
+            child: Container(
+              child: Image.asset(
+                '${e.carouselImg}',
+                fit: BoxFit.cover,
+                width: double.infinity,
+                height: 200.0,
+              ),
             ),
-          ),
-          onTap: () => press()
-        );
+            onTap: () {
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => Products(
+                            Text: '${e.productName.toUpperCase()}',
+                          )));
+            });
       }).toList(),
     );
   }

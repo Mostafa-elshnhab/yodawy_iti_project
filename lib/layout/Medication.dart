@@ -15,7 +15,7 @@ class Medication extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: appBarBuilder('Medication'),
+        appBar: appBarBuilder('Medication', context),
         body: SingleChildScrollView(
           scrollDirection: Axis.vertical,
           child: Padding(
@@ -243,10 +243,9 @@ class doctorCard extends StatelessWidget {
             width: double.infinity,
             child: GestureDetector(
               onTap: () {
-
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) =>  RequestScreen() ),
+                  MaterialPageRoute(builder: (context) => RequestScreen()),
                 );
               },
               child: Container(
