@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hexcolor/hexcolor.dart';
 
-PreferredSizeWidget appBarBuilder(String appBarTitle){
+PreferredSizeWidget appBarBuilder(String appBarTitle, [BuildContext? context]){
   return PreferredSize(
     preferredSize: Size.fromHeight(125.0),
     child: Container(

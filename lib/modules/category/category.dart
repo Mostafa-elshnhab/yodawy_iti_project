@@ -24,7 +24,7 @@ class _CategoryState extends State<Category> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: appBarBuilder('$titele'),
+      appBar: appBarBuilder('$titele', context),
       body: Padding(
         padding: const EdgeInsets.all(12.0),
         child: SingleChildScrollView(
@@ -120,8 +120,8 @@ class _CategoryState extends State<Category> {
                               Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                      builder: (context) =>
-                                          Products(category[index].title)))
+                                      builder: (context) => Products(
+                                          Text: category[index].title)))
                             });
                   }),
             ],
