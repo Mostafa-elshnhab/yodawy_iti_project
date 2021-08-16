@@ -872,6 +872,18 @@ class CategoryCard extends StatelessWidget {
             Expanded(
               child: GestureDetector(
                 onTap: () {
+                  print('hamada');
+                  if (index == 0) {
+                    current = 1;
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => MyHomePage()));
+                  } else {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => Category(choice!.title)));
+                  }
+
                   Navigator.push(
                       context,
                       MaterialPageRoute(
