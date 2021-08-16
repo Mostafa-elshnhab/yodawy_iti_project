@@ -273,7 +273,7 @@ class RequestScreen extends StatelessWidget {
 
   },
                        //////////////////////////////////////////////
-                       child: Text('REQYEST A CALL' ,
+                       child: Text('REQUEST A CALL' ,
                          style: TextStyle(fontWeight:FontWeight.w700 , fontSize: 16),)),
                             ) ,
 
