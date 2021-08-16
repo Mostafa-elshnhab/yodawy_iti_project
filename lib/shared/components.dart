@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_app_test/layout/Cart/CartPage.dart';
 import 'package:hexcolor/hexcolor.dart';
 
-PreferredSizeWidget appBarBuilder(String appBarTitle, context) {
+PreferredSizeWidget appBarBuilder(String appBarTitle, [BuildContext? context]){
   return PreferredSize(
     preferredSize: Size.fromHeight(125.0),
     child: Container(
@@ -45,10 +44,7 @@ PreferredSizeWidget appBarBuilder(String appBarTitle, context) {
                       color: HexColor('#22C4EC'),
                       size: 20,
                     ),
-                    onPressed: () {
-                      Navigator.push(context,
-                          MaterialPageRoute(builder: (context) => CartPage()));
-                    },
+                    onPressed: () {},
                   ),
                   width: 50,
                 ),
@@ -84,3 +80,5 @@ PreferredSizeWidget appBarBuilder(String appBarTitle, context) {
     ),
   );
 }
+
+

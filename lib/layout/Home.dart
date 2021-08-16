@@ -1,5 +1,7 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
-import 'package:flutter_app_test/layout/Product/Products.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_app_test/models/HomePrandsModel.dart';
 import 'package:flutter_app_test/modules/category/category.dart';
 import 'package:flutter_app_test/modules/offers/offers.dart';
@@ -9,14 +11,12 @@ import 'package:flutter_app_test/shared/icon.dart';
 import 'package:flutter_app_test/shared/notLoginDrower.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:flutter_app_test/models/Doctors_models.dart';
+import 'package:image_picker/image_picker.dart';
 import 'AllPrandes.dart';
 import 'Cart/CartPage.dart';
 import 'Insurance.dart';
 import 'Medication.dart';
-import 'TalkToDoctor/requestScreen.dart';
 import 'insuranceNotLogin.dart';
-
-int current = 0;
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({Key? key}) : super(key: key);
@@ -26,6 +26,7 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  int current = 0;
   bool isOffers = false;
   bool isInsure = false;
   bool isLogin = true;
@@ -39,6 +40,8 @@ class _MyHomePageState extends State<MyHomePage> {
     Offers(),
     InsuranceNotLogin(),
   ];
+
+
 
   @override
   Widget build(BuildContext context) {
@@ -188,11 +191,34 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 }
 
-class home extends StatelessWidget {
+class home extends StatefulWidget {
   bool? isLogin;
   home(bool isLoginb) {
     this.isLogin = isLoginb;
   }
+
+  @override
+  _homeState createState() => _homeState();
+}
+
+class _homeState extends State<home> {
+
+  File? camImage;
+  Future pickImage(ImageSource source) async{
+    try {
+      final camImage = await ImagePicker().pickImage(
+          source: source);
+      if (camImage == null) return;
+
+      final ImageTemp = File(camImage.path);
+      setState(() {
+        this.camImage = ImageTemp;
+      });
+    } on PlatformException catch(e) {
+      print('Failed To Pick An Image: $e');
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
@@ -219,7 +245,7 @@ class home extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Text(
-                        isLogin! ? 'YOU EAENED EGP30' : 'SIGN & GET EGP30',
+                        widget.isLogin! ? 'YOU EAENED EGP30' : 'SIGN & GET EGP30',
                         style: TextStyle(
                           fontSize: 25,
                           fontWeight: FontWeight.w900,
@@ -232,13 +258,13 @@ class home extends StatelessWidget {
                       SizedBox(
                         height: 3,
                       ),
-                      Text(isLogin! ? 'Min order value EGP 100' : ''),
+                      Text(widget.isLogin! ? 'Min order value EGP 100' : ''),
                       SizedBox(
                         height: 6,
                       ),
                       Row(
                         children: [
-                          isLogin!
+                          widget.isLogin!
                               ? Text(
                                   'Promo Code:',
                                   style: TextStyle(
@@ -256,7 +282,7 @@ class home extends StatelessWidget {
                           SizedBox(
                             width: 4,
                           ),
-                          isLogin!
+                          widget.isLogin!
                               ? Text(
                                   'NEW30',
                                   style: TextStyle(
@@ -360,9 +386,234 @@ class home extends StatelessWidget {
                 Expanded(
                   child: GestureDetector(
                     onTap: () {
-//                          setState(() {
-//                            ismale=true;
-//                          });
+                      showModalBottomSheet(
+                        isScrollControlled: true,
+                          context: context,
+                          builder: (context){
+                        return Container(
+                          height: 320.0,
+                          color: Color(0xFF737373),
+                          child: Container(
+                            decoration: BoxDecoration(
+                              color: Colors.white,
+                              borderRadius: BorderRadius.only(
+                                topRight: Radius.circular(20.0),
+                                topLeft: Radius.circular(20.0),
+                              ),
+                            ),
+                            child: Padding(
+                              padding: const EdgeInsets.all(20.0),
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                children: [
+                                  Image.asset(
+                                      'assets/images/prescription.jpg',
+                                    width: 130.0,
+                                    height: 130.0,
+                                  ),
+                                  SizedBox(height: 20.0,),
+                                  Text(
+                                    'Do you want to use your insurance to upload a prescription?',
+                                    textAlign: TextAlign.center,
+                                    style: TextStyle(
+                                      fontSize: 20.0,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                  ),
+                                  SizedBox(height: 20.0,),
+                                  Row(
+                                    children: [
+                                      Expanded(
+                                        child: Container(
+                                          decoration: BoxDecoration(
+                                            color: Colors.white,
+                                            borderRadius: BorderRadius.circular(5.0),
+                                            border: Border.all(
+                                              color: Colors.orange,
+                                            ),
+                                          ),
+                                          child: MaterialButton(
+                                              onPressed: (){
+                                                Navigator.push(context,
+                                                    MaterialPageRoute(builder: (context) => InsuranceScreen(true))
+                                                );
+                                              },
+                                            elevation: 0.0,
+                                            textColor: Colors.orange,
+                                            child: Text(
+                                              'YES',
+                                              textAlign: TextAlign.center,
+                                              style: TextStyle(
+                                                fontSize: 20.0,
+                                                fontWeight: FontWeight.bold,
+                                              ),
+                                            ),
+                                          ),
+                                        ),
+                                      ),
+                                      SizedBox(width: 10.0,),
+                                      Expanded(
+                                        child: Container(
+                                          decoration: BoxDecoration(
+                                            color: Colors.orange,
+                                            borderRadius: BorderRadius.circular(5.0),
+                                            border: Border.all(
+                                              color: Colors.orange,
+                                            ),
+                                          ),
+                                          child: MaterialButton(
+                                            onPressed: (){
+                                              Navigator.pop(context);
+                                              showModalBottomSheet(
+                                                isScrollControlled: true,
+                                                  context: context,
+                                                  builder: (context){
+                                                    return Container(
+                                                      color: Color(0xFF737373),
+                                                      child: Container(
+                                                        decoration: BoxDecoration(
+                                                          color: Colors.white,
+                                                          borderRadius: BorderRadius.only(
+                                                            topRight: Radius.circular(20.0),
+                                                            topLeft: Radius.circular(20.0),
+                                                          ),
+                                                        ),
+                                                        child: Wrap(
+                                                          children: [
+                                                            Padding(
+                                                              padding: const EdgeInsets.all(20.0),
+                                                              child: Column(
+                                                                mainAxisAlignment: MainAxisAlignment.center,
+                                                                crossAxisAlignment: CrossAxisAlignment.center,
+                                                                children: [
+                                                                  Padding(
+                                                                    padding: const EdgeInsets.all(10.0),
+                                                                    child: Text(
+                                                                        'Upload Prescription',
+                                                                      style: TextStyle(
+                                                                        color: Colors.grey,
+                                                                        fontSize: 20.0,
+                                                                        fontWeight: FontWeight.bold,
+                                                                      ),
+                                                                    ),
+                                                                  ),
+                                                                  SizedBox(height: 15.0,),
+                                                                  Container(
+                                                                    height: 1.0,
+                                                                    color: Colors.black12,
+                                                                  ),
+                                                                  SizedBox(height: 15.0,),
+                                                                  GestureDetector(
+                                                                    onTap: (){
+                                                                      pickImage(ImageSource.camera);
+                                                                      },
+                                                                    child: Row(
+                                                                      mainAxisAlignment: MainAxisAlignment.center,
+                                                                      children: [
+                                                                        Icon(
+                                                                            Icons.camera_alt,
+                                                                          color: Colors.orange,
+                                                                          size: 25.0,
+                                                                        ),
+                                                                        SizedBox(width: 10.0,),
+                                                                        Text(
+                                                                            'Camera',
+                                                                          style: TextStyle(
+                                                                            fontSize: 20.0,
+                                                                          ),
+                                                                        ),
+                                                                      ],
+                                                                    ),
+                                                                  ),
+                                                                  SizedBox(height: 15.0,),
+                                                                  Container(
+                                                                    height: 1.0,
+                                                                    color: Colors.black12,
+                                                                  ),
+                                                                  SizedBox(height: 15.0,),
+                                                                  GestureDetector(
+                                                                    onTap: (){
+                                                                      pickImage(ImageSource.gallery);
+                                                                    },
+                                                                    child: Row(
+                                                                      mainAxisAlignment: MainAxisAlignment.center,
+                                                                      children: [
+                                                                        Icon(
+                                                                          Icons.image,
+                                                                          color: Colors.orange,
+                                                                          size: 25.0,
+                                                                        ),
+                                                                        SizedBox(width: 10.0,),
+                                                                        Text(
+                                                                          'Gallery',
+                                                                          style: TextStyle(
+                                                                            fontSize: 20.0,
+                                                                          ),
+                                                                        ),
+                                                                      ],
+                                                                    ),
+                                                                  ),
+                                                                  SizedBox(height: 30.0,),
+                                                                  Row(
+                                                                    children: [
+                                                                      Expanded(
+                                                                        child: Container(
+                                                                          decoration: BoxDecoration(
+                                                                            color: Colors.white,
+                                                                            borderRadius: BorderRadius.circular(5.0),
+                                                                            border: Border.all(
+                                                                              color: Colors.orange,
+                                                                            ),
+                                                                          ),
+                                                                          child: MaterialButton(
+                                                                            onPressed: (){
+                                                                             Navigator.pop(context);
+                                                                            },
+                                                                            elevation: 0.0,
+                                                                            textColor: Colors.orange,
+                                                                            child: Text(
+                                                                              'CANCEL',
+                                                                              textAlign: TextAlign.center,
+                                                                              style: TextStyle(
+                                                                                fontSize: 18.0,
+                                                                              ),
+                                                                            ),
+                                                                          ),
+                                                                        ),
+                                                                      ),
+                                                                    ],
+                                                                  ),
+                                                                ],
+                                                              ),
+                                                            ),
+                                                          ],
+                                                        ),
+                                                      ),
+                                                    );
+                                                  });
+                                            },
+                                            elevation: 0.0,
+                                            textColor: Colors.white,
+                                            child: Text(
+                                              'NO',
+                                              textAlign: TextAlign.center,
+                                              style: TextStyle(
+                                                fontSize: 20.0,
+                                                fontWeight: FontWeight.bold,
+                                              ),
+                                            ),
+                                          ),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ),
+                        );
+                          });
                     },
                     child: Container(
                       decoration: BoxDecoration(
@@ -407,7 +658,7 @@ class home extends StatelessWidget {
                                 ),
                           ),
                           Text(
-                            'Prescroiption',
+                            'Prescription',
                             style: TextStyle(
                                 fontSize: 18, fontWeight: FontWeight.w500
 //                                    color: HexColor('#545566')
@@ -441,10 +692,7 @@ class home extends StatelessWidget {
                 mainAxisSpacing: 8.0,
                 children: List.generate(choices.length, (index) {
                   return Center(
-                    child: CategoryCard(
-                      choice: choices[index],
-                      index: index,
-                    ),
+                    child: CategoryCard(choice: choices[index]),
                   );
                 })),
             SizedBox(
@@ -611,9 +859,8 @@ const List<Choice> choices = const <Choice>[
 ];
 
 class CategoryCard extends StatelessWidget {
-  const CategoryCard({Key? key, this.choice, this.index}) : super(key: key);
+  const CategoryCard({Key? key, this.choice}) : super(key: key);
   final Choice? choice;
-  final int? index;
 
   @override
   Widget build(BuildContext context) {
@@ -636,6 +883,11 @@ class CategoryCard extends StatelessWidget {
                         MaterialPageRoute(
                             builder: (context) => Category(choice!.title)));
                   }
+
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => Category(choice!.title)));
                 },
                 child: Padding(
                   padding: const EdgeInsets.all(3.0),
@@ -763,8 +1015,9 @@ class doctorCard extends StatelessWidget {
             width: double.infinity,
             child: GestureDetector(
               onTap: () {
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => RequestScreen()));
+//                          setState(() {
+//                            ismale=true;
+//                          });
               },
               child: Container(
                 decoration: BoxDecoration(
@@ -824,15 +1077,15 @@ class doctorCard extends StatelessWidget {
 ////////////////////////////////
 
 const List<Prands> prands = const <Prands>[
-  const Prands(path: 'assets/images/laroch.png', titel: 'La Roche Posay'),
-  const Prands(path: 'assets/images/Vichy.png', titel: 'Vichy'),
-  const Prands(path: 'assets/images/loreal.png', titel: 'L\'Oreal Parise'),
-  const Prands(path: 'assets/images/axe.png', titel: 'Axe'),
-  const Prands(path: 'assets/images/garnierpng.png', titel: 'Garnier'),
-  const Prands(path: 'assets/images/always.png', titel: 'Always'),
-  const Prands(path: 'assets/images/bioderma.png', titel: 'Bioderma'),
-  const Prands(path: 'assets/images/johns.png', titel: 'The New Johnson\'s'),
-  const Prands(path: 'assets/images/lux.png', titel: 'Lux'),
+  const Prands(path: 'assets/images/laroch.png'),
+  const Prands(path: 'assets/images/Vichy.png'),
+  const Prands(path: 'assets/images/loreal.png'),
+  const Prands(path: 'assets/images/axe.png'),
+  const Prands(path: 'assets/images/garnierpng.png'),
+  const Prands(path: 'assets/images/always.png'),
+  const Prands(path: 'assets/images/bioderma.png'),
+  const Prands(path: 'assets/images/johns.png'),
+  const Prands(path: 'assets/images/lux.png'),
 ];
 
 class prandsCard extends StatelessWidget {
@@ -842,14 +1095,6 @@ class prandsCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () {
-        Navigator.push(
-            context,
-            MaterialPageRoute(
-                builder: (context) => Products(
-                      Text: '${prands!.titel}',
-                    )));
-      },
       child: Container(
         width: double.infinity,
         height: 50,
