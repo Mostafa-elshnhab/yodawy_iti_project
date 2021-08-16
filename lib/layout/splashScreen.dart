@@ -26,6 +26,7 @@ class _MyHomePageState extends State<SplashScreen> {
 
   @override
   Widget build(BuildContext context) {
+
     return Container(
         color: Colors.grey.withOpacity(.8),
         child: Image.asset('assets/images/1.jpg')

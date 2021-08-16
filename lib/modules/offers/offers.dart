@@ -1,5 +1,7 @@
 import 'package:carousel_pro_nullsafety/carousel_pro_nullsafety.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_app_test/layout/Product/Products.dart';
+import 'components/TopPicksAll.dart';
 import 'package:flutter_app_test/models/carouselmodel.dart';
 import 'package:flutter_app_test/models/offersofday.dart';
 import 'package:flutter_app_test/models/toppicksmodel.dart';
@@ -27,10 +29,8 @@ class _OffersState extends State<Offers> {
                 borderRadius: BorderRadius.circular(10.0),
                 child: Container(
                   width: double.infinity,
-                  height: 180.0,
-                  child: CarouselItem(
-                      press: () =>
-                          print('${carouselItem.map((e) => e.productName)}')),
+                  height: 170.0,
+                  child: CarouselItem(),
                 ),
               ),
               SizedBox(
@@ -50,7 +50,13 @@ class _OffersState extends State<Offers> {
                         ),
                       ),
                       MaterialButton(
-                        onPressed: () => print('View All Clicked'),
+                        onPressed: () {
+                          print('AllTopPicks');
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => AllTopPicks()));
+                        },
                         child: Text(
                           'View All',
                           style: TextStyle(
@@ -68,8 +74,16 @@ class _OffersState extends State<Offers> {
                         itemBuilder: (context, index) {
                           return TopPicks(
                               topPicks: topPick[index],
-                              press: () =>
-                                  print('${topPick[index].productName}'));
+                              press: () {
+                                print('${topPick[index].productName}');
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) => Products(
+                                              Text:
+                                                  '${topPick[index].productName}',
+                                            )));
+                              });
                         },
                         separatorBuilder: (context, index) {
                           return SizedBox(
@@ -101,8 +115,16 @@ class _OffersState extends State<Offers> {
                           itemBuilder: (context, index) {
                             return OffersDay(
                                 offersOfDay: offersOfDay[index],
-                                press: () => print(
-                                    '${offersOfDay[index].categoryName}'));
+                                press: () {
+                                  print('${offersOfDay[index].categoryName}');
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) => Products(
+                                                Text:
+                                                    '${offersOfDay[index].categoryName}',
+                                              )));
+                                });
                           },
                           separatorBuilder: (context, index) {
                             return SizedBox(
