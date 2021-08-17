@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app_test/layout/FavoriteItems/FavPage.dart';
 import 'package:hexcolor/hexcolor.dart';
 
 Widget createDrawer(context) => Drawer(
@@ -81,10 +82,8 @@ Widget createDrawer(context) => Drawer(
                           fontWeight: FontWeight.bold),
                     ),
                     onTap: () {
-                      // Update the state of the app
-                      // ...
-                      // Then close the drawer
-                      Navigator.pop(context);
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (context) => FavPage()));
                     },
                   ),
                   ListTile(

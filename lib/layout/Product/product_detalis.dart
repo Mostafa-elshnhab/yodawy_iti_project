@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app_test/layout/Cart/CartPage.dart';
+import 'package:flutter_app_test/layout/FavoriteItems/FavData.dart';
 import 'package:flutter_app_test/layout/Product/pandoalData.dart';
 import 'package:flutter_app_test/models/product_model.dart';
 import 'package:hexcolor/hexcolor.dart';
@@ -61,25 +63,33 @@ class _ProductDetailsState extends State<ProductDetalis> {
                 child: Row(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    Container(
-                      alignment: AlignmentDirectional.center,
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(20),
-                          color: Colors.white),
-                      child: Row(
-                        children: [
-                          Icon(
-                            Icons.shopping_cart_rounded,
-                            color: HexColor('#22C4EC'),
-                            size: 30,
-                          ),
-                          Text(
-                            '${pro[index].quantity}',
-                            style: TextStyle(color: Colors.blue),
-                          )
-                        ],
+                    GestureDetector(
+                      onTap: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => CartPage()));
+                      },
+                      child: Container(
+                        alignment: AlignmentDirectional.center,
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(20),
+                            color: Colors.white),
+                        child: Row(
+                          children: [
+                            Icon(
+                              Icons.shopping_cart_rounded,
+                              color: HexColor('#22C4EC'),
+                              size: 30,
+                            ),
+                            Text(
+                              '${pro[index].quantity}',
+                              style: TextStyle(color: Colors.blue),
+                            )
+                          ],
+                        ),
+                        width: 60,
                       ),
-                      width: 60,
                     ),
                   ],
                 ),
@@ -174,24 +184,40 @@ class _ProductDetailsState extends State<ProductDetalis> {
                               ),
                               onPressed: () {},
                             ),
-                            IconButton(
-                              icon: !(selected)
-                                  ? Icon(
+                            !(pro[index].selected)
+                                ? IconButton(
+                                    icon: Icon(
                                       Icons.star_border_outlined,
                                       size: 30,
                                       color: HexColor('#EEAF41'),
-                                    )
-                                  : Icon(
+                                    ),
+                                    onPressed: () {
+                                      setState(() {
+                                        pro[index].selected =
+                                            !pro[index].selected;
+                                        Fav.add(pro[index]);
+                                      });
+                                    },
+                                  )
+                                : IconButton(
+                                    icon: Icon(
                                       Icons.star,
                                       size: 30,
                                       color: HexColor('#EEAF41'),
                                     ),
-                              onPressed: () {
-                                setState(() {
-                                  selected = !selected;
-                                });
-                              },
-                            ),
+                                    onPressed: () {
+                                      setState(() {
+                                        pro[index].selected =
+                                            !pro[index].selected;
+                                        for (int i = 0; i <= Fav.length; i++) {
+                                          print(index);
+                                          if (index == Fav[i].id) {
+                                            Fav.removeAt(i);
+                                          }
+                                        }
+                                      });
+                                    },
+                                  ),
                           ],
                         ),
                         SizedBox(

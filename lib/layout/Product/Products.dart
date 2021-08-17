@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app_test/layout/Cart/CartData.dart';
 import 'package:flutter_app_test/layout/Cart/CartPage.dart';
+import 'package:flutter_app_test/layout/FavoriteItems/FavData.dart';
 import 'package:flutter_app_test/layout/Product/pandoalData.dart';
 import 'package:flutter_app_test/layout/Product/product_detalis.dart';
 import 'package:flutter_app_test/shared/components.dart';
@@ -153,32 +154,51 @@ class _ProductsState extends State<Products> {
                                         Expanded(
                                           flex: 1,
                                           child: Container(
-                                            height: 30,
-                                            alignment:
-                                                AlignmentDirectional.topEnd,
-                                            child: IconButton(
-                                              icon: !(pro[index].selected)
-                                                  ? Icon(
-                                                      Icons
-                                                          .star_border_outlined,
-                                                      size: 30,
-                                                      color:
-                                                          HexColor('#EEAF41'),
+                                              height: 30,
+                                              alignment:
+                                                  AlignmentDirectional.topEnd,
+                                              child: !(pro[index].selected)
+                                                  ? IconButton(
+                                                      icon: Icon(
+                                                        Icons
+                                                            .star_border_outlined,
+                                                        size: 30,
+                                                        color:
+                                                            HexColor('#EEAF41'),
+                                                      ),
+                                                      onPressed: () {
+                                                        setState(() {
+                                                          pro[index].selected =
+                                                              !pro[index]
+                                                                  .selected;
+                                                          Fav.add(pro[index]);
+                                                        });
+                                                      },
                                                     )
-                                                  : Icon(
-                                                      Icons.star,
-                                                      size: 30,
-                                                      color:
-                                                          HexColor('#EEAF41'),
-                                                    ),
-                                              onPressed: () {
-                                                setState(() {
-                                                  pro[index].selected =
-                                                      !pro[index].selected;
-                                                });
-                                              },
-                                            ),
-                                          ),
+                                                  : IconButton(
+                                                      icon: Icon(
+                                                        Icons.star,
+                                                        size: 30,
+                                                        color:
+                                                            HexColor('#EEAF41'),
+                                                      ),
+                                                      onPressed: () {
+                                                        setState(() {
+                                                          pro[index].selected =
+                                                              !pro[index]
+                                                                  .selected;
+                                                          for (int i = 0;
+                                                              i <= Fav.length;
+                                                              i++) {
+                                                            print(index);
+                                                            if (index ==
+                                                                Fav[i].id) {
+                                                              Fav.removeAt(i);
+                                                            }
+                                                          }
+                                                        });
+                                                      },
+                                                    )),
                                         )
                                       ],
                                     ),
