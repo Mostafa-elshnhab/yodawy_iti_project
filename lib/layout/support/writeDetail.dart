@@ -105,11 +105,14 @@ class _WriteScreenState extends State<WriteScreen> {
                             //////////////////////////////////////////////////////////////////////
                             onPressed: (){
 
+                              if( textController.value.text.length !=0 )
+                              {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(builder: (context) => LoginScreen() ),
+                                );
 
-                            Navigator.push(
-                              context,
-                               MaterialPageRoute(builder: (context) => LoginScreen() ),
-                             );
+                              }
 
                             },
                             //////////////////////////////////////////////
