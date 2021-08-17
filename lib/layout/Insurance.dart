@@ -70,11 +70,13 @@ class InsuranceScreen extends StatelessWidget {
                     itemCount: card.length,
                     itemBuilder: (context, index) {
                       return GestureDetector(
-                        onTap: (){
-                          Navigator.push(context,
-                              MaterialPageRoute(
-                                  builder: (context) => InsuranceDetails(card: card[index].cardDetailsModel,)
-                              ),
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => InsuranceDetails(
+                                      card: card[index].cardDetailsModel,
+                                    )),
                           );
                         },
                         child: Container(
@@ -85,12 +87,10 @@ class InsuranceScreen extends StatelessWidget {
                           child: Padding(
                             padding: const EdgeInsets.all(20.0),
                             child: Image(
-                              image: NetworkImage(
-                                  '${card[index].imgPath}'
-                              ),
+                              image: NetworkImage('${card[index].imgPath}'),
                               width: 200.0,
                               height: 200.0,
-                              fit: BoxFit.cover,
+                              fit: BoxFit.fitWidth,
                             ),
                           ),
                         ),
@@ -205,7 +205,6 @@ class InsuranceScreen extends StatelessWidget {
 //    );
 //  }
 //}
-
 
 // Column(
 // children: [

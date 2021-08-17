@@ -1,4 +1,3 @@
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_app_test/models/insurance_card_details.dart';
@@ -6,8 +5,7 @@ import 'package:flutter_app_test/models/insurance_card_details.dart';
 class InsuranceDetails extends StatelessWidget {
   final InsuranceCardDetails? card;
 
-  const InsuranceDetails(
-      {Key? key , this.card}) : super(key: key);
+  const InsuranceDetails({Key? key, this.card}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -27,18 +25,20 @@ class InsuranceDetails extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 Image.network(
-                    '${card!.insuranceImg}',
+                  '${card!.insuranceImg}',
                   height: 100.0,
                   width: 100.0,
-                  fit: BoxFit.cover,
+                  fit: BoxFit.fitWidth,
                 ),
-                SizedBox(height: 20.0,),
+                SizedBox(
+                  height: 20.0,
+                ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
                     Text(
-                        'Card No',
-                         textAlign: TextAlign.start,
+                      'Card No',
+                      textAlign: TextAlign.start,
                       style: TextStyle(
                         fontSize: 18.0,
                       ),
@@ -53,12 +53,12 @@ class InsuranceDetails extends StatelessWidget {
                         maxLength: 2,
                         decoration: InputDecoration(
                           hintText: '12',
-                            counter: SizedBox.shrink(),
+                          counter: SizedBox.shrink(),
                         ),
                       ),
                     ),
                     Text(
-                        '/',
+                      '/',
                       style: TextStyle(fontSize: 20.0),
                     ),
                     Expanded(
@@ -66,9 +66,7 @@ class InsuranceDetails extends StatelessWidget {
                         keyboardType: TextInputType.text,
                         maxLength: 2,
                         decoration: InputDecoration(
-                          hintText: 'AB',
-                            counter: SizedBox.shrink()
-                        ),
+                            hintText: 'AB', counter: SizedBox.shrink()),
                       ),
                     ),
                     Text(
@@ -80,9 +78,7 @@ class InsuranceDetails extends StatelessWidget {
                         keyboardType: TextInputType.number,
                         maxLength: 5,
                         decoration: InputDecoration(
-                          hintText: '12345',
-                            counter: SizedBox.shrink()
-                        ),
+                            hintText: '12345', counter: SizedBox.shrink()),
                       ),
                     ),
                     Text(
@@ -94,25 +90,26 @@ class InsuranceDetails extends StatelessWidget {
                         maxLength: 1,
                         keyboardType: TextInputType.number,
                         decoration: InputDecoration(
-                          hintText: '1',
-                            counter: SizedBox.shrink()
-                        ),
+                            hintText: '1', counter: SizedBox.shrink()),
                       ),
                     ),
                     GestureDetector(
-                      onTap: (){
-                        showModalBottomSheet(context: context,
+                      onTap: () {
+                        showModalBottomSheet(
+                            context: context,
                             isScrollControlled: true,
-                            builder: (context){
+                            builder: (context) {
                               return Wrap(
                                 children: [
                                   Padding(
                                     padding: const EdgeInsets.all(8.0),
                                     child: Column(
-                                      mainAxisAlignment: MainAxisAlignment.start,
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.start,
                                       children: [
                                         Row(
-                                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.spaceBetween,
                                           children: [
                                             Text(
                                               'Policy No:',
@@ -122,7 +119,7 @@ class InsuranceDetails extends StatelessWidget {
                                               ),
                                             ),
                                             IconButton(
-                                              onPressed: (){
+                                              onPressed: () {
                                                 Navigator.pop(context);
                                               },
                                               icon: Icon(
@@ -132,7 +129,8 @@ class InsuranceDetails extends StatelessWidget {
                                           ],
                                         ),
                                         Row(
-                                          mainAxisAlignment: MainAxisAlignment.start,
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.start,
                                           children: [
                                             Text(
                                               'You can find it on the front of your card.',
@@ -143,10 +141,13 @@ class InsuranceDetails extends StatelessWidget {
                                             ),
                                           ],
                                         ),
-                                        SizedBox(height: 5.0,),
+                                        SizedBox(
+                                          height: 5.0,
+                                        ),
                                         Container(
                                           decoration: BoxDecoration(
-                                            borderRadius: BorderRadius.circular(10.0),
+                                            borderRadius:
+                                                BorderRadius.circular(10.0),
                                           ),
                                           child: Image.asset(
                                             '${card!.cardNumberImg}',
@@ -162,8 +163,8 @@ class InsuranceDetails extends StatelessWidget {
                       },
                       child: Icon(
                         Icons.error,
-                          size: 25.0,
-                          color: Colors.blue,
+                        size: 25.0,
+                        color: Colors.blue,
                       ),
                     ),
                   ],
@@ -173,8 +174,7 @@ class InsuranceDetails extends StatelessWidget {
             Row(
               children: [
                 Expanded(
-                  child:
-                  Container(
+                  child: Container(
                     decoration: BoxDecoration(
                       color: Colors.blue,
                       borderRadius: BorderRadius.circular(5.0),
@@ -183,9 +183,7 @@ class InsuranceDetails extends StatelessWidget {
                       ),
                     ),
                     child: MaterialButton(
-                      onPressed: () {
-
-                      },
+                      onPressed: () {},
                       elevation: 0.0,
                       textColor: Colors.white,
                       child: Text(
