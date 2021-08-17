@@ -94,11 +94,11 @@ class _MyOrderScreenState extends State<MyOrderScreen> {
                 Text('All your previous orders will be ' ,
                     style: TextStyle(color: Colors.black45 , fontSize: 16 , height: 1.5) ) ,
                 Text('display here' , style: TextStyle( color: Colors.black45 , fontSize: 16 , height: 1.5) ),
-                SizedBox(height: 100 ,),
+                SizedBox(height: 180 ,),
                 Container(
                   width: double.infinity,
                   margin: EdgeInsets.symmetric(horizontal: 20 ),
-                  height: 40,
+                  height: 50,
                   child: ElevatedButton(
                       style: ElevatedButton.styleFrom(
                           primary: Colors.orange
@@ -110,7 +110,7 @@ class _MyOrderScreenState extends State<MyOrderScreen> {
                       },
                       //////////////////////////////////////////////
                       child: Text('START ORDERING' ,
-                        style: TextStyle(fontWeight:FontWeight.w700 , fontSize: 16),)),
+                        style: TextStyle(fontWeight:FontWeight.w700 , fontSize: 19 ),)),
                 )
               ],
             ),
