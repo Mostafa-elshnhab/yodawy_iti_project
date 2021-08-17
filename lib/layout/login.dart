@@ -36,6 +36,8 @@ class _LoginScreenState extends State<LoginScreen> {
                         setState(() {
                           layer = Colors.white;
                         });
+
+                        Navigator.pop(context);
                       },
                       icon: Icon(Icons.arrow_back_ios_rounded)),
                 ),
