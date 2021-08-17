@@ -242,13 +242,13 @@ Widget createDrawer(context) => Drawer(
                       // Update the state of the app
                       // ...
                       // Then close the drawer
-                     // Navigator.pop(context);
+                      // Navigator.pop(context);
 
                       Navigator.push(
                         context,
-                        MaterialPageRoute(builder: (context) => SupportScreen() ),
+                        MaterialPageRoute(
+                            builder: (context) => SupportScreen()),
                       );
-
                     },
                   ),
                 ],
@@ -259,16 +259,19 @@ Widget createDrawer(context) => Drawer(
               margin: EdgeInsetsDirectional.all(15),
               child: Row(
                 children: [
-                  Text('Proudly Developed in Egypt'),
-                  SizedBox(
-                    width: 5,
-                  ),
-                  Container(
-                      width: 23,
-                      height: 15,
-                      child: Image.asset('assets/images/egypt.png')),
-                  SizedBox(
-                    width: 30,
+                  Expanded(
+                    child: Row(
+                      children: [
+                        Text('Proudly Developed in Egypt'),
+                        SizedBox(
+                          width: 5,
+                        ),
+                        Container(
+                            width: 23,
+                            height: 15,
+                            child: Image.asset('assets/images/egypt.png')),
+                      ],
+                    ),
                   ),
                   Text('v2.2.1')
                 ],
