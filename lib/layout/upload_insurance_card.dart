@@ -5,7 +5,6 @@ import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_app_test/shared/components.dart';
 import 'package:image_picker/image_picker.dart';
 
 class UploadCard extends StatefulWidget {
