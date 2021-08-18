@@ -2,7 +2,9 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_app_test/layout/insurance_details.dart';
 import 'package:flutter_app_test/models/HomePrandsModel.dart';
+import 'package:flutter_app_test/models/insurance_card.dart';
 import 'package:flutter_app_test/modules/category/category.dart';
 import 'package:flutter_app_test/modules/offers/offers.dart';
 import 'package:flutter_app_test/shared/Doctors.dart';
@@ -798,7 +800,7 @@ class _homeState extends State<home> {
               height: 120,
               child: ListView.separated(
                 itemBuilder: (context, index) =>
-                    insuranceCard(insurance: insurance[index]),
+                    insuranceCard(insurance: insurance[index] , index: index,),
                 scrollDirection: Axis.horizontal,
                 shrinkWrap: true,
                 separatorBuilder: (context, index) => SizedBox(
@@ -996,9 +998,9 @@ const List<Insurance> insurance = const <Insurance>[
 ];
 
 class insuranceCard extends StatelessWidget {
-  const insuranceCard({Key? key, this.insurance}) : super(key: key);
+  const insuranceCard({Key? key, this.insurance, required this.index}) : super(key: key);
   final Insurance? insurance;
-
+  final int index;
   @override
   Widget build(BuildContext context) {
     return Card(
@@ -1010,7 +1012,13 @@ class insuranceCard extends StatelessWidget {
               Expanded(
                 child: GestureDetector(
                   onTap: () {
-                    print('sasa');
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => InsuranceDetails(
+                            card: card[index].cardDetailsModel,
+                          )),
+                    );
                   },
                   child: Container(
                       decoration: BoxDecoration(
