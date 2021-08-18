@@ -65,7 +65,13 @@ class _CategoryState extends State<Category> {
                   itemBuilder: (context, index) {
                     return BrandItem(
                         brand: brand[index],
-                        press: () => print(brand[index].title));
+                        press: () => {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) =>
+                                          Products(Text: brand[index].title)))
+                            });
                   },
                   separatorBuilder: (context, index) {
                     return SizedBox(
