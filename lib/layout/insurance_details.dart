@@ -1,17 +1,24 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_app_test/layout/insurance_holder_name.dart';
+import 'package:flutter_app_test/models/insurance_card.dart';
 import 'package:flutter_app_test/models/insurance_card_details.dart';
 
 class InsuranceDetails extends StatelessWidget {
-  final InsuranceCardDetails? card;
 
+  final InsuranceCardDetails? card;
   const InsuranceDetails({Key? key, this.card}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    TextEditingController firstNumber = TextEditingController();
+    TextEditingController chars = TextEditingController();
+    TextEditingController secondNumber = TextEditingController();
+    TextEditingController thirdNumber = TextEditingController();
     return Scaffold(
       appBar: AppBar(
-        title: Text('Card'),
+        title: Text('Card Details'),
+        centerTitle: true,
       ),
       body: Padding(
         padding: const EdgeInsets.all(10.0),
@@ -51,6 +58,7 @@ class InsuranceDetails extends StatelessWidget {
                       child: TextFormField(
                         keyboardType: TextInputType.number,
                         maxLength: 2,
+                        controller: firstNumber,
                         decoration: InputDecoration(
                           hintText: '12',
                           counter: SizedBox.shrink(),
@@ -65,6 +73,7 @@ class InsuranceDetails extends StatelessWidget {
                       child: TextFormField(
                         keyboardType: TextInputType.text,
                         maxLength: 2,
+                        controller: chars,
                         decoration: InputDecoration(
                             hintText: 'AB', counter: SizedBox.shrink()),
                       ),
@@ -77,6 +86,7 @@ class InsuranceDetails extends StatelessWidget {
                       child: TextFormField(
                         keyboardType: TextInputType.number,
                         maxLength: 5,
+                        controller: secondNumber,
                         decoration: InputDecoration(
                             hintText: '12345', counter: SizedBox.shrink()),
                       ),
@@ -89,6 +99,7 @@ class InsuranceDetails extends StatelessWidget {
                       child: TextFormField(
                         maxLength: 1,
                         keyboardType: TextInputType.number,
+                        controller: thirdNumber,
                         decoration: InputDecoration(
                             hintText: '1', counter: SizedBox.shrink()),
                       ),
@@ -178,12 +189,18 @@ class InsuranceDetails extends StatelessWidget {
                     decoration: BoxDecoration(
                       color: Colors.blue,
                       borderRadius: BorderRadius.circular(5.0),
-                      border: Border.all(
-                        color: Colors.blue,
-                      ),
                     ),
                     child: MaterialButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        if(firstNumber.text.length != 2  || chars.text.length != 2 || secondNumber.text.length != 5 || thirdNumber.text.length != 1)
+                          {
+                            return;
+                          }
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => InsuranceHolderName(insuranceImg: card!.insuranceImg,)));
+                      },
                       elevation: 0.0,
                       textColor: Colors.white,
                       child: Text(
