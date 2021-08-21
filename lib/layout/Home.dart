@@ -799,8 +799,10 @@ class _homeState extends State<home> {
             Container(
               height: 120,
               child: ListView.separated(
-                itemBuilder: (context, index) =>
-                    insuranceCard(insurance: insurance[index] , index: index,),
+                itemBuilder: (context, index) => insuranceCard(
+                  insurance: insurance[index],
+                  index: index,
+                ),
                 scrollDirection: Axis.horizontal,
                 shrinkWrap: true,
                 separatorBuilder: (context, index) => SizedBox(
@@ -998,7 +1000,8 @@ const List<Insurance> insurance = const <Insurance>[
 ];
 
 class insuranceCard extends StatelessWidget {
-  const insuranceCard({Key? key, this.insurance, required this.index}) : super(key: key);
+  const insuranceCard({Key? key, this.insurance, required this.index})
+      : super(key: key);
   final Insurance? insurance;
   final int index;
   @override
@@ -1016,8 +1019,8 @@ class insuranceCard extends StatelessWidget {
                       context,
                       MaterialPageRoute(
                           builder: (context) => InsuranceDetails(
-                            card: card[index].cardDetailsModel,
-                          )),
+                                card: card[index].cardDetailsModel,
+                              )),
                     );
                   },
                   child: Container(
