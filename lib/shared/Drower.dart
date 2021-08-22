@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app_test/layout/FavoriteItems/FavPage.dart';
+import 'package:flutter_app_test/layout/settings/settings.dart';
 import 'package:flutter_app_test/layout/support/supportScreen.dart';
 import 'package:hexcolor/hexcolor.dart';
 
@@ -216,10 +217,14 @@ Widget createDrawer(context) => Drawer(
                           fontWeight: FontWeight.bold),
                     ),
                     onTap: () {
-                      // Update the state of the app
+                      // Settings
                       // ...
                       // Then close the drawer
-                      Navigator.pop(context);
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => Settings()),
+                      );
                     },
                   ),
                   ListTile(
