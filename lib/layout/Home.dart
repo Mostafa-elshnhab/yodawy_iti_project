@@ -1155,15 +1155,41 @@ class doctorCard extends StatelessWidget {
 ////////////////////////////////
 
 const List<Prands> prands = const <Prands>[
-  const Prands(path: 'assets/images/laroch.png'),
-  const Prands(path: 'assets/images/Vichy.png'),
-  const Prands(path: 'assets/images/loreal.png'),
-  const Prands(path: 'assets/images/axe.png'),
-  const Prands(path: 'assets/images/garnierpng.png'),
-  const Prands(path: 'assets/images/always.png'),
-  const Prands(path: 'assets/images/bioderma.png'),
-  const Prands(path: 'assets/images/johns.png'),
-  const Prands(path: 'assets/images/lux.png'),
+  const Prands(
+      path:
+          'https://skin.shop/wp-content/uploads/2020/02/La-Roche-Posay-Logo.png',
+      titel: 'La Roche Posay'),
+  const Prands(
+      path:
+          'https://cdn.freelogovectors.net/wp-content/uploads/2019/09/Vichy-logo.png',
+      titel: 'Vichy'),
+  const Prands(
+      path:
+          'https://logos-world.net/wp-content/uploads/2020/04/LOreal-Emblem.png',
+      titel: 'L\'Oreal Parise'),
+  const Prands(
+      path:
+          'https://1000logos.net/wp-content/uploads/2020/04/AXE-Logo-2007.jpg',
+      titel: 'Axe'),
+  const Prands(
+      path:
+          'https://logos-world.net/wp-content/uploads/2020/12/Garnier-Logo.png',
+      titel: 'Garnier'),
+  const Prands(
+      path:
+          'https://logos-world.net/wp-content/uploads/2020/09/Always-Logo.png',
+      titel: 'Always'),
+  const Prands(
+      path:
+          'https://logos-world.net/wp-content/uploads/2020/11/Bioderma-Emblem.png',
+      titel: 'Bioderma'),
+  const Prands(
+      path:
+          'https://logos-world.net/wp-content/uploads/2020/11/Johnsons-Baby-Symbol.png',
+      titel: 'The New Johnson\'s'),
+  const Prands(
+      path: 'https://1000logos.net/wp-content/uploads/2021/06/Lux-Logo.png',
+      titel: 'Lux'),
 ];
 
 class prandsCard extends StatelessWidget {
@@ -1173,14 +1199,13 @@ class prandsCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: ()
-      {
+      onTap: () {
         Navigator.push(
             context,
             MaterialPageRoute(
                 builder: (context) => Products(
-                  Text: '${prands!.titel}',
-                )));
+                      Text: '${prands!.titel}',
+                    )));
       },
       child: Container(
         width: double.infinity,
@@ -1192,7 +1217,7 @@ class prandsCard extends StatelessWidget {
         child: Padding(
           padding: const EdgeInsets.all(2.0),
           child: Container(
-            child: Image.asset(
+            child: Image.network(
               '${prands!.path}',
               width: 40,
             ),
