@@ -18,6 +18,8 @@ import 'AllPrandes.dart';
 import 'Cart/CartPage.dart';
 import 'Insurance.dart';
 import 'Medication.dart';
+import 'Product/Products.dart';
+import 'TalkToDoctor/requestScreen.dart';
 import 'insuranceNotLogin.dart';
 
 int current = 0;
@@ -1090,9 +1092,10 @@ class doctorCard extends StatelessWidget {
             width: double.infinity,
             child: GestureDetector(
               onTap: () {
-//                          setState(() {
-//                            ismale=true;
-//                          });
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => RequestScreen()),
+                );
               },
               child: Container(
                 decoration: BoxDecoration(
@@ -1170,6 +1173,15 @@ class prandsCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
+      onTap: ()
+      {
+        Navigator.push(
+            context,
+            MaterialPageRoute(
+                builder: (context) => Products(
+                  Text: '${prands!.titel}',
+                )));
+      },
       child: Container(
         width: double.infinity,
         height: 50,
