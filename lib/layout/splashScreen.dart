@@ -4,24 +4,22 @@ import 'dart:async';
 import 'package:flutter_app_test/layout/verify.dart';
 
 class SplashScreen extends StatefulWidget {
-  String? phone;
 
-  SplashScreen(this.phone);
 
   @override
-  _MyHomePageState createState() => _MyHomePageState(phone: phone!);
+  _MyHomePageState createState() => _MyHomePageState();
 }
 
 class _MyHomePageState extends State<SplashScreen> {
-  String? phone;
-  _MyHomePageState({required this.phone});
+
+  _MyHomePageState();
   @override
   void initState() {
     super.initState();
     Timer(
         Duration(seconds: 3),
         () => Navigator.pushReplacement(context,
-            MaterialPageRoute(builder: (context) => VerifyScreen(phone))));
+            MaterialPageRoute(builder: (context) => VerifyScreen())));
   }
 
   @override

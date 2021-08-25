@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'login.dart';
+
 class InsuranceNotLogin extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -41,7 +43,13 @@ class InsuranceNotLogin extends StatelessWidget {
                   Padding(
                     padding: const EdgeInsets.all(20.0),
                     child: MaterialButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => LoginScreen(),
+                            ));
+                      },
                       child: Text(
                         'LOG IN',
                         style: TextStyle(

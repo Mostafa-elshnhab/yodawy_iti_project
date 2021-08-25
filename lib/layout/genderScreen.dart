@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app_test/Data/Users/userData.dart';
 
 import 'Home.dart';
 
@@ -8,7 +9,16 @@ class GenderScreen extends StatefulWidget {
 }
 
 class _GenderScreenState extends State<GenderScreen> {
+
+
+
   var btnColor = Colors.grey;
+  @override
+  void initState() {
+    super.initState();
+     userdata = Usres.getDAta();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -47,6 +57,7 @@ class _GenderScreenState extends State<GenderScreen> {
                               onPressed: () {
                                 setState(() {
                                   btnColor = Colors.blue;
+                                  Usres.gender='Female';
                                 });
                               },
                               child: Image(
@@ -68,6 +79,7 @@ class _GenderScreenState extends State<GenderScreen> {
                               onPressed: () {
                                 setState(() {
                                   btnColor = Colors.blue;
+                                  Usres.gender='male';
                                 });
                               },
                               child: Image(

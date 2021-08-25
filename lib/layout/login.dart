@@ -1,9 +1,7 @@
 import 'package:country_list_pick/country_list_pick.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_app_test/Data/Users/userData.dart';
 import 'package:flutter_app_test/layout/splashScreen.dart';
-
-import 'layerpage.dart';
 // import 'package:intl_phone_field/intl_phone_field.dart';
 // import 'package:intl_phone_number_input/intl_phone_number_input.dart';
 
@@ -153,18 +151,19 @@ class _LoginScreenState extends State<LoginScreen> {
                       width: double.infinity,
                       margin: EdgeInsets.symmetric(horizontal: 15),
                       child: ElevatedButton(
-                          onPressed: () {
+                          onPressed: () async {
                             setState(() {
                               if (countNum == 10) {
                                 layer = Colors.grey.withOpacity(.8);
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) =>
-                                          SplashScreen(controlphone.text)),
-                                );
+                                Usres.phone = "${controlphone.text}";
                               }
                             });
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) =>
+                                      SplashScreen()),
+                            );
                           },
                           child: Text(
                             'NEXT',
@@ -184,7 +183,6 @@ class _LoginScreenState extends State<LoginScreen> {
               /*  IntlPhoneField(
                       decoration: InputDecoration(
                         hintText : 'Phone Number',
-
                       ),
                       initialCountryCode: 'NP',
                       onChanged: (phone) {

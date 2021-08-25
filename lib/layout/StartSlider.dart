@@ -1,10 +1,21 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app_test/Data/Users/userData.dart';
 import 'package:flutter_image_slideshow/flutter_image_slideshow.dart';
 
 import 'genderScreen.dart';
 import 'login.dart';
 
-class StartSlider extends StatelessWidget {
+class StartSlider extends StatefulWidget {
+  @override
+  _StartSliderState createState() => _StartSliderState();
+}
+
+class _StartSliderState extends State<StartSlider> {
+  @override
+  void initState() {
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -92,6 +103,7 @@ class StartSlider extends StatelessWidget {
                       style: TextStyle(fontSize: 15)),
                   TextButton(
                       onPressed: () {
+                        isLoggedIn = false;
                         Navigator.push(
                             context,
                             MaterialPageRoute(
