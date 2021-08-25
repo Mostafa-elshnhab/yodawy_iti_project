@@ -2,6 +2,11 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_app_test/Data/Api/Brands/BrandHomFutBulder.dart';
+import 'package:flutter_app_test/Data/Api/Brands/allbrandsApi.dart';
+import 'package:flutter_app_test/Data/Api/Category/CtegoryFuterBuilder.dart';
+import 'package:flutter_app_test/Data/Api/Category/categoryApi.dart';
+import 'package:flutter_app_test/Data/Users/userData.dart';
 import 'package:flutter_app_test/layout/insurance_details.dart';
 import 'package:flutter_app_test/models/HomePrandsModel.dart';
 import 'package:flutter_app_test/models/insurance_card.dart';
@@ -34,7 +39,7 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   bool isOffers = false;
   bool isInsure = false;
-  bool isLogin = true;
+  bool isLogin = isLoggedIn;
   final List<Widget> Loginpages = [
     home(true),
     Offers(),
@@ -48,148 +53,153 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      drawer: isLogin ? createDrawer(context) : createNotLoginDrawer(context),
-      bottomNavigationBar: BottomNavigationBar(
-        type: BottomNavigationBarType.fixed,
-        currentIndex: current,
-        onTap: (index) {
-          setState(() {
-            current = index;
-            switch (index) {
-              case 0:
-                isOffers = false;
-                isInsure = false;
-                break;
-              case 1:
-                isOffers = true;
-                isInsure = false;
-                break;
-              case 2:
-                isOffers = false;
-                isInsure = true;
-                break;
-            }
-          });
-        },
-        items: const <BottomNavigationBarItem>[
-          BottomNavigationBarItem(
-            icon: Icon(
-              Icons.home,
-              size: 30,
+    return WillPopScope(
+      onWillPop: () async => false,
+      child: Scaffold(
+        drawer: isLogin
+            ? createDrawer(context, Usres.name)
+            : createNotLoginDrawer(context),
+        bottomNavigationBar: BottomNavigationBar(
+          type: BottomNavigationBarType.fixed,
+          currentIndex: current,
+          onTap: (index) {
+            setState(() {
+              current = index;
+              switch (index) {
+                case 0:
+                  isOffers = false;
+                  isInsure = false;
+                  break;
+                case 1:
+                  isOffers = true;
+                  isInsure = false;
+                  break;
+                case 2:
+                  isOffers = false;
+                  isInsure = true;
+                  break;
+              }
+            });
+          },
+          items: const <BottomNavigationBarItem>[
+            BottomNavigationBarItem(
+              icon: Icon(
+                Icons.home,
+                size: 30,
+              ),
+              label: 'Home',
             ),
-            label: 'Home',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(
-              Icons.local_offer_rounded,
-              size: 30,
+            BottomNavigationBarItem(
+              icon: Icon(
+                Icons.local_offer_rounded,
+                size: 30,
+              ),
+              label: 'Offers',
             ),
-            label: 'Offers',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(
-              MyFlutterApp.umbrella,
-              size: 30,
+            BottomNavigationBarItem(
+              icon: Icon(
+                MyFlutterApp.umbrella,
+                size: 30,
+              ),
+              label: 'Insurance',
             ),
-            label: 'Insurance',
-          ),
-        ],
-      ),
-      appBar: !isInsure
-          ? PreferredSize(
-              preferredSize: Size.fromHeight(125.0),
-              child: Container(
-                decoration: BoxDecoration(
-                  gradient: LinearGradient(
-                    begin: Alignment.topLeft,
-                    end: Alignment.bottomRight,
-                    colors: <Color>[
-                      Color(0xFF179FDB),
-                      Color(0xFF179FDB),
-                      Color(0xFF21B3E4),
-                      Color(0xFF2ECBEE),
+          ],
+        ),
+        appBar: !isInsure
+            ? PreferredSize(
+                preferredSize: Size.fromHeight(125.0),
+                child: Container(
+                  decoration: BoxDecoration(
+                    gradient: LinearGradient(
+                      begin: Alignment.topLeft,
+                      end: Alignment.bottomRight,
+                      colors: <Color>[
+                        Color(0xFF179FDB),
+                        Color(0xFF179FDB),
+                        Color(0xFF21B3E4),
+                        Color(0xFF2ECBEE),
+                      ],
+                      tileMode: TileMode.clamp,
+                    ),
+                  ),
+                  child: Column(
+                    children: [
+                      AppBar(
+                        backgroundColor: Colors.transparent,
+                        elevation: 0,
+                        leadingWidth: 30,
+                        centerTitle: isOffers ? true : false,
+                        title: !isOffers
+                            ? Container(
+                                width: 120,
+                                height: 30,
+                                child: Image.asset('assets/images/logo.png'),
+                              )
+                            : Text(
+                                'Offers',
+                                style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 27,
+                                ),
+                              ),
+                        actions: [
+                          Padding(
+                            padding: const EdgeInsets.all(10.0),
+                            child: Container(
+                              decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(20),
+                                  color: Colors.white),
+                              child: IconButton(
+                                icon: Icon(
+                                  Icons.shopping_cart_rounded,
+                                  color: HexColor('#22C4EC'),
+                                  size: 20,
+                                ),
+                                onPressed: () {
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) => CartPage()));
+                                },
+                              ),
+                              width: 50,
+                            ),
+                          )
+                        ],
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 15),
+                        child: Container(
+                          margin: EdgeInsets.symmetric(vertical: 5),
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(7),
+                            color: Colors.white,
+                          ),
+                          child: TextField(
+                              showCursor: false,
+                              decoration: InputDecoration(
+                                border: InputBorder.none,
+                                hintText: isOffers
+                                    ? 'Search in Offers'
+                                    : 'What Are You Looking for?',
+                                hintStyle: TextStyle(
+                                  color: Colors.grey[500],
+                                  fontSize: 15,
+                                ),
+                                prefixIcon: Icon(
+                                  Icons.search_rounded,
+                                  color: Colors.grey[400],
+                                ),
+                              )),
+                        ),
+                      )
                     ],
-                    tileMode: TileMode.clamp,
                   ),
                 ),
-                child: Column(
-                  children: [
-                    AppBar(
-                      backgroundColor: Colors.transparent,
-                      elevation: 0,
-                      leadingWidth: 30,
-                      centerTitle: isOffers ? true : false,
-                      title: !isOffers
-                          ? Container(
-                              width: 120,
-                              height: 30,
-                              child: Image.asset('assets/images/logo.png'),
-                            )
-                          : Text(
-                              'Offers',
-                              style: TextStyle(
-                                fontWeight: FontWeight.bold,
-                                fontSize: 27,
-                              ),
-                            ),
-                      actions: [
-                        Padding(
-                          padding: const EdgeInsets.all(10.0),
-                          child: Container(
-                            decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(20),
-                                color: Colors.white),
-                            child: IconButton(
-                              icon: Icon(
-                                Icons.shopping_cart_rounded,
-                                color: HexColor('#22C4EC'),
-                                size: 20,
-                              ),
-                              onPressed: () {
-                                Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) => CartPage()));
-                              },
-                            ),
-                            width: 50,
-                          ),
-                        )
-                      ],
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 15),
-                      child: Container(
-                        margin: EdgeInsets.symmetric(vertical: 5),
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(7),
-                          color: Colors.white,
-                        ),
-                        child: TextField(
-                            showCursor: false,
-                            decoration: InputDecoration(
-                              border: InputBorder.none,
-                              hintText: isOffers
-                                  ? 'Search in Offers'
-                                  : 'What Are You Looking for?',
-                              hintStyle: TextStyle(
-                                color: Colors.grey[500],
-                                fontSize: 15,
-                              ),
-                              prefixIcon: Icon(
-                                Icons.search_rounded,
-                                color: Colors.grey[400],
-                              ),
-                            )),
-                      ),
-                    )
-                  ],
-                ),
-              ),
-            )
-          : null,
-      body: isLogin ? Loginpages[current] : notLoginpages[current],
+              )
+            : null,
+        body: isLogin ? Loginpages[current] : notLoginpages[current],
+      ),
     );
   }
 }
@@ -205,6 +215,12 @@ class home extends StatefulWidget {
 }
 
 class _homeState extends State<home> {
+  void initState() {
+    super.initState();
+    getbrandDataFB();
+    getCategoryDataFB();
+  }
+
   File? camImage;
   Future pickImage(ImageSource source) async {
     try {
@@ -753,20 +769,7 @@ class _homeState extends State<home> {
             SizedBox(
               height: 10,
             ),
-            GridView.count(
-                shrinkWrap: true,
-                physics: NeverScrollableScrollPhysics(),
-                crossAxisCount: 3,
-                crossAxisSpacing: 4.0,
-                mainAxisSpacing: 8.0,
-                children: List.generate(choices.length, (index) {
-                  return Center(
-                    child: CategoryCard(
-                      choice: choices[index],
-                      index: index,
-                    ),
-                  );
-                })),
+            CategoryBul(),
             SizedBox(
               height: 25,
             ),
@@ -889,98 +892,11 @@ class _homeState extends State<home> {
             SizedBox(
               height: 10,
             ),
-            GridView.count(
-                shrinkWrap: true,
-                physics: NeverScrollableScrollPhysics(),
-                crossAxisCount: 3,
-                crossAxisSpacing: 12.0,
-                mainAxisSpacing: 0.0,
-                childAspectRatio: 1.5,
-                children: List.generate(prands.length, (index) {
-                  return Center(
-                    child: prandsCard(prands: prands[index]),
-                  );
-                })),
+            BrandsBul(),
           ],
         ),
       ),
     );
-  }
-}
-
-class Choice {
-  const Choice({this.title, this.path});
-  final String? title;
-  final String? path;
-}
-
-const List<Choice> choices = const <Choice>[
-  const Choice(title: 'Offers', path: 'assets/images/c1.jpg'),
-  const Choice(title: 'Covid Essentials', path: 'assets/images/c2.jpg'),
-  const Choice(title: 'Baby Care', path: 'assets/images/c3.jpg'),
-  const Choice(title: 'Men Care', path: 'assets/images/c4.jpg'),
-  const Choice(title: 'Bath & Soap', path: 'assets/images/c5.jpg'),
-  const Choice(title: 'Oral Care', path: 'assets/images/c6.jpg'),
-  const Choice(title: 'Sexual Wellness', path: 'assets/images/c7.jpg'),
-  const Choice(title: 'Supplements', path: 'assets/images/c8.jpg'),
-  const Choice(title: 'Personal Care', path: 'assets/images/c9.jpg'),
-  const Choice(title: 'Devices', path: 'assets/images/c10.jpg'),
-  const Choice(title: 'Women Care', path: 'assets/images/c11.jpg'),
-  const Choice(title: 'Makeup', path: 'assets/images/c12.jpg'),
-  const Choice(title: 'Skin Care', path: 'assets/images/c13.jpg'),
-  const Choice(title: 'Hair Care', path: 'assets/images/c14.jpg'),
-  const Choice(title: 'Maternity Care', path: 'assets/images/c15.jpg'),
-];
-
-class CategoryCard extends StatelessWidget {
-  const CategoryCard({Key? key, this.choice, this.index}) : super(key: key);
-  final Choice? choice;
-  final int? index;
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-        child: Center(
-      child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: <Widget>[
-            Expanded(
-              child: GestureDetector(
-                onTap: () {
-                  print('hamada');
-                  if (index == 0) {
-                    current = 1;
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => MyHomePage()));
-                  } else {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => Category(choice!.title)));
-                  }
-                },
-                child: Padding(
-                  padding: const EdgeInsets.all(3.0),
-                  child: Container(
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(20),
-                      ),
-                      child: ClipRRect(
-                        borderRadius: BorderRadius.circular(8.0),
-                        child: Image.asset(
-                          '${choice!.path}',
-                          fit: BoxFit.cover,
-                        ),
-                      )),
-                ),
-              ),
-            ),
-            Text(
-              '${choice!.title}',
-              style: TextStyle(fontWeight: FontWeight.w600),
-            ),
-          ]),
-    ));
   }
 }
 
@@ -1147,82 +1063,6 @@ class doctorCard extends StatelessWidget {
             ),
           ),
         ],
-      ),
-    );
-  }
-}
-
-////////////////////////////////
-
-const List<Prands> prands = const <Prands>[
-  const Prands(
-      path:
-          'https://skin.shop/wp-content/uploads/2020/02/La-Roche-Posay-Logo.png',
-      titel: 'La Roche Posay'),
-  const Prands(
-      path:
-          'https://cdn.freelogovectors.net/wp-content/uploads/2019/09/Vichy-logo.png',
-      titel: 'Vichy'),
-  const Prands(
-      path:
-          'https://logos-world.net/wp-content/uploads/2020/04/LOreal-Emblem.png',
-      titel: 'L\'Oreal Parise'),
-  const Prands(
-      path:
-          'https://1000logos.net/wp-content/uploads/2020/04/AXE-Logo-2007.jpg',
-      titel: 'Axe'),
-  const Prands(
-      path:
-          'https://logos-world.net/wp-content/uploads/2020/12/Garnier-Logo.png',
-      titel: 'Garnier'),
-  const Prands(
-      path:
-          'https://logos-world.net/wp-content/uploads/2020/09/Always-Logo.png',
-      titel: 'Always'),
-  const Prands(
-      path:
-          'https://logos-world.net/wp-content/uploads/2020/11/Bioderma-Emblem.png',
-      titel: 'Bioderma'),
-  const Prands(
-      path:
-          'https://logos-world.net/wp-content/uploads/2020/11/Johnsons-Baby-Symbol.png',
-      titel: 'The New Johnson\'s'),
-  const Prands(
-      path: 'https://1000logos.net/wp-content/uploads/2021/06/Lux-Logo.png',
-      titel: 'Lux'),
-];
-
-class prandsCard extends StatelessWidget {
-  const prandsCard({Key? key, this.prands}) : super(key: key);
-  final Prands? prands;
-
-  @override
-  Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: () {
-        Navigator.push(
-            context,
-            MaterialPageRoute(
-                builder: (context) => Products(
-                      Text: '${prands!.titel}',
-                    )));
-      },
-      child: Container(
-        width: double.infinity,
-        height: 50,
-        decoration: BoxDecoration(
-          border: Border.all(color: Colors.grey.shade300),
-          borderRadius: BorderRadius.circular(7),
-        ),
-        child: Padding(
-          padding: const EdgeInsets.all(2.0),
-          child: Container(
-            child: Image.network(
-              '${prands!.path}',
-              width: 40,
-            ),
-          ),
-        ),
       ),
     );
   }

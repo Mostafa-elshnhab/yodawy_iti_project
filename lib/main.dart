@@ -1,10 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app_test/layout/Home.dart';
+import 'Data/Users/userData.dart';
 import 'layout/StartSlider.dart';
 import 'layout/login.dart';
-//import 'package:shared_preferences/shared_preferences.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'dart:async';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
   runApp(MyApp());
 }
 
@@ -12,10 +17,9 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-        debugShowCheckedModeBanner: false,
-        home: SplashScreen(),
-       );
-
+      debugShowCheckedModeBanner: false,
+      home: SplashScreen(),
+    );
   }
 }
 
@@ -27,12 +31,35 @@ class SplashScreen extends StatefulWidget {
 class splash extends State<SplashScreen> {
   @override
   void initState() {
-    // TODO: implement initState
+    autoLogIn();
     super.initState();
     Timer(Duration(seconds: 5), () {
-      Navigator.of(context)
-          .pushReplacement(MaterialPageRoute(builder: (_) => StartSlider()));
+      Navigator.of(context).pushReplacement(MaterialPageRoute(
+          builder: (_) => isLoggedIn ? MyHomePage() : StartSlider()));
     });
+  }
+
+  void autoLogIn() async {
+    final SharedPreferences prefs = await SharedPreferences.getInstance();
+    final String? Phone = prefs.getString('phone');
+    final String? name = prefs.getString('name');
+    final String? gender = prefs.getString('gender');
+    final List? usreData = prefs.getStringList('usredata');
+
+    if (Phone != '') {
+      print(Phone);
+      setState(() {
+        isLoggedIn = true;
+        print('jgjhgjhgjhgjh$Phone');
+        Usres.phone = Phone;
+        Usres.gender = gender;
+        Usres.name = name;
+        userdata = usreData!.cast<String>();
+        print('jgjhgjhgjhgjh$userdata');
+        print('jgjhgjhgjhgjh$name');
+      });
+      return;
+    }
   }
 
   @override
@@ -40,7 +67,6 @@ class splash extends State<SplashScreen> {
     return Scaffold(
       backgroundColor: Colors.white,
       body: Center(child: Image.asset('assets/images/splash.png')),
-
     );
   }
 }

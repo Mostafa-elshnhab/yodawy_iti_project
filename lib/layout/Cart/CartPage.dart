@@ -14,7 +14,6 @@ class CartPage extends StatefulWidget {
 
 class _CartPageState extends State<CartPage> {
   bool isempty = true;
-
   @override
   Widget build(BuildContext context) {
     if (Cart.length == 0) {

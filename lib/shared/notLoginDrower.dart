@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app_test/layout/login.dart';
 import 'package:hexcolor/hexcolor.dart';
 
 Widget createNotLoginDrawer(context) => Container(
@@ -72,7 +73,14 @@ Widget createNotLoginDrawer(context) => Container(
                                   Padding(
                                     padding: const EdgeInsets.all(15.0),
                                     child: MaterialButton(
-                                      onPressed: () {},
+                                      onPressed: () {
+                                        Navigator.push(
+                                            context,
+                                            MaterialPageRoute(
+                                              builder: (context) =>
+                                                  LoginScreen(),
+                                            ));
+                                      },
                                       child: Text(
                                         'LOG IN',
                                         style: TextStyle(

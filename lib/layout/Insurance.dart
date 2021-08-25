@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_app_test/Data/Users/userData.dart';
 import 'package:flutter_app_test/layout/insurance_details.dart';
 import 'package:flutter_app_test/models/insurance_card.dart';
 import 'package:flutter_app_test/shared/Drower.dart';
@@ -10,7 +11,7 @@ class InsuranceScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      drawer: !view ? createDrawer(context) : null,
+      drawer: !view ? createDrawer(context,Usres.name) : null,
       appBar: PreferredSize(
         preferredSize: Size.fromHeight(60.0),
         child: Container(
