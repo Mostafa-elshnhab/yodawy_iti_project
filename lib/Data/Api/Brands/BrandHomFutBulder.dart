@@ -27,7 +27,7 @@ Widget BrandsBul() {
                           MaterialPageRoute(
                               builder: (context) => Products(
                                     0,
-                                    Text: '$name',
+                                    Text:'$name',
                                   )));
                     },
                     child: Container(
