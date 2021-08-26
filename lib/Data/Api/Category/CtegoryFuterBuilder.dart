@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_app_test/layout/Home.dart';
-import 'package:flutter_app_test/modules/category/category.dart';
+import 'package:flutter_app_test/modules/subCategory/suBcategory.dart';
 
 import 'categoryApi.dart';
 
@@ -19,6 +19,7 @@ Widget CategoryBul() {
               children: List.generate(snapshot.data!.length, (index) {
                 String name = snapshot.data![index]['name'];
                 String path = snapshot.data![index]['path'];
+                String id = snapshot.data![index]['_id'];
                 return Center(
                     child: Container(
                         child: Center(
@@ -39,7 +40,8 @@ Widget CategoryBul() {
                                 Navigator.push(
                                     context,
                                     MaterialPageRoute(
-                                        builder: (context) => Category(name)));
+                                        builder: (context) =>
+                                            SuBCategory(name, id)));
                               }
                             },
                             child: Padding(
