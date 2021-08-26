@@ -6,26 +6,46 @@ import 'package:flutter_app_test/models/product_model.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'dart:math' as math;
 
+import 'Products.dart';
+
+int? indexP;
+
 class ProductDetalis extends StatefulWidget {
   int index;
-  ProductDetalis(this.index);
+  ProductDetalis(this.index) {
+    indexP = this.index;
+  }
 
   @override
-  _ProductDetailsState createState() => _ProductDetailsState(index);
+  _ProductDetailsState createState() => _ProductDetailsState();
 }
 
 class _ProductDetailsState extends State<ProductDetalis> {
-  int index;
-
   List<product> ditale = [];
-  _ProductDetailsState(this.index) {}
+  _ProductDetailsState() {}
 
-  bool selected = false;
-  bool selectedAdd = false;
+  bool selecteds = false;
+  bool selectedAdds = false;
+  String name = ProductData[indexP!]['name'];
+  String path = ProductData[indexP!]['path'];
+  double Price = ProductData[indexP!]['price'] + 0.0;
+  int Qty = ProductData[indexP!]['Qty'];
+  String? form = ProductData[indexP!]['form'];
+  String? type = ProductData[indexP!]['type'];
+  String description = ProductData[indexP!]['description'];
+  bool selectedAdd = ProductData[indexP!]['selectedAdd'];
+  bool isavailable = ProductData[indexP!]['isavailable'];
+  bool stock = ProductData[indexP!]['stock'];
+  bool selected = ProductData[indexP!]['selected'];
+  bool nostok = ProductData[indexP!]['nostok'];
+  @override
+  void initState() {
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
-    if (pro[index].quantity > 1) {
+    if (Qty > 1) {
       selectedAdd = true;
     }
     return Scaffold(
@@ -83,7 +103,7 @@ class _ProductDetailsState extends State<ProductDetalis> {
                               size: 30,
                             ),
                             Text(
-                              '${pro[index].quantity}',
+                              '$Qty',
                               style: TextStyle(color: Colors.blue),
                             )
                           ],
@@ -112,12 +132,12 @@ class _ProductDetailsState extends State<ProductDetalis> {
                       Container(
                         alignment: AlignmentDirectional.center,
                         child: Image.network(
-                          '${pro[index].path}',
+                          '${path}',
                           height: 160,
 //                      width: 80,
                         ),
                       ),
-                      pro[index].nostok
+                      nostok
                           ? Text('')
                           : Transform.rotate(
                               angle: -math.pi / 4,
@@ -127,13 +147,11 @@ class _ProductDetailsState extends State<ProductDetalis> {
                                     alignment: AlignmentDirectional.center,
                                     height: 30,
 //                                        width: 95,
-                                    color: pro[index].stock
+                                    color: stock
                                         ? HexColor('#FE4646')
                                         : HexColor('#9D9D9D'),
                                     child: Text(
-                                      pro[index].stock
-                                          ? 'Low Stock'
-                                          : 'Out of Stock',
+                                      stock ? 'Low Stock' : 'Out of Stock',
                                       style: TextStyle(
                                           color: Colors.white, fontSize: 18),
                                     ),
@@ -155,7 +173,7 @@ class _ProductDetailsState extends State<ProductDetalis> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          '${pro[index].name}',
+                          '${name}',
                           style: TextStyle(
                               fontSize: 18,
                               color: Colors.black,
@@ -168,7 +186,7 @@ class _ProductDetailsState extends State<ProductDetalis> {
                           children: [
                             Expanded(
                               child: Text(
-                                'EGP ${pro[index].price}',
+                                'EGP ${Price}',
                                 style: TextStyle(
                                   fontSize: 20,
                                   fontWeight: FontWeight.w900,
@@ -184,7 +202,7 @@ class _ProductDetailsState extends State<ProductDetalis> {
                               ),
                               onPressed: () {},
                             ),
-                            !(pro[index].selected)
+                            !(selected)
                                 ? IconButton(
                                     icon: Icon(
                                       Icons.star_border_outlined,
@@ -193,9 +211,9 @@ class _ProductDetailsState extends State<ProductDetalis> {
                                     ),
                                     onPressed: () {
                                       setState(() {
-                                        pro[index].selected =
-                                            !pro[index].selected;
-                                        Fav.add(pro[index]);
+                                        selected = !selected;
+                                        print(selected);
+                                        Fav.add(ProductData[indexP!]);
                                       });
                                     },
                                   )
@@ -207,11 +225,10 @@ class _ProductDetailsState extends State<ProductDetalis> {
                                     ),
                                     onPressed: () {
                                       setState(() {
-                                        pro[index].selected =
-                                            !pro[index].selected;
+                                        selected = !selected;
                                         for (int i = 0; i <= Fav.length; i++) {
-                                          print(index);
-                                          if (index == Fav[i].id) {
+                                          print(indexP);
+                                          if (indexP == Fav[i]['_id']) {
                                             Fav.removeAt(i);
                                           }
                                         }
@@ -266,7 +283,7 @@ class _ProductDetailsState extends State<ProductDetalis> {
                 Padding(
                   padding: const EdgeInsetsDirectional.only(start: 10),
                   child: Text(
-                    '${pro[index].descreption}',
+                    '${description}',
                     style: TextStyle(fontSize: 14),
                   ),
                 ),
@@ -283,7 +300,7 @@ class _ProductDetailsState extends State<ProductDetalis> {
                 Padding(
                   padding: const EdgeInsetsDirectional.only(start: 10),
                   child: Text(
-                    '${pro[index].form}',
+                    '${form}',
                     style: TextStyle(fontSize: 14),
                   ),
                 ),
@@ -300,7 +317,7 @@ class _ProductDetailsState extends State<ProductDetalis> {
                 Padding(
                   padding: const EdgeInsetsDirectional.only(start: 10),
                   child: Text(
-                    'Local',
+                    '$type',
                     style: TextStyle(fontSize: 14),
                   ),
                 )
@@ -318,6 +335,7 @@ class _ProductDetailsState extends State<ProductDetalis> {
                         onPressed: () {
                           setState(() {
                             selectedAdd = true;
+                            print(selectedAdd);
                           });
                         },
                         child: Text(
@@ -354,11 +372,11 @@ class _ProductDetailsState extends State<ProductDetalis> {
 //                            if (total == 0) {
 //                              isadded = false;
 //                            }
-                                    if (pro[index].quantity <= 1) {
+                                    if (Qty <= 1) {
                                       selectedAdd = false;
-                                      pro[index].quantity = 0;
+                                      Qty = 0;
                                     } else {
-                                      pro[index].quantity--;
+                                      Qty--;
                                     }
                                   });
                                 },
@@ -375,7 +393,7 @@ class _ProductDetailsState extends State<ProductDetalis> {
                                 alignment: AlignmentDirectional.center,
                                 color: HexColor('#FF9D46'),
                                 child: Text(
-                                  '${pro[index].quantity} in cart',
+                                  '${Qty} in cart',
                                   style: TextStyle(
                                       color: Colors.white, fontSize: 18),
                                 ),
@@ -392,7 +410,7 @@ class _ProductDetailsState extends State<ProductDetalis> {
 //                                pro[index]
 //                                    .price;
 //                            print(totalPrice);
-                                    pro[index].quantity++;
+                                    Qty++;
                                   });
                                 },
                                 child: Text(

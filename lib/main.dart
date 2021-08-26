@@ -31,8 +31,8 @@ class SplashScreen extends StatefulWidget {
 class splash extends State<SplashScreen> {
   @override
   void initState() {
-    autoLogIn();
     super.initState();
+    autoLogIn();
     Timer(Duration(seconds: 5), () {
       Navigator.of(context).pushReplacement(MaterialPageRoute(
           builder: (_) => isLoggedIn ? MyHomePage() : StartSlider()));
@@ -45,7 +45,6 @@ class splash extends State<SplashScreen> {
     final String? name = prefs.getString('name');
     final String? gender = prefs.getString('gender');
     final List? usreData = prefs.getStringList('usredata');
-
     if (Phone != '') {
       print(Phone);
       setState(() {

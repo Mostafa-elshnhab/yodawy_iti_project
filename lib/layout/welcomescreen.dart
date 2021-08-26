@@ -28,12 +28,11 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
 
   @override
   void initState() {
+    super.initState();
     userdata = Usres.getDAta();
     if (fname.value.text == null && lname.value.text == null) {
       btnColor = Colors.grey;
     }
-
-    super.initState();
   }
 
   @override

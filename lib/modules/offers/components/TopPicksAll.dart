@@ -84,12 +84,12 @@ class AllTopPicks extends StatelessWidget {
                           topPicks: topPick[index],
                           press: () {
                             print('${topPick[index].productName}');
-                            Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => Products(
-                                          Text: '${topPick[index].productName}',
-                                        )));
+//                            Navigator.push(
+//                                context,
+//                                MaterialPageRoute(
+//                                    builder: (context) => Products(
+//                                          Text: '${topPick[index].productName}',
+//                                        )));
                           });
                     })),
               ],

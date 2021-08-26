@@ -31,7 +31,8 @@ Widget SubCategoryBul(id) {
                           Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => Products(Text: name)))
+                                  builder: (context) =>
+                                      Products(1, Text: name)))
                         });
               });
         } else if (snapshot.hasError) {
