@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app_test/models/brand_model.dart';
 
-
 class BrandItem extends StatelessWidget {
-  final BrandModel brand;
+  final String path;
   final Function press;
-  const BrandItem({Key? key, required this.brand, required this.press})
+  const BrandItem({Key? key, required this.path, required this.press})
       : super(key: key);
 
   @override
@@ -18,9 +17,9 @@ class BrandItem extends StatelessWidget {
         child: ClipRRect(
           borderRadius: BorderRadius.circular(5.0),
           child: Container(
-            child: Image.asset(
-              brand.image,
-              fit: BoxFit.cover,
+            child: Image.network(
+              '$path',
+              fit: BoxFit.fitWidth,
               width: 120.0,
               height: 70.0,
             ),

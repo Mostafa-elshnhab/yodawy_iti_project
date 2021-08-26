@@ -1,22 +1,26 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app_test/models/category_model.dart';
 
-
-class CategoryIteM extends StatelessWidget {
-  final CategoryItem category;
+class SubCategoryIteM extends StatelessWidget {
+  final String path;
+  final String title;
   final Function press;
-  const CategoryIteM({Key? key, required this.category, required this.press}) : super(key: key);
+  const SubCategoryIteM(
+      {Key? key, required this.path, required this.title, required this.press})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap:(){press();},
+      onTap: () {
+        press();
+      },
       child: ClipRRect(
         borderRadius: BorderRadius.circular(4.0),
         child: Stack(
           children: [
-            Image.asset(
-              category.image,
+            Image.network(
+              '$path',
               fit: BoxFit.cover,
             ),
             Column(
@@ -40,7 +44,7 @@ class CategoryIteM extends StatelessWidget {
                   ),
                   child: Center(
                     child: Text(
-                      category.title,
+                      title,
                       style: TextStyle(
                         color: Colors.white,
                         fontSize: 15.0,
