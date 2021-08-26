@@ -26,12 +26,12 @@ class CarouselItem extends StatelessWidget {
               ),
             ),
             onTap: () {
-              Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                      builder: (context) => Products(
-                            Text: '${e.productName.toUpperCase()}',
-                          )));
+//              Navigator.push(
+//                  context,
+//                  MaterialPageRoute(
+//                      builder: (context) => Products(
+//                            Text: '${e.productName.toUpperCase()}',
+//                          )));
             });
       }).toList(),
     );

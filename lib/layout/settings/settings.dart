@@ -17,7 +17,6 @@ enum SingingCharacter { Male, Female }
 class _SettingsState extends State<Settings> {
   Future<Null> logout() async {
     final SharedPreferences prefs = await SharedPreferences.getInstance();
-
     setState(() {
       isLoggedIn = false;
       prefs.setString('phone', '');

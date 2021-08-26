@@ -24,7 +24,10 @@ Widget SubCategorybrand(id) {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => Products(Text: name)))
+                                builder: (context) => Products(
+                                      0,
+                                      Text: name,
+                                    )))
                       });
             },
             separatorBuilder: (context, index) {

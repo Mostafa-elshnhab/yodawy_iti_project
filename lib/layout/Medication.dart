@@ -194,7 +194,7 @@ class Medication extends StatelessWidget {
       child: GestureDetector(
         onTap: () {
           Navigator.push(context,
-              MaterialPageRoute(builder: (context) => Products(Text: txt)));
+              MaterialPageRoute(builder: (context) => Products(2, Text: txt)));
         },
         child: Container(
           margin: EdgeInsets.all(10),

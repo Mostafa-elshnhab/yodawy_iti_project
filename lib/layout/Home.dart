@@ -23,6 +23,7 @@ import 'Cart/CartPage.dart';
 import 'Insurance.dart';
 import 'Medication.dart';
 import 'Product/Products.dart';
+import 'Search/FisrtSearch.dart';
 import 'TalkToDoctor/requestScreen.dart';
 import 'insuranceNotLogin.dart';
 
@@ -175,21 +176,28 @@ class _MyHomePageState extends State<MyHomePage> {
                             color: Colors.white,
                           ),
                           child: TextField(
-                              showCursor: false,
-                              decoration: InputDecoration(
-                                border: InputBorder.none,
-                                hintText: isOffers
-                                    ? 'Search in Offers'
-                                    : 'What Are You Looking for?',
-                                hintStyle: TextStyle(
-                                  color: Colors.grey[500],
-                                  fontSize: 15,
-                                ),
-                                prefixIcon: Icon(
-                                  Icons.search_rounded,
-                                  color: Colors.grey[400],
-                                ),
-                              )),
+                            showCursor: false,
+                            decoration: InputDecoration(
+                              border: InputBorder.none,
+                              hintText: isOffers
+                                  ? 'Search in Offers'
+                                  : 'What Are You Looking for?',
+                              hintStyle: TextStyle(
+                                color: Colors.grey[500],
+                                fontSize: 15,
+                              ),
+                              prefixIcon: Icon(
+                                Icons.search_rounded,
+                                color: Colors.grey[400],
+                              ),
+                            ),
+                            onTap: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => Search()));
+                            },
+                          ),
                         ),
                       )
                     ],

@@ -76,13 +76,13 @@ class _OffersState extends State<Offers> {
                               topPicks: topPick[index],
                               press: () {
                                 print('${topPick[index].productName}');
-                                Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) => Products(
-                                              Text:
-                                                  '${topPick[index].productName}',
-                                            )));
+//                                Navigator.push(
+//                                    context,
+//                                    MaterialPageRoute(
+//                                        builder: (context) => Products(
+//                                              Text:
+//                                                  '${topPick[index].productName}',
+//                                            )));
                               });
                         },
                         separatorBuilder: (context, index) {
@@ -117,13 +117,13 @@ class _OffersState extends State<Offers> {
                                 offersOfDay: offersOfDay[index],
                                 press: () {
                                   print('${offersOfDay[index].categoryName}');
-                                  Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                          builder: (context) => Products(
-                                                Text:
-                                                    '${offersOfDay[index].categoryName}',
-                                              )));
+//                                  Navigator.push(
+//                                      context,
+//                                      MaterialPageRoute(
+//                                          builder: (context) => Products(
+//                                                Text:
+//                                                    '${offersOfDay[index].categoryName}',
+//                                              )));
                                 });
                           },
                           separatorBuilder: (context, index) {

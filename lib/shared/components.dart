@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app_test/layout/Cart/CartPage.dart';
+import 'package:flutter_app_test/layout/Product/Products.dart';
+import 'package:flutter_app_test/layout/Search/FisrtSearch.dart';
 import 'package:hexcolor/hexcolor.dart';
 
 PreferredSizeWidget appBarBuilder(String appBarTitle, context) {
@@ -65,6 +67,16 @@ PreferredSizeWidget appBarBuilder(String appBarTitle, context) {
               ),
               child: TextField(
                   showCursor: false,
+                  onTap: () {
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => Search()));
+                  },
+                  onChanged: (value) {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => Products(2, Text: value)));
+                  },
                   decoration: InputDecoration(
                     border: InputBorder.none,
                     hintText: 'What Are You Looking for?',

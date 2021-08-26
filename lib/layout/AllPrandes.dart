@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_app_test/Data/Api/Brands/allbrandsApi.dart';
 import 'package:flutter_app_test/shared/components.dart';
 
+import 'Product/Products.dart';
+
 class AllPrands extends StatefulWidget {
   @override
   _AllPrandsState createState() => _AllPrandsState();
@@ -39,13 +41,17 @@ class _AllPrandsState extends State<AllPrands> {
                             children:
                                 List.generate(snapshot.data!.length, (index) {
                               String path = snapshot.data![index]['path'];
+                              String name = snapshot.data![index]['name'];
                               return Center(
                                 child: GestureDetector(
                                   onTap: () {
-                                    //        Navigator.push(
-                                    //            context,
-                                    //            MaterialPageRoute(
-                                    //                builder: (context) => Products(Text: prands!.titel)));
+                                    Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (context) => Products(
+                                                  0,
+                                                  Text: '$name',
+                                                )));
                                   },
                                   child: Container(
                                     width: double.infinity,

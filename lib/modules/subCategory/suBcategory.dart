@@ -32,6 +32,7 @@ class _SuBCategoryState extends State<SuBCategory> {
   String path = "";
   @override
   void initState() {
+    super.initState();
     getSubCategoryDataFB(idc);
     getSubCategorybrandDataFB(idc).then((value) {
       if (value.length != 0) {
@@ -51,7 +52,6 @@ class _SuBCategoryState extends State<SuBCategory> {
       }
     });
     print(idc);
-    super.initState();
   }
 
   @override
