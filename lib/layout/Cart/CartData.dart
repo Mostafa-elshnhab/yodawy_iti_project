@@ -1,3 +1,3 @@
 import 'package:flutter_app_test/models/product_model.dart';
 
-List<product> Cart = [];
+List<dynamic> Cart = [];

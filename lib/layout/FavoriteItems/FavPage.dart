@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app_test/layout/Cart/CartData.dart';
 import 'package:flutter_app_test/layout/Product/pandoalData.dart';
 import 'package:flutter_app_test/layout/Product/product_detalis.dart';
 import 'package:hexcolor/hexcolor.dart';
@@ -129,7 +130,7 @@ class _FavPageState extends State<FavPage> {
                                 onTap: () {
                                   int? pointer;
                                   for (int i = 0; i <= pro.length; i++) {
-                                    if (Fav[index].id == pro[i].id) {
+                                    if (Fav[index]['_id'] == pro[i]['_id']) {
                                       pointer = i;
                                     }
                                   }
@@ -156,12 +157,12 @@ class _FavPageState extends State<FavPage> {
                                                 alignment:
                                                     AlignmentDirectional.center,
                                                 child: Image.network(
-                                                  '${Fav[index].path}',
+                                                  '${Fav[index]["path"]}',
                                                   height: 90,
                                                   width: 80,
                                                 ),
                                               ),
-                                              Fav[index].nostok
+                                              Fav[index]['nostok']
                                                   ? Text('')
                                                   : Transform.rotate(
                                                       angle: -math.pi / 4,
@@ -175,13 +176,14 @@ class _FavPageState extends State<FavPage> {
                                                             height: 20,
 //                                        width: 95,
                                                             color: Fav[index]
-                                                                    .stock
+                                                                    ['stock']
                                                                 ? HexColor(
                                                                     '#FE4646')
                                                                 : HexColor(
                                                                     '#9D9D9D'),
                                                             child: Text(
-                                                              Fav[index].stock
+                                                              Fav[index]
+                                                                      ['stock']
                                                                   ? 'Low Stock'
                                                                   : 'Out of Stock',
                                                               style: TextStyle(
@@ -211,7 +213,7 @@ class _FavPageState extends State<FavPage> {
                                                 Expanded(
                                                   flex: 3,
                                                   child: Text(
-                                                    '${(Fav[index].name).toUpperCase()}',
+                                                    '${(Fav[index]['name']).toUpperCase()}',
                                                     style: TextStyle(
                                                         color: Colors.black,
                                                         fontSize: 18),
@@ -245,7 +247,7 @@ class _FavPageState extends State<FavPage> {
                                               ],
                                             ),
                                             Text(
-                                              '${Fav[index].form}',
+                                              '${Fav[index]['form']}',
                                               style: TextStyle(
                                                   color: Colors.black,
                                                   fontSize: 13),
@@ -254,7 +256,7 @@ class _FavPageState extends State<FavPage> {
                                               height: 3,
                                             ),
                                             Text(
-                                              'EGP ${Fav[index].price}',
+                                              'EGP ${Fav[index]['price']}',
                                               style: TextStyle(
                                                 fontSize: 18,
                                                 fontWeight: FontWeight.w900,
@@ -264,9 +266,9 @@ class _FavPageState extends State<FavPage> {
                                             SizedBox(
                                               height: 3.5,
                                             ),
-                                            !(!Fav[index].nostok &&
-                                                    (Fav[index].stock ||
-                                                        !Fav[index].stock))
+                                            !(!Fav[index]['nostok'] &&
+                                                    (Fav[index]['stock'] ||
+                                                        !Fav[index]['stock']))
                                                 ? Row(
                                                     children: [
                                                       Icon(
@@ -301,10 +303,10 @@ class _FavPageState extends State<FavPage> {
                                             SizedBox(
                                               height: 3.5,
                                             ),
-                                            !(!Fav[index].nostok &&
-                                                    (Fav[index].stock ||
-                                                        !Fav[index].stock))
-                                                ? !(Fav[index].selectedAdd)
+                                            !(!Fav[index]['nostok'] &&
+                                                    (Fav[index]['stock'] ||
+                                                        !Fav[index]['stock']))
+                                                ? !(Fav[index]['selectedAdd'])
                                                     ? Container(
                                                         width: 100,
                                                         height: 35,
@@ -340,10 +342,10 @@ class _FavPageState extends State<FavPage> {
 //                                                      print(
 //                                                          pro[index].quantity);
 
-                                                              Fav[index]
-                                                                  .selectedAdd = !Fav[
-                                                                      index]
-                                                                  .selectedAdd;
+                                                              Fav[index][
+                                                                  'selectedAdd'] = !Fav[
+                                                                      index][
+                                                                  'selectedAdd'];
                                                             });
                                                           },
                                                         ),
@@ -386,7 +388,8 @@ class _FavPageState extends State<FavPage> {
                                                                             .quantity <
                                                                         1) {
                                                                       Fav[index]
-                                                                              .selectedAdd =
+                                                                              [
+                                                                              'selectedAdd'] =
                                                                           false;
                                                                       Fav.removeAt(
                                                                           index);
@@ -399,7 +402,8 @@ class _FavPageState extends State<FavPage> {
                                                                           context,
                                                                           index,
                                                                           Fav[index]
-                                                                              .name);
+                                                                              [
+                                                                              'name']);
                                                                     } else {
                                                                       Fav[index]
                                                                           .quantity--;
@@ -412,8 +416,8 @@ class _FavPageState extends State<FavPage> {
                                                                             index);
 //                                                                print(
 //                                                                    Cart[i].id);
-                                                                        if (Fav[index].id ==
-                                                                            pro[i].id) {
+                                                                        if (Fav[index]['_id'] ==
+                                                                            pro[i]["_id"]) {
                                                                           pro[i]
                                                                               .quantity--;
                                                                         }
@@ -433,7 +437,7 @@ class _FavPageState extends State<FavPage> {
                                                                 color: HexColor(
                                                                     '#FF9D46'),
                                                                 child: Text(
-                                                                  '${Fav[index].quantity}',
+                                                                  '${Fav[index]['Qty']}',
                                                                   style: TextStyle(
                                                                       color: Colors
                                                                           .white),
@@ -466,9 +470,11 @@ class _FavPageState extends State<FavPage> {
 //                                                                print(
 //                                                                    Cart[i].id);
                                                                       if (Fav[index]
-                                                                              .id ==
+                                                                              [
+                                                                              '_id'] ==
                                                                           pro[i]
-                                                                              .id) {
+                                                                              [
+                                                                              "_id"]) {
                                                                         pro[i]
                                                                             .quantity++;
                                                                       }
@@ -505,10 +511,10 @@ class _FavPageState extends State<FavPage> {
                                                       ),
                                                       onPressed: () {
                                                         setState(() {
-                                                          Fav[index]
-                                                                  .selectedAdd =
-                                                              !Fav[index]
-                                                                  .selectedAdd;
+                                                          Fav[index][
+                                                                  'selectedAdd'] =
+                                                              !Fav[index][
+                                                                  'selectedAdd'];
                                                         });
                                                       },
                                                     ),

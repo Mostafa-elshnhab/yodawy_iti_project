@@ -1,19 +1,15 @@
-class CategoryItem{
+class CategoryItem {
   final String image, title;
   final int id;
 
-  CategoryItem({
-    required this.image,
-    required this.title,
-    required this.id
-  });
+  CategoryItem({required this.image, required this.title, required this.id});
 }
 
 List<CategoryItem> category = [
   CategoryItem(
-      image: 'assets/images/masks.jpg',
-      title: 'Masks',
-      id: 1,
+    image: 'assets/images/masks.jpg',
+    title: 'Masks',
+    id: 1,
   ),
   CategoryItem(
     image: 'assets/images/kidsmasks.jpg',
@@ -35,19 +31,19 @@ List<CategoryItem> category = [
     title: 'Breathing',
     id: 5,
   ),
+//  CategoryItem(
+//    image: 'assets/images/allantibacterials.jpg',
+//    title: 'All Anti-bacterials',
+//    id: 6,
+//  )
   CategoryItem(
-    image: 'assets/images/allantibacterials.jpg',
-    title: 'All Anti-bacterials',
-    id: 6,
-  ),CategoryItem(
     image: 'assets/images/sanitizers.jpg',
     title: 'Sanitizers',
     id: 7,
-  ),CategoryItem(
+  ),
+  CategoryItem(
     image: 'assets/images/immunity.jpg',
     title: 'Immunity Boosters',
     id: 8,
   ),
-
 ];
-

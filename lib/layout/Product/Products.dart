@@ -7,11 +7,14 @@ import 'package:flutter_app_test/layout/Product/pandoalData.dart';
 import 'package:flutter_app_test/layout/Product/product_detalis.dart';
 import 'package:flutter_app_test/shared/components.dart';
 import 'package:hexcolor/hexcolor.dart';
-
+import 'package:shared_preferences/shared_preferences.dart';
 import 'dart:math' as math;
 
 String? text;
 int? counter;
+final selectedAdd = List.filled(100, false);
+bool isadded = false;
+
 List<dynamic> ProductData = [];
 
 class Products extends StatefulWidget {
@@ -30,9 +33,18 @@ class Products extends StatefulWidget {
 }
 
 class _ProductsState extends State<Products> {
-  bool isadded = false;
   int total = 0;
   double totalPrice = 0;
+//  bool selected = false;
+//  bool selectedAdd = false;
+
+  final selected = List.filled(100, false);
+  final Qty = List.filled(100, 1);
+  void saveData() async {
+    final SharedPreferences prefs = await SharedPreferences.getInstance();
+//    prefs.setStringList("key", Cart.);
+  }
+
   List<Future<List>> datafun = [
     getProductByBrandDataFB(text),
     getProductBySubDataFB(text),
@@ -98,20 +110,16 @@ class _ProductsState extends State<Products> {
                         shrinkWrap: true,
                         itemBuilder: (context, index) {
                           String name = snapshot.data![index]['name'];
+                          String id = snapshot.data![index]['_id'];
                           String path = snapshot.data![index]['path'];
                           double Price = snapshot.data![index]['price'] + 0.0;
-                          int Qty = snapshot.data![index]['Qty'];
+//                          int Qty = snapshot.data![index]['Qty'];
                           String? form = snapshot.data![index]['form'];
-                          String? type = snapshot.data![index]['type'];
-                          String description =
-                              snapshot.data![index]['description'];
-                          bool selectedAdd =
-                              snapshot.data![index]['selectedAdd'];
-                          bool isavailable =
-                              snapshot.data![index]['isavailable'];
+//                          bool selectedAdd = snapshot.data![index]['selectedAdd'];
                           bool? stock = snapshot.data![index]['stock'];
-                          bool selected = snapshot.data![index]['selected'];
+//                          bool selected = snapshot.data![index]['selected'];
                           bool? nostok = snapshot.data![index]['nostok'];
+                          pro = snapshot.data!;
                           return ListTile(
                             selected: true,
                             title: GestureDetector(
@@ -208,7 +216,7 @@ class _ProductsState extends State<Products> {
                                                     alignment:
                                                         AlignmentDirectional
                                                             .topEnd,
-                                                    child: !(selected)
+                                                    child: !(selected[index])
                                                         ? IconButton(
                                                             icon: Icon(
                                                               Icons
@@ -219,8 +227,10 @@ class _ProductsState extends State<Products> {
                                                             ),
                                                             onPressed: () {
                                                               setState(() {
-                                                                selected =
-                                                                    !selected;
+                                                                selected[
+                                                                        index] =
+                                                                    !selected[
+                                                                        index];
                                                                 Fav.add(snapshot
                                                                         .data![
                                                                     index]);
@@ -236,8 +246,10 @@ class _ProductsState extends State<Products> {
                                                             ),
                                                             onPressed: () {
                                                               setState(() {
-                                                                selected =
-                                                                    !selected;
+                                                                selected[
+                                                                        index] =
+                                                                    !selected[
+                                                                        index];
                                                                 for (int i = 0;
                                                                     i <=
                                                                         Fav.length;
@@ -312,7 +324,7 @@ class _ProductsState extends State<Products> {
                                             height: 3.5,
                                           ),
                                           !(!nostok && (stock! || !stock))
-                                              ? !(selectedAdd)
+                                              ? !(selectedAdd[index])
                                                   ? Container(
                                                       width: 100,
                                                       height: 35,
@@ -334,8 +346,8 @@ class _ProductsState extends State<Products> {
                                                         ),
                                                         onPressed: () {
                                                           setState(() {
-                                                            Cart.add(
-                                                                pro[index]);
+                                                            Cart.add(snapshot
+                                                                .data![index]);
                                                             isadded = true;
                                                             total = total + 1;
                                                             totalPrice +=
@@ -345,8 +357,9 @@ class _ProductsState extends State<Products> {
 //                                                      print(
 //                                                          pro[index].quantity);
 
-                                                            selectedAdd =
-                                                                !selectedAdd;
+                                                            selectedAdd[index] =
+                                                                !selectedAdd[
+                                                                    index];
                                                           });
                                                         },
                                                       ),
@@ -381,9 +394,10 @@ class _ProductsState extends State<Products> {
                                                                     isadded =
                                                                         false;
                                                                   }
-                                                                  if (Qty <=
+                                                                  if (Qty[index] <=
                                                                       1) {
-                                                                    selectedAdd =
+                                                                    selectedAdd[
+                                                                            index] =
                                                                         false;
                                                                     print(
                                                                         index);
@@ -393,20 +407,19 @@ class _ProductsState extends State<Products> {
                                                                         i <=
                                                                             Cart.length;
                                                                         i++) {
-                                                                      print(
-                                                                          index);
 //                                                                print(
 //                                                                    Cart[i].id);
-                                                                      if (index ==
+                                                                      if (id ==
                                                                           Cart[i]
-                                                                              .id) {
+                                                                              [
+                                                                              '_id']) {
                                                                         Cart.removeAt(
                                                                             i);
                                                                       }
                                                                     }
                                                                     Qty == 1;
                                                                   } else {
-                                                                    Qty--;
+                                                                    Qty[index]--;
                                                                   }
                                                                 });
                                                               },
@@ -421,7 +434,7 @@ class _ProductsState extends State<Products> {
                                                               color: HexColor(
                                                                   '#FF9D46'),
                                                               child: Text(
-                                                                '${Qty}',
+                                                                '${Qty[index]}',
                                                                 style: TextStyle(
                                                                     color: Colors
                                                                         .white),
@@ -439,7 +452,7 @@ class _ProductsState extends State<Products> {
                                                                       1 * Price;
                                                                   print(
                                                                       totalPrice);
-                                                                  Qty++;
+                                                                  Qty[index]++;
                                                                 });
                                                               },
                                                               child: Text('+'),
@@ -471,8 +484,8 @@ class _ProductsState extends State<Products> {
                                                     ),
                                                     onPressed: () {
                                                       setState(() {
-                                                        selectedAdd =
-                                                            !selectedAdd;
+                                                        selectedAdd[index] =
+                                                            !selectedAdd[index];
                                                       });
                                                     },
                                                   ),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app_test/layout/Cart/CartData.dart';
 import 'package:flutter_app_test/layout/Cart/CartPage.dart';
 import 'package:flutter_app_test/layout/FavoriteItems/FavData.dart';
 import 'package:flutter_app_test/layout/Product/pandoalData.dart';
@@ -336,6 +337,7 @@ class _ProductDetailsState extends State<ProductDetalis> {
                           setState(() {
                             selectedAdd = true;
                             print(selectedAdd);
+                            Cart.add(pro[indexP!]);
                           });
                         },
                         child: Text(
