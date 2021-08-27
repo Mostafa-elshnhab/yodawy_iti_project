@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app_test/layout/Product/pandoalData.dart';
-import 'package:flutter_app_test/layout/Product/product_detalis.dart';
+import 'package:flutter_app_test/layout/Product/Products.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'dart:math' as math;
 
@@ -175,15 +175,15 @@ class _CartPageState extends State<CartPage> {
                                 onTap: () {
                                   int? pointer;
                                   for (int i = 0; i <= pro.length; i++) {
-                                    if (Cart[index].id == pro[i].id) {
+                                    if (Cart[index]['_id'] == pro[i]['_id']) {
                                       pointer = i;
                                     }
                                   }
-                                  Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                          builder: (context) =>
-                                              ProductDetalis(pointer!)));
+//                                  Navigator.push(
+//                                      context,
+//                                      MaterialPageRoute(
+//                                          builder: (context) =>
+//                                              ProductDetalis(pointer!)));
                                 },
                                 child: Container(
                                   width: double.infinity,
@@ -202,12 +202,12 @@ class _CartPageState extends State<CartPage> {
                                                 alignment:
                                                     AlignmentDirectional.center,
                                                 child: Image.network(
-                                                  '${Cart[index].path}',
+                                                  '${Cart[index]['path']}',
                                                   height: 90,
                                                   width: 80,
                                                 ),
                                               ),
-                                              Cart[index].nostok
+                                              Cart[index]['nostok']
                                                   ? Text('')
                                                   : Transform.rotate(
                                                       angle: -math.pi / 4,
@@ -221,13 +221,14 @@ class _CartPageState extends State<CartPage> {
                                                             height: 20,
 //                                        width: 95,
                                                             color: Cart[index]
-                                                                    .stock
+                                                                    ['stock']
                                                                 ? HexColor(
                                                                     '#FE4646')
                                                                 : HexColor(
                                                                     '#9D9D9D'),
                                                             child: Text(
-                                                              Cart[index].stock
+                                                              Cart[index]
+                                                                      ['stock']
                                                                   ? 'Low Stock'
                                                                   : 'Out of Stock',
                                                               style: TextStyle(
@@ -257,7 +258,7 @@ class _CartPageState extends State<CartPage> {
                                                 Expanded(
                                                   flex: 3,
                                                   child: Text(
-                                                    '${(Cart[index].name).toUpperCase()}',
+                                                    '${(Cart[index]['name']).toUpperCase()}',
                                                     style: TextStyle(
                                                         color: Colors.black,
                                                         fontSize: 18),
@@ -275,7 +276,7 @@ class _CartPageState extends State<CartPage> {
                                                             .topEnd,
                                                     child: IconButton(
                                                       icon: !(Cart[index]
-                                                              .selected)
+                                                              ['selected'])
                                                           ? Icon(
                                                               Icons
                                                                   .star_border_outlined,
@@ -291,18 +292,44 @@ class _CartPageState extends State<CartPage> {
                                                             ),
                                                       onPressed: () {
                                                         setState(() {
-                                                          Cart[index].selected =
+                                                          Cart[index]
+                                                                  ['selected'] =
                                                               !Cart[index]
-                                                                  .selected;
+                                                                  ['selected'];
                                                         });
                                                       },
+                                                    ),
+                                                  ),
+                                                ),
+                                                Expanded(
+                                                  flex: 1,
+                                                  child: Container(
+                                                    height: 30,
+                                                    alignment:
+                                                        AlignmentDirectional
+                                                            .topEnd,
+                                                    child: IconButton(
+                                                      onPressed: () {
+                                                        showAlertDialog(
+                                                            context,
+                                                            index,
+                                                            Cart[index]
+                                                                ['name']);
+                                                      },
+                                                      icon: Icon(
+                                                          Icons
+                                                              .delete_forever_sharp,
+                                                          size: 30,
+                                                          color: Colors.red
+//                                                            HexColor('#EEAF41'),
+                                                          ),
                                                     ),
                                                   ),
                                                 )
                                               ],
                                             ),
                                             Text(
-                                              '${Cart[index].form}',
+                                              '${Cart[index]['form']}',
                                               style: TextStyle(
                                                   color: Colors.black,
                                                   fontSize: 13),
@@ -311,7 +338,7 @@ class _CartPageState extends State<CartPage> {
                                               height: 3,
                                             ),
                                             Text(
-                                              'EGP ${Cart[index].price}',
+                                              'EGP ${Cart[index]['price']}',
                                               style: TextStyle(
                                                 fontSize: 18,
                                                 fontWeight: FontWeight.w900,
@@ -321,9 +348,9 @@ class _CartPageState extends State<CartPage> {
                                             SizedBox(
                                               height: 3.5,
                                             ),
-                                            !(!Cart[index].nostok &&
-                                                    (Cart[index].stock ||
-                                                        !Cart[index].stock))
+                                            !(!Cart[index]['nostok'] &&
+                                                    (Cart[index]['stock'] ||
+                                                        !Cart[index]['stock']))
                                                 ? Row(
                                                     children: [
                                                       Icon(
@@ -358,10 +385,10 @@ class _CartPageState extends State<CartPage> {
                                             SizedBox(
                                               height: 3.5,
                                             ),
-                                            !(!Cart[index].nostok &&
-                                                    (Cart[index].stock ||
-                                                        !Cart[index].stock))
-                                                ? !(Cart[index].selectedAdd)
+                                            !(!Cart[index]['nostok'] &&
+                                                    (Cart[index]['stock'] ||
+                                                        !Cart[index]['stock']))
+                                                ? !(Cart[index]['selectedAdd'])
                                                     ? Container(
                                                         width: 100,
                                                         height: 35,
@@ -397,10 +424,10 @@ class _CartPageState extends State<CartPage> {
 //                                                      print(
 //                                                          pro[index].quantity);
 
-                                                              Cart[index]
-                                                                      .selectedAdd =
-                                                                  !Cart[index]
-                                                                      .selectedAdd;
+                                                              Cart[index][
+                                                                  'selectedAdd'] = !Cart[
+                                                                      index][
+                                                                  'selectedAdd'];
                                                             });
                                                           },
                                                         ),
@@ -443,23 +470,28 @@ class _CartPageState extends State<CartPage> {
                                                                             .quantity <
                                                                         1) {
                                                                       Cart[index]
-                                                                              .selectedAdd =
+                                                                              [
+                                                                              'selectedAdd'] =
                                                                           false;
                                                                       Cart.removeAt(
                                                                           index);
                                                                       Cart[index]
-                                                                          .quantity = 1;
+                                                                          [
+                                                                          'Qty'] = 1;
                                                                     } else if (Cart[index]
-                                                                            .quantity ==
+                                                                            [
+                                                                            'Qty'] ==
                                                                         1) {
                                                                       showAlertDialog(
                                                                           context,
                                                                           index,
                                                                           Cart[index]
-                                                                              .name);
+                                                                              [
+                                                                              'name']);
                                                                     } else {
                                                                       Cart[index]
-                                                                          .quantity--;
+                                                                          [
+                                                                          'Qty']--;
                                                                       for (int i =
                                                                               0;
                                                                           i <=
@@ -469,10 +501,11 @@ class _CartPageState extends State<CartPage> {
                                                                             index);
 //                                                                print(
 //                                                                    Cart[i].id);
-                                                                        if (Cart[index].id ==
-                                                                            pro[i].id) {
+                                                                        if (Cart[index]['_id'] ==
+                                                                            pro[i]['_id']) {
                                                                           pro[i]
-                                                                              .quantity--;
+                                                                              [
+                                                                              'Qty']--;
                                                                         }
                                                                       }
                                                                     }
@@ -490,7 +523,7 @@ class _CartPageState extends State<CartPage> {
                                                                 color: HexColor(
                                                                     '#FF9D46'),
                                                                 child: Text(
-                                                                  '${Cart[index].quantity}',
+                                                                  '${Cart[index]['Qty']}',
                                                                   style: TextStyle(
                                                                       color: Colors
                                                                           .white),
@@ -511,8 +544,8 @@ class _CartPageState extends State<CartPage> {
 //                                                                            .price;
 //                                                                    print(
 //                                                                        totalPrice);
-                                                                    Cart[index]
-                                                                        .quantity++;
+                                                                    Cart[index][
+                                                                        'Qty']++;
                                                                     for (int i =
                                                                             0;
                                                                         i <=
@@ -523,11 +556,13 @@ class _CartPageState extends State<CartPage> {
 //                                                                print(
 //                                                                    Cart[i].id);
                                                                       if (Cart[index]
-                                                                              .id ==
+                                                                              [
+                                                                              '_id'] ==
                                                                           pro[i]
-                                                                              .id) {
-                                                                        pro[i]
-                                                                            .quantity++;
+                                                                              [
+                                                                              '_id']) {
+                                                                        pro[i][
+                                                                            'Qty']++;
                                                                       }
                                                                     }
                                                                   });
@@ -562,10 +597,10 @@ class _CartPageState extends State<CartPage> {
                                                       ),
                                                       onPressed: () {
                                                         setState(() {
-                                                          Cart[index]
-                                                                  .selectedAdd =
-                                                              !Cart[index]
-                                                                  .selectedAdd;
+                                                          Cart[index][
+                                                                  'selectedAdd'] =
+                                                              !Cart[index][
+                                                                  'selectedAdd'];
                                                         });
                                                       },
                                                     ),
@@ -684,15 +719,18 @@ class _CartPageState extends State<CartPage> {
                 minWidth: double.infinity,
                 onPressed: () {
                   setState(() {
-                    Cart.removeAt(index);
-//          for (int i = 0; i <= pro.length; i++) {
-//            print(index);
-////                                                                print(
-////                                                                    Cart[i].id);
-//            if (Cart[index].id == pro[i].id) {
-//              pro[i].quantity--;
-//            }
-//          }
+                    print('this is index $index');
+                    print('this is length${pro.length}');
+                    for (int i = 0; i <= pro.length; i++) {
+                      print(" this i $i");
+                      if (Cart[index]['_id'] == pro[i]['_id']) {
+                        print(" this i $i");
+                        Cart.removeAt(index);
+                        selectedAdd[i] = false;
+                        isadded = false;
+                        break;
+                      }
+                    }
                     Navigator.of(context).pop();
                   });
                 },

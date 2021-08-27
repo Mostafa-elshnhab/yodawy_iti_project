@@ -9,14 +9,11 @@ class GenderScreen extends StatefulWidget {
 }
 
 class _GenderScreenState extends State<GenderScreen> {
-
-
-
   var btnColor = Colors.grey;
   @override
   void initState() {
     super.initState();
-     userdata = Usres.getDAta();
+    userdata = Usres.getDAta();
   }
 
   @override
@@ -57,11 +54,11 @@ class _GenderScreenState extends State<GenderScreen> {
                               onPressed: () {
                                 setState(() {
                                   btnColor = Colors.blue;
-                                  Usres.gender='Female';
+                                  Usres.gender = 'male';
                                 });
                               },
                               child: Image(
-                                image: AssetImage('assets/images/f.jpg'),
+                                image: AssetImage('assets/images/5.png'),
                               ),
                               style: ElevatedButton.styleFrom(
                                   primary: Colors.white,
@@ -79,11 +76,11 @@ class _GenderScreenState extends State<GenderScreen> {
                               onPressed: () {
                                 setState(() {
                                   btnColor = Colors.blue;
-                                  Usres.gender='male';
+                                  Usres.gender = 'female';
                                 });
                               },
                               child: Image(
-                                image: AssetImage('assets/images/m.jpg'),
+                                image: AssetImage('assets/images/6.png'),
                               ),
                               style: ElevatedButton.styleFrom(
                                   primary: Colors.white,
