@@ -931,14 +931,38 @@ class Insurance {
 }
 
 const List<Insurance> insurance = const <Insurance>[
-  const Insurance(title: 'MetLife', path: 'assets/images/metlife.png'),
-  const Insurance(title: 'AXA', path: 'assets/images/axa.jpg'),
-  const Insurance(title: 'Nextcare', path: 'assets/images/next.png'),
-  const Insurance(title: 'MedNet', path: 'assets/images/mednet.png'),
-  const Insurance(title: 'Unicare', path: 'assets/images/Unicare.png'),
-  const Insurance(title: 'Roche', path: 'assets/images/roche.png'),
-  const Insurance(title: 'MediConsult', path: 'assets/images/mediconsult.png'),
-  const Insurance(title: 'AMC', path: 'assets/images/amc.jpeg'),
+  const Insurance(
+      title: 'MetLife',
+      path:
+          'https://archive.org/download/metlife-new-logo-500/metlife-new-logo-500.jpg'),
+  const Insurance(
+      title: 'AXA',
+      path:
+          'https://www.stratumn.com/medias/32024-1600165209-logo-axa.jpg?lossless=true&auto=format&fm=webp,png&w=1460'),
+  const Insurance(
+      title: 'Nextcare',
+      path:
+          'https://s3-eu-west-1.amazonaws.com/wuzzuf/files/company_logo/NEXtCARE-Egypt-23989-1625587858.png'),
+  const Insurance(
+      title: 'MedNet',
+      path:
+          'https://csscf.b8cdn.com/120x120/images/logo/66/x1491866_logo_1576487345_n.png.pagespeed.ic.lygXrpNvfc.webp'),
+  const Insurance(
+      title: 'Unicare',
+      path:
+          'https://scontent-hbe1-1.xx.fbcdn.net/v/t1.6435-9/204018665_326063172428226_9185403464257846728_n.jpg?_nc_cat=109&ccb=1-4&_nc_sid=973b4a&_nc_ohc=qljqKlAoTEYAX-e6R8w&_nc_ht=scontent-hbe1-1.xx&oh=9153621d19e058c1870be84788d1d18b&oe=6137DB28'),
+  const Insurance(
+      title: 'Roche',
+      path:
+          'http://logok.org/wp-content/uploads/2015/03/Roche-logo-880x660.png'),
+  const Insurance(
+      title: 'MediConsult',
+      path:
+          'https://s3-eu-west-1.amazonaws.com/wuzzuf/files/company_logo/Mediconsult-Egypt-13897.png'),
+  const Insurance(
+      title: 'AMC',
+      path:
+          'https://scontent-hbe1-1.xx.fbcdn.net/v/t1.6435-9/51590767_2370739323154908_6668983354735460352_n.png?_nc_cat=103&ccb=1-4&_nc_sid=973b4a&_nc_ohc=gbP26FsFjT8AX-YBxUW&_nc_ht=scontent-hbe1-1.xx&oh=ed0691781f07ee6705c68299cf292978&oe=6137D81A'),
 ];
 
 class insuranceCard extends StatelessWidget {
@@ -971,7 +995,7 @@ class insuranceCard extends StatelessWidget {
                       ),
                       child: ClipRRect(
                         borderRadius: BorderRadius.circular(8.0),
-                        child: Image.asset(
+                        child: Image.network(
                           '${insurance!.path}',
                           width: 90,
                           height: 20,
