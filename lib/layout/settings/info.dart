@@ -39,8 +39,15 @@ class _AccountInfoState extends State<AccountInfo> {
               child(
                   'Gender ', Icons.transgender_outlined, "${Usres.gender}", 3),
               separate(),
-              child('Birthdate', Icons.calendar_today_outlined,
-                  bDate.month.toString(), 0),
+              child(
+                  'Birthdate',
+                  Icons.calendar_today_outlined,
+                  bDate.year.toString() +
+                      '-' +
+                      bDate.month.toString() +
+                      '-' +
+                      bDate.day.toString(),
+                  0),
             ],
           ),
         ));

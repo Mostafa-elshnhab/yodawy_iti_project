@@ -163,9 +163,7 @@ class _SettingsState extends State<Settings> {
             );
           }
           if (x == 0) {
-            logout();
-            Navigator.push(context,
-                MaterialPageRoute(builder: (context) => StartSlider()));
+            showAlertDialog(context);
           }
         });
   }
@@ -175,6 +173,87 @@ class _SettingsState extends State<Settings> {
       height: 0.5,
       width: MediaQuery.of(context).size.width - 30,
       color: Colors.grey,
+    );
+  }
+
+  showAlertDialog(BuildContext context) {
+    AlertDialog alert = AlertDialog(
+        title: Center(
+      child: Column(
+        children: [
+          Icon(
+            Icons.warning_amber_outlined,
+            color: Colors.red,
+            size: 60,
+          ),
+          SizedBox(
+            height: 12,
+          ),
+          Text(
+            'LOG OUT',
+            style: TextStyle(
+                fontSize: 18, fontWeight: FontWeight.bold, color: Colors.black),
+          ),
+          SizedBox(
+            height: 12,
+          ),
+          Text(
+            'Are you sure you want to Log Out',
+            style: TextStyle(fontSize: 14, color: Colors.black54),
+          ),
+          SizedBox(
+            height: 8,
+          ),
+          Text(
+            'From Yodawy ',
+            style: TextStyle(fontSize: 14, color: Colors.black54),
+          ),
+          SizedBox(
+            height: 8,
+          ),
+          Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: MaterialButton(
+                height: 50,
+                minWidth: double.infinity,
+                onPressed: () {
+                  logout();
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => StartSlider()));
+                },
+                child: Text(
+                  'confirm'.toUpperCase(),
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                color: Colors.orange,
+              )),
+          TextButton(
+            child: Text(
+              "CANCEL",
+              style: TextStyle(fontSize: 20, color: Colors.orange),
+            ),
+            onPressed: () {
+              Navigator.of(context).pop();
+            },
+          )
+        ],
+      ),
+    )
+//      Text("My title"),
+//      content: Text("This is my message to."),
+//      actions: [okButton, canselButton],
+        );
+
+    // show the dialog
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return alert;
+      },
     );
   }
 }
