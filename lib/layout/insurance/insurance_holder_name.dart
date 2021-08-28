@@ -1,10 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_app_test/layout/upload_insurance_card.dart';
-
+import 'upload_insurance_card.dart';
 
 class InsuranceHolderName extends StatefulWidget {
-
   final String? insuranceImg;
   const InsuranceHolderName({Key? key, this.insuranceImg}) : super(key: key);
 
@@ -79,17 +77,17 @@ class _InsuranceHolderNameState extends State<InsuranceHolderName> {
                     ),
                     child: MaterialButton(
                       onPressed: () {
-                        if(holderName.value.text.isEmpty)
-                          {
-                            return;
-                          }
-                        else{
+                        if (holderName.value.text.isEmpty) {
+                          return;
+                        } else {
                           // setState(() {
                           //   btnColor = Colors.blue;
                           // });
-                          Navigator.push(context, MaterialPageRoute(builder: (context) => UploadCard()));
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => UploadCard()));
                         }
-
                       },
                       elevation: 0.0,
                       textColor: Colors.white,

@@ -1,7 +1,7 @@
 import 'package:country_list_pick/country_list_pick.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_app_test/Data/Users/userData.dart';
-import 'package:flutter_app_test/layout/splashScreen.dart';
+import 'splashScreen.dart';
 // import 'package:intl_phone_field/intl_phone_field.dart';
 // import 'package:intl_phone_number_input/intl_phone_number_input.dart';
 
@@ -161,8 +161,7 @@ class _LoginScreenState extends State<LoginScreen> {
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) =>
-                                      SplashScreen()),
+                                  builder: (context) => SplashScreen()),
                             );
                           },
                           child: Text(

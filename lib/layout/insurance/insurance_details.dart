@@ -1,10 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_app_test/layout/insurance_holder_name.dart';
+import 'insurance_holder_name.dart';
 import 'package:flutter_app_test/models/insurance_card_details.dart';
 
 class InsuranceDetails extends StatelessWidget {
-
   final InsuranceCardDetails? card;
   const InsuranceDetails({Key? key, this.card}) : super(key: key);
 
@@ -191,14 +190,18 @@ class InsuranceDetails extends StatelessWidget {
                     ),
                     child: MaterialButton(
                       onPressed: () {
-                        if(firstNumber.text.length != 2  || chars.text.length != 2 || secondNumber.text.length != 5 || thirdNumber.text.length != 1)
-                          {
-                            return;
-                          }
+                        if (firstNumber.text.length != 2 ||
+                            chars.text.length != 2 ||
+                            secondNumber.text.length != 5 ||
+                            thirdNumber.text.length != 1) {
+                          return;
+                        }
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => InsuranceHolderName(insuranceImg: card!.insuranceImg,)));
+                                builder: (context) => InsuranceHolderName(
+                                      insuranceImg: card!.insuranceImg,
+                                    )));
                       },
                       elevation: 0.0,
                       textColor: Colors.white,

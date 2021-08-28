@@ -4,7 +4,7 @@ import 'package:flutter_app_test/layout/Product/Products.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'dart:math' as math;
 
-import '../Home.dart';
+import '../HomeScreens/Home.dart';
 import 'CartData.dart';
 
 class CartPage extends StatefulWidget {

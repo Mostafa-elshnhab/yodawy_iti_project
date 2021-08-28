@@ -5,7 +5,7 @@ import 'package:flutter_app_test/layout/Product/product_detalis.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'dart:math' as math;
 
-import '../Home.dart';
+import '../HomeScreens/Home.dart';
 import 'FavData.dart';
 
 class FavPage extends StatefulWidget {

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app_test/Data/Users/userData.dart';
 
-import 'Home.dart';
+import '../HomeScreens/Home.dart';
 
 class GenderScreen extends StatefulWidget {
   @override

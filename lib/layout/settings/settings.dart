@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_app_test/Data/Users/userData.dart';
 import 'package:flutter_app_test/layout/settings/info.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import '../StartSlider.dart';
+import '../StartPages/StartSlider.dart';
 import 'location1.dart';
 
 class Settings extends StatefulWidget {
