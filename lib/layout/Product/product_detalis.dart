@@ -79,40 +79,52 @@ class _ProductDetailsState extends State<ProductDetalis> {
               ),
             ),
             actions: [
-              Padding(
-                padding: const EdgeInsets.all(10.0),
-                child: Row(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    GestureDetector(
-                      onTap: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => CartPage()));
-                      },
-                      child: Container(
-                        alignment: AlignmentDirectional.center,
-                        decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(20),
-                            color: Colors.white),
-                        child: Row(
-                          children: [
-                            Icon(
+              GestureDetector(
+                onTap: () {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => CartPage()));
+                },
+                child: Padding(
+                  padding: const EdgeInsets.all(10.0),
+                  child: Container(
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(20),
+                        color: Colors.white),
+                    child: Row(
+                      children: [
+                        Expanded(
+                          child: IconButton(
+                            icon: Icon(
                               Icons.shopping_cart_rounded,
                               color: HexColor('#22C4EC'),
-                              size: 30,
+                              size: 20,
                             ),
-                            Text(
-                              '$Qty',
-                              style: TextStyle(color: Colors.blue),
-                            )
-                          ],
+                            onPressed: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => CartPage()));
+                            },
+                          ),
                         ),
-                        width: 60,
-                      ),
+                        SizedBox(
+                          width: 5,
+                        ),
+                        (Cart.length != 0)
+                            ? Expanded(
+                                child: Text(
+                                  '${Cart.length}',
+                                  style: TextStyle(
+                                    color: Colors.blue,
+                                    fontSize: 16,
+                                  ),
+                                ),
+                              )
+                            : SizedBox(),
+                      ],
                     ),
-                  ],
+                    width: (Cart.length != 0) ? 60 : 50,
+                  ),
                 ),
               ),
             ],

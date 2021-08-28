@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_app_test/Data/Users/userData.dart';
-import 'package:flutter_app_test/layout/insurance_details.dart';
+import 'insurance_details.dart';
 import 'package:flutter_app_test/models/insurance_card.dart';
 import 'package:flutter_app_test/shared/Drower.dart';
 

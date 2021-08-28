@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_app_test/layout/insurance_holder_name.dart';
+import 'insurance_holder_name.dart';
 import 'package:flutter_app_test/models/insurance_card_details.dart';
 
 class InsuranceDetails extends StatelessWidget {

@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_app_test/layout/upload_insurance_card.dart';
+import 'upload_insurance_card.dart';
 
 
 class InsuranceHolderName extends StatefulWidget {

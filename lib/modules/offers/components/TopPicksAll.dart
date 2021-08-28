@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app_test/layout/Cart/CartData.dart';
 import 'package:flutter_app_test/layout/Product/Products.dart';
 import 'package:flutter_app_test/models/toppicksmodel.dart';
 import 'package:flutter_app_test/modules/offers/components/toppicks.dart';
@@ -39,28 +40,54 @@ class AllTopPicks extends StatelessWidget {
                 ),
               ),
               actions: [
-                Padding(
-                  padding: const EdgeInsets.all(10.0),
-                  child: Container(
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(20),
-                        color: Colors.white),
-                    child: IconButton(
-                      icon: Icon(
-                        Icons.shopping_cart_rounded,
-                        color: HexColor('#22C4EC'),
-                        size: 20,
+                GestureDetector(
+                  onTap: () {
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => CartPage()));
+                  },
+                  child: Padding(
+                    padding: const EdgeInsets.all(10.0),
+                    child: Container(
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(20),
+                          color: Colors.white),
+                      child: Row(
+                        children: [
+                          Expanded(
+                            child: IconButton(
+                              icon: Icon(
+                                Icons.shopping_cart_rounded,
+                                color: HexColor('#22C4EC'),
+                                size: 20,
+                              ),
+                              onPressed: () {
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) => CartPage()));
+                              },
+                            ),
+                          ),
+                          SizedBox(
+                            width: 5,
+                          ),
+                          (Cart.length != 0)
+                              ? Expanded(
+                            child: Text(
+                              '${Cart.length}',
+                              style: TextStyle(
+                                color: Colors.blue,
+                                fontSize: 16,
+                              ),
+                            ),
+                          )
+                              : SizedBox(),
+                        ],
                       ),
-                      onPressed: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => CartPage()));
-                      },
+                      width: (Cart.length != 0) ? 60 : 50,
                     ),
-                    width: 50,
                   ),
-                )
+                ),
               ],
             ),
           ),

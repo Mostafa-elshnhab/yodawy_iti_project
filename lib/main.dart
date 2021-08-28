@@ -1,12 +1,12 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
-import 'package:flutter_app_test/layout/Home.dart';
+import 'layout/HomeScreens/Home.dart';
 import 'Data/Users/userData.dart';
 import 'layout/Cart/CartData.dart';
 import 'layout/FavoriteItems/FavData.dart';
-import 'layout/StartSlider.dart';
-import 'layout/login.dart';
+import 'layout/StartPages/StartSlider.dart';
+import 'layout/StartPages/login.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'dart:async';

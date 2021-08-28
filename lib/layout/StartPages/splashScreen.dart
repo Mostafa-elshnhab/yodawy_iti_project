@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'dart:async';
 
-import 'package:flutter_app_test/layout/verify.dart';
+import 'verify.dart';
 
 class SplashScreen extends StatefulWidget {
 

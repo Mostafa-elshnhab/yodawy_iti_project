@@ -5,9 +5,9 @@ import 'package:flutter_app_test/shared/Doctors.dart';
 import 'package:flutter_app_test/shared/components.dart';
 import 'package:hexcolor/hexcolor.dart';
 
-import 'Insurance.dart';
-import 'Product/Products.dart';
-import 'TalkToDoctor/requestScreen.dart';
+import '../insurance/Insurance.dart';
+import '../Product/Products.dart';
+import '../TalkToDoctor/requestScreen.dart';
 
 class Medication extends StatelessWidget {
   const Medication({Key? key}) : super(key: key);

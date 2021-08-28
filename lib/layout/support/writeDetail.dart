@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_app_test/layout/login.dart';
+import '../StartPages/login.dart';
 
 class WriteScreen extends StatefulWidget {
 
