@@ -4,27 +4,23 @@ import 'dart:async';
 import 'verify.dart';
 
 class SplashScreen extends StatefulWidget {
-
-
   @override
   _MyHomePageState createState() => _MyHomePageState();
 }
 
 class _MyHomePageState extends State<SplashScreen> {
-
   _MyHomePageState();
   @override
   void initState() {
     super.initState();
     Timer(
         Duration(seconds: 3),
-        () => Navigator.pushReplacement(context,
-            MaterialPageRoute(builder: (context) => VerifyScreen())));
+        () => Navigator.pushReplacement(
+            context, MaterialPageRoute(builder: (context) => VerifyScreen())));
   }
 
   @override
   Widget build(BuildContext context) {
-
     return Container(
         color: Colors.grey.withOpacity(.8),
         child: Image.asset('assets/images/1.jpg')

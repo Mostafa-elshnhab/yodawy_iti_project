@@ -146,8 +146,10 @@ class _MyHomePageState extends State<MyHomePage> {
                         actions: [
                           GestureDetector(
                             onTap: () {
-                              Navigator.push(context,
-                                  MaterialPageRoute(builder: (context) => CartPage()));
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => CartPage()));
                             },
                             child: Padding(
                               padding: const EdgeInsets.all(10.0),
@@ -168,7 +170,8 @@ class _MyHomePageState extends State<MyHomePage> {
                                           Navigator.push(
                                               context,
                                               MaterialPageRoute(
-                                                  builder: (context) => CartPage()));
+                                                  builder: (context) =>
+                                                      CartPage()));
                                         },
                                       ),
                                     ),
@@ -177,14 +180,14 @@ class _MyHomePageState extends State<MyHomePage> {
                                     ),
                                     (Cart.length != 0)
                                         ? Expanded(
-                                      child: Text(
-                                        '${Cart.length}',
-                                        style: TextStyle(
-                                          color: Colors.blue,
-                                          fontSize: 16,
-                                        ),
-                                      ),
-                                    )
+                                            child: Text(
+                                              '${Cart.length}',
+                                              style: TextStyle(
+                                                color: Colors.blue,
+                                                fontSize: 16,
+                                              ),
+                                            ),
+                                          )
                                         : SizedBox(),
                                   ],
                                 ),
@@ -987,9 +990,11 @@ class insuranceCard extends StatelessWidget {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) =>isLoggedIn? InsuranceDetails(
-                                card: card[index].cardDetailsModel,
-                              ):InsuranceNotLogin()),
+                          builder: (context) => isLoggedIn
+                              ? InsuranceDetails(
+                                  card: card[index].cardDetailsModel,
+                                )
+                              : InsuranceNotLogin()),
                     );
                   },
                   child: Container(

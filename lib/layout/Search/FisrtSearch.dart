@@ -56,8 +56,10 @@ class _SearchState extends State<Search> {
                   actions: [
                     GestureDetector(
                       onTap: () {
-                        Navigator.push(context,
-                            MaterialPageRoute(builder: (context) => CartPage()));
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => CartPage()));
                       },
                       child: Padding(
                         padding: const EdgeInsets.all(10.0),
@@ -87,14 +89,14 @@ class _SearchState extends State<Search> {
                               ),
                               (Cart.length != 0)
                                   ? Expanded(
-                                child: Text(
-                                  '${Cart.length}',
-                                  style: TextStyle(
-                                    color: Colors.blue,
-                                    fontSize: 16,
-                                  ),
-                                ),
-                              )
+                                      child: Text(
+                                        '${Cart.length}',
+                                        style: TextStyle(
+                                          color: Colors.blue,
+                                          fontSize: 16,
+                                        ),
+                                      ),
+                                    )
                                   : SizedBox(),
                             ],
                           ),

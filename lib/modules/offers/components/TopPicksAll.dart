@@ -73,14 +73,14 @@ class AllTopPicks extends StatelessWidget {
                           ),
                           (Cart.length != 0)
                               ? Expanded(
-                            child: Text(
-                              '${Cart.length}',
-                              style: TextStyle(
-                                color: Colors.blue,
-                                fontSize: 16,
-                              ),
-                            ),
-                          )
+                                  child: Text(
+                                    '${Cart.length}',
+                                    style: TextStyle(
+                                      color: Colors.blue,
+                                      fontSize: 16,
+                                    ),
+                                  ),
+                                )
                               : SizedBox(),
                         ],
                       ),

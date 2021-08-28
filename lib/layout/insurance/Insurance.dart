@@ -11,7 +11,7 @@ class InsuranceScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      drawer: !view ? createDrawer(context,Usres.name) : null,
+      drawer: !view ? createDrawer(context, Usres.name) : null,
       appBar: PreferredSize(
         preferredSize: Size.fromHeight(60.0),
         child: Container(
