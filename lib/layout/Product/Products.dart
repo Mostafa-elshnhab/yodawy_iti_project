@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_app_test/Data/Api/Products/ProductsApiFun.dart';
 import 'package:flutter_app_test/layout/Cart/CartData.dart';
@@ -7,7 +9,6 @@ import 'package:flutter_app_test/layout/Product/pandoalData.dart';
 import 'package:flutter_app_test/layout/Product/product_detalis.dart';
 import 'package:flutter_app_test/shared/components.dart';
 import 'package:hexcolor/hexcolor.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 import 'dart:math' as math;
 
 String? text;
@@ -40,10 +41,6 @@ class _ProductsState extends State<Products> {
 
   final selected = List.filled(100, false);
   final Qty = List.filled(100, 1);
-  void saveData() async {
-    final SharedPreferences prefs = await SharedPreferences.getInstance();
-//    prefs.setStringList("key", Cart.);
-  }
 
   List<Future<List>> datafun = [
     getProductByBrandDataFB(text),
@@ -348,6 +345,7 @@ class _ProductsState extends State<Products> {
                                                           setState(() {
                                                             Cart.add(snapshot
                                                                 .data![index]);
+
                                                             isadded = true;
                                                             total = total + 1;
                                                             totalPrice +=

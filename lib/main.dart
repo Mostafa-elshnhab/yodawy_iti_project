@@ -1,11 +1,15 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_app_test/layout/Home.dart';
 import 'Data/Users/userData.dart';
+import 'layout/Cart/CartData.dart';
 import 'layout/StartSlider.dart';
 import 'layout/login.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'dart:async';
+import './models/product_model.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -45,6 +49,17 @@ class splash extends State<SplashScreen> {
     final String? name = prefs.getString('name');
     final String? gender = prefs.getString('gender');
     final List? usreData = prefs.getStringList('usredata');
+    List<Map> getMessages() {
+      List<String> messagesString = prefs.getStringList('CartData') ?? [];
+      List<Map> messages = [];
+      if (messagesString.isNotEmpty) {
+        messagesString.forEach((element) {
+          messages.add(json.decode(element));
+        });
+      }
+      return messages;
+    }
+
     if (Phone != '') {
       print(Phone);
       setState(() {
@@ -56,6 +71,8 @@ class splash extends State<SplashScreen> {
         userdata = usreData!.cast<String>();
         print('jgjhgjhgjhgjh$userdata');
         print('jgjhgjhgjhgjh$name');
+        Cart = getMessages();
+        print('cart from herrrrrr $Cart');
       });
       return;
     }
