@@ -308,123 +308,114 @@ class _SearchState extends State<Search> {
                   ],
                 ),
               )
-            : isscrlol
-                ? Center(
-                    child: CircularProgressIndicator(
-                      color: Colors.blue,
-                    ),
-                  )
-                : FutureBuilder<List>(
-                    future: getProductSerchDataFB(searchValue),
-                    builder: (context, snapshot) {
-                      print(snapshot.hasData);
+            : FutureBuilder<List>(
+                future: getProductSerchDataFB(searchValue),
+                builder: (context, snapshot) {
+                  print(snapshot.hasData);
 
-                      if (snapshot.hasData) {
-                        return ListView.separated(
-                            itemBuilder: (BuildContext context, int index) {
-                              getProductSerchDataFB(searchValue)
-                                  .then((value) => print(value.length));
-
-                              String name = snapshot.data![index]['name'];
-                              return Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  SizedBox(
-                                    height: 20,
-                                  ),
-                                  GestureDetector(
-                                    onTap: () {
-                                      Navigator.push(
-                                          context,
-                                          MaterialPageRoute(
-                                              builder: (context) =>
-                                                  Products(2, Text: name)));
-                                    },
-                                    child: Container(
-                                      child: Row(
-                                        children: [
-                                          Icon(
-                                            Icons.search_rounded,
-                                            color: Colors.grey.shade600,
-                                          ),
-                                          SizedBox(
-                                            width: 10,
-                                          ),
-                                          Expanded(
-                                            child: Text(
-                                              '$name',
-                                              maxLines: 1,
-                                              overflow: TextOverflow.ellipsis,
-                                              style: TextStyle(
-                                                  color: Colors.blue,
-                                                  fontSize: 16),
-                                            ),
-                                          ),
-                                        ],
-                                      ),
-                                    ),
-                                  ),
-                                ],
-                              );
-                            },
-                            separatorBuilder:
-                                (BuildContext context, int index) => Padding(
-                                      padding: const EdgeInsets.only(
-                                          top: 8.0, left: 8, right: 8),
-                                      child: Container(
-                                        width: double.infinity,
-                                        height: 1,
-                                        color: Colors.grey.shade300,
-                                      ),
-                                    ),
-                            itemCount: snapshot.data!.length);
-                      } else if (snapshot.hasError) {
-                        return Expanded(
-                          child: new Container(
-                            color: Colors.grey.shade200.withOpacity(0.8),
-                            child: ListView(
-                              shrinkWrap: true,
-                              children: <Widget>[
-                                Center(
-                                  child: Container(
-                                    alignment: Alignment.center,
-                                    child: Text(
-                                      "Ooooops Network Error!",
-                                      style: TextStyle(
-                                          color: Colors.blue,
-                                          fontFamily: "Cairo1",
-                                          fontSize: 40.0),
-                                    ),
-                                  ),
-                                )
-                              ],
-                            ),
+                  if (!snapshot.hasData) {
+                    return Center(
+                      child: CircularProgressIndicator(
+                        color: Colors.blue,
+                      ),
+                    );
+                  } else if (snapshot.hasError) {
+                    return Expanded(
+                      child: new Container(
+                        color: Colors.grey.shade200.withOpacity(0.8),
+                        child: ListView(
+                          shrinkWrap: true,
+                          children: <Widget>[
+                            Center(
+                              child: Container(
+                                alignment: Alignment.center,
+                                child: Text(
+                                  "Ooooops Network Error!",
+                                  style: TextStyle(
+                                      color: Colors.blue,
+                                      fontFamily: "Cairo1",
+                                      fontSize: 40.0),
+                                ),
+                              ),
+                            )
+                          ],
+                        ),
+                      ),
+                    );
+                  } else if (lenght == 0) {
+                    return Expanded(
+                      child: new Container(
+                        height: double.infinity,
+                        color: Colors.grey.shade200.withOpacity(0.8),
+                        child: Center(
+                          child: Text(
+                            "No data to Show!\n Please try another name",
+                            style: TextStyle(
+                                color: Colors.blue,
+                                fontFamily: "Cairo1",
+                                fontSize: 40.0),
                           ),
-                        );
-                      } else if (lenght == 0) {
-                        return Expanded(
-                          child: new Container(
-                            height: double.infinity,
-                            color: Colors.grey.shade200.withOpacity(0.8),
-                            child: Center(
-                              child: Text(
-                                "No data to Show!\n Please try another name",
-                                style: TextStyle(
-                                    color: Colors.blue,
-                                    fontFamily: "Cairo1",
-                                    fontSize: 40.0),
+                        ),
+                      ),
+                    );
+                  }
+                  return ListView.separated(
+                      itemBuilder: (BuildContext context, int index) {
+                        getProductSerchDataFB(searchValue)
+                            .then((value) => print(value.length));
+
+                        String name = snapshot.data![index]['name'];
+                        return Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            SizedBox(
+                              height: 20,
+                            ),
+                            GestureDetector(
+                              onTap: () {
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) =>
+                                            Products(2, Text: name)));
+                              },
+                              child: Container(
+                                child: Row(
+                                  children: [
+                                    Icon(
+                                      Icons.search_rounded,
+                                      color: Colors.grey.shade600,
+                                    ),
+                                    SizedBox(
+                                      width: 10,
+                                    ),
+                                    Expanded(
+                                      child: Text(
+                                        '$name',
+                                        maxLines: 1,
+                                        overflow: TextOverflow.ellipsis,
+                                        style: TextStyle(
+                                            color: Colors.blue, fontSize: 16),
+                                      ),
+                                    ),
+                                  ],
+                                ),
                               ),
                             ),
-                          ),
+                          ],
                         );
-                      }
-                      return Expanded(
-                        child: Center(
-                          child: Container(
-                              color: Colors.grey.withOpacity(.8),
-                              child: Image.asset('assets/images/1.jpg')),
-                        ),
-                      );
-                    }));
+                      },
+                      separatorBuilder: (BuildContext context, int index) =>
+                          Padding(
+                            padding: const EdgeInsets.only(
+                                top: 8.0, left: 8, right: 8),
+                            child: Container(
+                              width: double.infinity,
+                              height: 1,
+                              color: Colors.grey.shade300,
+                            ),
+                          ),
+                      itemCount: snapshot.data!.length);
+                }));
   }
 }

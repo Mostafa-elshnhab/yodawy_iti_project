@@ -215,6 +215,7 @@ class _ProductDetailsState extends State<ProductDetalis> {
                                         selected = !selected;
                                         print(selected);
                                         Fav.add(ProductData[indexP!]);
+                                        saveFavtData();
                                       });
                                     },
                                   )
@@ -231,6 +232,7 @@ class _ProductDetailsState extends State<ProductDetalis> {
                                           print(indexP);
                                           if (indexP == Fav[i]['_id']) {
                                             Fav.removeAt(i);
+                                            saveFavtData();
                                           }
                                         }
                                       });
@@ -338,6 +340,7 @@ class _ProductDetailsState extends State<ProductDetalis> {
                             selectedAdd = true;
                             print(selectedAdd);
                             Cart.add(pro[indexP!]);
+                            saveCartData();
                           });
                         },
                         child: Text(

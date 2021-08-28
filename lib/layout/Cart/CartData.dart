@@ -5,7 +5,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 List<dynamic> Cart = [];
 
-void saveData() async {
+void saveCartData() async {
   final SharedPreferences prefs = await SharedPreferences.getInstance();
   List<String> CartData = Cart.map((e) => json.encode(e)).toList();
   prefs.setStringList("CartData", CartData);
