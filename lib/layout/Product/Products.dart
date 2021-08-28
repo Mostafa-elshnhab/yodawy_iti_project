@@ -13,6 +13,7 @@ import 'dart:math' as math;
 
 String? text;
 int? counter;
+String? idc;
 final selectedAdd = List.filled(100, false);
 bool isadded = false;
 
@@ -21,12 +22,11 @@ List<dynamic> ProductData = [];
 class Products extends StatefulWidget {
   String? Text;
   int? Counter;
-  Products(
-    this.Counter, {
-    @required this.Text,
-  }) {
+  String? id;
+  Products(this.Counter, {@required this.Text, this.id}) {
     text = this.Text!;
     counter = this.Counter;
+    idc = this.id;
   }
 
   @override
@@ -46,6 +46,7 @@ class _ProductsState extends State<Products> {
     getProductByBrandDataFB(text),
     getProductBySubDataFB(text),
     getProductSerchDataFB(text),
+    getprouDataFB(idc),
   ];
 //  @override
 //  void initState() {
@@ -231,6 +232,7 @@ class _ProductsState extends State<Products> {
                                                                 Fav.add(snapshot
                                                                         .data![
                                                                     index]);
+                                                                saveFavtData();
                                                               });
                                                             },
                                                           )
@@ -257,6 +259,7 @@ class _ProductsState extends State<Products> {
                                                                           .id) {
                                                                     Fav.removeAt(
                                                                         i);
+                                                                    saveFavtData();
                                                                   }
                                                                 }
                                                               });
@@ -345,7 +348,7 @@ class _ProductsState extends State<Products> {
                                                           setState(() {
                                                             Cart.add(snapshot
                                                                 .data![index]);
-
+                                                            saveCartData();
                                                             isadded = true;
                                                             total = total + 1;
                                                             totalPrice +=
@@ -413,6 +416,7 @@ class _ProductsState extends State<Products> {
                                                                               '_id']) {
                                                                         Cart.removeAt(
                                                                             i);
+                                                                        saveCartData();
                                                                       }
                                                                     }
                                                                     Qty == 1;

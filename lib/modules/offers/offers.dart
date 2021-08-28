@@ -8,6 +8,9 @@ import 'package:flutter_app_test/models/toppicksmodel.dart';
 import 'package:flutter_app_test/modules/offers/components/carousel.dart';
 import 'package:flutter_app_test/modules/offers/components/offers_of_day.dart';
 import 'package:flutter_app_test/modules/offers/components/toppicks.dart';
+import 'dart:async';
+import 'dart:convert';
+import 'package:http/http.dart' as http;
 
 class Offers extends StatefulWidget {
   const Offers({Key? key}) : super(key: key);
@@ -109,29 +112,53 @@ class _OffersState extends State<Offers> {
                       SizedBox(
                         height: 10.0,
                       ),
-                      ListView.separated(
-                          physics: NeverScrollableScrollPhysics(),
-                          shrinkWrap: true,
-                          itemBuilder: (context, index) {
-                            return OffersDay(
-                                offersOfDay: offersOfDay[index],
-                                press: () {
-                                  print('${offersOfDay[index].categoryName}');
-//                                  Navigator.push(
-//                                      context,
-//                                      MaterialPageRoute(
-//                                          builder: (context) => Products(
-//                                                Text:
-//                                                    '${offersOfDay[index].categoryName}',
-//                                              )));
-                                });
-                          },
-                          separatorBuilder: (context, index) {
-                            return SizedBox(
-                              height: 10.0,
+                      FutureBuilder<List>(
+                        future: getoffDataFB(),
+                        builder: (context, snapshot) {
+                          if (!snapshot.hasData) {
+                            return Center(
+                              child: CircularProgressIndicator(
+                                color: Colors.blue,
+                              ),
                             );
-                          },
-                          itemCount: offersOfDay.length),
+                          }
+                          return ListView.separated(
+                            physics: NeverScrollableScrollPhysics(),
+                            shrinkWrap: true,
+                            itemCount: snapshot.data!.length,
+                            itemBuilder: (context, index) {
+                              return GestureDetector(
+                                onTap: () {
+                                  print(
+                                      '${snapshot.data![index]['categories'][0]['name']}');
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) => Products(
+                                                3,
+                                                Text:
+                                                    '${snapshot.data![index]['categories'][0]['name']}',
+                                                id: snapshot.data![index]
+                                                    ['categories'][0]['_id'],
+                                              )));
+                                },
+                                child: ClipRRect(
+                                  borderRadius: BorderRadius.circular(5.0),
+                                  child: Image.network(
+                                    '${snapshot.data![index]['path']}',
+                                    fit: BoxFit.cover,
+                                  ),
+                                ),
+                              );
+                            },
+                            separatorBuilder: (context, index) {
+                              return SizedBox(
+                                height: 10.0,
+                              );
+                            },
+                          );
+                        },
+                      ),
                     ],
                   ),
                 ],
@@ -142,4 +169,18 @@ class _OffersState extends State<Offers> {
       ),
     );
   }
+}
+
+Future<List> getoffDataFB() async {
+  http.Response response =
+      await http.get(Uri.parse("https://yodawy.herokuapp.com/offers"));
+  List data = json.decode(response.body);
+  return data;
+}
+
+Future<List> getAllProuDataFB() async {
+  http.Response response = await http
+      .get(Uri.parse("https://yodawy.herokuapp.com/products?_limit=400"));
+  List data = json.decode(response.body);
+  return data;
 }

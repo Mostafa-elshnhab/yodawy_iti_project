@@ -634,6 +634,7 @@ class _FavPageState extends State<FavPage> {
                 onPressed: () {
                   setState(() {
                     Fav.removeAt(index);
+                    saveFavtData();
 //          for (int i = 0; i <= pro.length; i++) {
 //            print(index);
 ////                                                                print(

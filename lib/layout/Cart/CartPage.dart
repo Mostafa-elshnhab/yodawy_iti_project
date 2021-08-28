@@ -475,6 +475,7 @@ class _CartPageState extends State<CartPage> {
                                                                           false;
                                                                       Cart.removeAt(
                                                                           index);
+                                                                      saveCartData();
                                                                       Cart[index]
                                                                           [
                                                                           'Qty'] = 1;
@@ -721,16 +722,23 @@ class _CartPageState extends State<CartPage> {
                   setState(() {
                     print('this is index $index');
                     print('this is length${pro.length}');
-                    for (int i = 0; i <= pro.length; i++) {
-                      print(" this i $i");
-                      if (Cart[index]['_id'] == pro[i]['_id']) {
+                    if (pro.length == 0) {
+                      Cart.removeAt(index);
+                      saveCartData();
+                    } else {
+                      for (int i = 0; i <= pro.length; i++) {
                         print(" this i $i");
-                        Cart.removeAt(index);
-                        selectedAdd[i] = false;
-                        isadded = false;
-                        break;
+                        if (Cart[index]['_id'] == pro[i]['_id']) {
+                          print(" this i $i");
+                          Cart.removeAt(index);
+                          saveCartData();
+                          selectedAdd[i] = false;
+                          isadded = false;
+                          break;
+                        }
                       }
                     }
+
                     Navigator.of(context).pop();
                   });
                 },

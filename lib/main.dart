@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_app_test/layout/Home.dart';
 import 'Data/Users/userData.dart';
 import 'layout/Cart/CartData.dart';
+import 'layout/FavoriteItems/FavData.dart';
 import 'layout/StartSlider.dart';
 import 'layout/login.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -49,15 +50,26 @@ class splash extends State<SplashScreen> {
     final String? name = prefs.getString('name');
     final String? gender = prefs.getString('gender');
     final List? usreData = prefs.getStringList('usredata');
-    List<Map> getMessages() {
+    List<Map> getCart() {
       List<String> messagesString = prefs.getStringList('CartData') ?? [];
-      List<Map> messages = [];
+      List<Map> CartMap = [];
       if (messagesString.isNotEmpty) {
         messagesString.forEach((element) {
-          messages.add(json.decode(element));
+          CartMap.add(json.decode(element));
         });
       }
-      return messages;
+      return CartMap;
+    }
+
+    List<Map> getfav() {
+      List<String> messagesString = prefs.getStringList('favData') ?? [];
+      List<Map> getfav = [];
+      if (messagesString.isNotEmpty) {
+        messagesString.forEach((element) {
+          getfav.add(json.decode(element));
+        });
+      }
+      return getfav;
     }
 
     if (Phone != '') {
@@ -71,7 +83,8 @@ class splash extends State<SplashScreen> {
         userdata = usreData!.cast<String>();
         print('jgjhgjhgjhgjh$userdata');
         print('jgjhgjhgjhgjh$name');
-        Cart = getMessages();
+        Cart = getCart();
+        Fav = getfav();
         print('cart from herrrrrr $Cart');
       });
       return;
