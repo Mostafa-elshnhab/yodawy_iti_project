@@ -54,6 +54,7 @@ Widget SubCategoryBul(id) {
             itemBuilder: (context, index) {
               String name = snapshot.data![index]['name'];
               String path = snapshot.data![index]['path'];
+              String id = snapshot.data![index]['_id'];
 
               return SubCategoryIteM(
                   path: path,
@@ -62,7 +63,11 @@ Widget SubCategoryBul(id) {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => Products(1, Text: name)))
+                                builder: (context) => Products(
+                                      1,
+                                      Text: name,
+                                      id: id,
+                                    )))
                       });
             });
       });

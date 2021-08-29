@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app_test/layout/FavoriteItems/FavData.dart';
 import 'package:flutter_app_test/layout/Product/pandoalData.dart';
 import 'package:flutter_app_test/layout/Product/Products.dart';
 import 'package:hexcolor/hexcolor.dart';
@@ -270,36 +271,67 @@ class _CartPageState extends State<CartPage> {
                                                 Expanded(
                                                   flex: 1,
                                                   child: Container(
-                                                    height: 30,
-                                                    alignment:
-                                                        AlignmentDirectional
-                                                            .topEnd,
-                                                    child: IconButton(
-                                                      icon: !(Cart[index]
+                                                      height: 30,
+                                                      alignment:
+                                                          AlignmentDirectional
+                                                              .topEnd,
+                                                      child: !(Cart[index]
                                                               ['selected'])
-                                                          ? Icon(
-                                                              Icons
-                                                                  .star_border_outlined,
-                                                              size: 30,
-                                                              color: HexColor(
-                                                                  '#EEAF41'),
+                                                          ? IconButton(
+                                                              icon: Icon(
+                                                                Icons
+                                                                    .star_border_outlined,
+                                                                size: 30,
+                                                                color: HexColor(
+                                                                    '#EEAF41'),
+                                                              ),
+                                                              onPressed: () {
+                                                                setState(() {
+                                                                  Cart[index][
+                                                                      'selected'] = !Cart[
+                                                                          index]
+                                                                      [
+                                                                      'selected'];
+                                                                  Fav.add(Cart[
+                                                                      index]);
+                                                                  saveFavtData();
+                                                                });
+                                                              },
                                                             )
-                                                          : Icon(
-                                                              Icons.star,
-                                                              size: 30,
-                                                              color: HexColor(
-                                                                  '#EEAF41'),
-                                                            ),
-                                                      onPressed: () {
-                                                        setState(() {
-                                                          Cart[index]
-                                                                  ['selected'] =
-                                                              !Cart[index]
-                                                                  ['selected'];
-                                                        });
-                                                      },
-                                                    ),
-                                                  ),
+                                                          : IconButton(
+                                                              icon: Icon(
+                                                                Icons.star,
+                                                                size: 30,
+                                                                color: HexColor(
+                                                                    '#EEAF41'),
+                                                              ),
+                                                              onPressed: () {
+                                                                setState(() {
+                                                                  Cart[index][
+                                                                      'selected'] = !Cart[
+                                                                          index]
+                                                                      [
+                                                                      'selected'];
+                                                                  for (int i =
+                                                                          0;
+                                                                      i <=
+                                                                          Fav.length;
+                                                                      i++) {
+                                                                    print(
+                                                                        index);
+                                                                    if (Cart[index]
+                                                                            [
+                                                                            '_id'] ==
+                                                                        Fav[i][
+                                                                            '_id']) {
+                                                                      Fav.removeAt(
+                                                                          i);
+                                                                      saveFavtData();
+                                                                    }
+                                                                  }
+                                                                });
+                                                              },
+                                                            )),
                                                 ),
                                                 Expanded(
                                                   flex: 1,

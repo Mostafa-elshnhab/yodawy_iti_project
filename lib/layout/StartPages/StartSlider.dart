@@ -69,9 +69,6 @@ class _StartSliderState extends State<StartSlider> {
               ],
 
               /// Called whenever the page in the center of the viewport changes.
-              onPageChanged: (value) {
-                print('Page changed: $value');
-              },
 
               /// Auto scroll interval.
               /// Do not auto scroll with null or 0.
