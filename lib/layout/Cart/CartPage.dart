@@ -754,21 +754,25 @@ class _CartPageState extends State<CartPage> {
                   setState(() {
                     print('this is index $index');
                     print('this is length${pro.length}');
-                    if (pro.length == 0) {
-                      Cart.removeAt(index);
-                      saveCartData();
-                    } else {
-                      for (int i = 0; i <= pro.length; i++) {
-                        print(" this i $i");
-                        if (Cart[index]['_id'] == pro[i]['_id']) {
+                    try {
+                      if (pro.length == 0) {
+                        Cart.removeAt(index);
+                        saveCartData();
+                      } else {
+                        for (int i = 0; i <= pro.length; i++) {
                           print(" this i $i");
-                          Cart.removeAt(index);
-                          saveCartData();
-                          selectedAdd[i] = false;
-                          isadded = false;
-                          break;
+                          if (Cart[index]['_id'] == pro[i]['_id']) {
+                            print(" this i $i");
+                            Cart.removeAt(index);
+                            saveCartData();
+                            selectedAdd[i] = false;
+                            isadded = false;
+                            break;
+                          }
                         }
                       }
+                    } catch (e) {
+                      Cart.removeAt(index);
                     }
 
                     Navigator.of(context).pop();
