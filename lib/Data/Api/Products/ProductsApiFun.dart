@@ -10,9 +10,9 @@ Future<List> getProductByBrandDataFB(name) async {
   return data;
 }
 
-Future<List> getProductBySubDataFB(name) async {
-  http.Response response = await http.get(Uri.parse(
-      "https://yodawy.herokuapp.com/products/?_sort=name:ASC&_where[0][sub_category.name]=$name"));
+Future<List> getProductBySubDataFB(id) async {
+  http.Response response = await http.get(
+      Uri.parse("https://yodawy.herokuapp.com/products/?sub_category=$id"));
   List data = json.decode(response.body);
   return data;
 }

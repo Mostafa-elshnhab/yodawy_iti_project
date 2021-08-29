@@ -44,7 +44,7 @@ class _ProductsState extends State<Products> {
 
   List<Future<List>> datafun = [
     getProductByBrandDataFB(text),
-    getProductBySubDataFB(text),
+    getProductBySubDataFB(idc),
     getProductSerchDataFB(text),
     getprouDataFB(idc),
   ];
@@ -254,9 +254,9 @@ class _ProductsState extends State<Products> {
                                                                         Fav.length;
                                                                     i++) {
                                                                   print(index);
-                                                                  if (index ==
-                                                                      Fav[i]
-                                                                          .id) {
+                                                                  if (id ==
+                                                                      Fav[i][
+                                                                          '_id']) {
                                                                     Fav.removeAt(
                                                                         i);
                                                                     saveFavtData();
