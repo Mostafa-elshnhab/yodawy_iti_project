@@ -95,10 +95,13 @@ class _GenderScreenState extends State<GenderScreen> {
                   margin: EdgeInsets.only(left: 15, right: 15, top: 80),
                   child: ElevatedButton(
                       onPressed: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(builder: (context) => MyHomePage()),
-                        );
+                        if (Usres.gender != '') {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => MyHomePage()),
+                          );
+                        }
                       },
                       child: Text(
                         'NEXT',

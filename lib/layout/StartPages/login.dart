@@ -160,13 +160,13 @@ class _LoginScreenState extends State<LoginScreen> {
                                   if (countNum == 10) {
                                     layer = Colors.grey.withOpacity(.8);
                                     Usres.phone = "${controlphone.text}";
+                                    Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) => SplashScreen()),
+                                    );
                                   }
                                 });
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) => SplashScreen()),
-                                );
                               }
                             },
                             child: Text(
