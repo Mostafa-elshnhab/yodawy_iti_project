@@ -118,17 +118,17 @@ class _ProductsState extends State<Products> {
 //                          bool selected = snapshot.data![index]['selected'];
                           bool? nostok = snapshot.data![index]['nostok'];
                           pro = snapshot.data!;
-                          return ListTile(
-                            selected: true,
-                            title: GestureDetector(
-                              onTap: () {
-                                Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) =>
-                                            ProductDetalis(index)));
-                              },
-                              child: Container(
+                          return GestureDetector(
+                            onTap: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) =>
+                                          ProductDetalis(index)));
+                            },
+                            child: ListTile(
+                              selected: true,
+                              title: Container(
                                 width: double.infinity,
                                 child: Row(
                                   crossAxisAlignment: CrossAxisAlignment.start,

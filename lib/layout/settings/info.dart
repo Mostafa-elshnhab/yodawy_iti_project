@@ -155,6 +155,7 @@ class _AccountInfoState extends State<AccountInfo> {
                     "Your Gender",
                   )),
                   content: Column(
+                    mainAxisSize: MainAxisSize.min,
                     children: [
                       ListTile(
                         title: const Text('Female'),

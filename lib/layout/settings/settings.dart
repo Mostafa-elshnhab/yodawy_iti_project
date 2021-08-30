@@ -98,6 +98,7 @@ class _SettingsState extends State<Settings> {
                       "Your Gender",
                     )),
                     content: Column(
+                      mainAxisSize: MainAxisSize.min,
                       children: [
                         ListTile(
                           title: const Text('English'),

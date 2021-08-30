@@ -1,29 +1,36 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app_test/layout/Cart/CartData.dart';
 import 'package:flutter_app_test/layout/FavoriteItems/FavData.dart';
-import 'package:flutter_app_test/layout/MyOrders/MyOrdersData.dart';
 import 'package:flutter_app_test/layout/Product/pandoalData.dart';
 import 'package:flutter_app_test/layout/Product/Products.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'dart:math' as math;
 
 import '../HomeScreens/Home.dart';
-import 'CartData.dart';
+import 'MyOrdersData.dart';
 
-class CartPage extends StatefulWidget {
+class MyOrdesPage extends StatefulWidget {
   @override
-  _CartPageState createState() => _CartPageState();
+  _MyOrdesPageState createState() => _MyOrdesPageState();
 }
 
-class _CartPageState extends State<CartPage> {
+class _MyOrdesPageState extends State<MyOrdesPage> {
   bool isempty = true;
   @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    print(MyOrdes);
+  }
+
+  @override
   Widget build(BuildContext context) {
-    if (Cart.length == 0) {
+    if (MyOrdes.length == 0) {
       isempty = false;
     }
     return Scaffold(
       appBar: PreferredSize(
-        preferredSize: Size.fromHeight(115.0),
+        preferredSize: Size.fromHeight(60.0),
         child: Container(
           decoration: BoxDecoration(
             gradient: LinearGradient(
@@ -44,46 +51,15 @@ class _CartPageState extends State<CartPage> {
                 backgroundColor: Colors.transparent,
                 elevation: 0,
                 leadingWidth: 30,
-//                actions: [
-//                  Padding(
-//                    padding: const EdgeInsets.all(10.0),
-//                    child: Container(
-//                      decoration: BoxDecoration(
-//                          borderRadius: BorderRadius.circular(20),
-//                          color: Colors.white),
-//                      child: IconButton(
-//                        icon: Icon(
-//                          Icons.shopping_cart_rounded,
-//                          color: HexColor('#22C4EC'),
-//                          size: 20,
-//                        ),
-//                        onPressed: () {},
-//                      ),
-//                      width: 50,
-//                    ),
-//                  )
-//                ],
+                centerTitle: true,
+                title: Text(
+                  'MyOrdes',
+                  style: TextStyle(
+                      fontSize: 20,
+                      color: Colors.white,
+                      fontWeight: FontWeight.bold),
+                ),
               ),
-              Expanded(
-                child: Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 15),
-                    child: Container(
-                      width: double.infinity,
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Text(
-                            'Your Cart',
-                            style: TextStyle(
-                                fontSize: 20,
-                                color: Colors.white,
-                                fontWeight: FontWeight.bold),
-                          )
-                        ],
-                      ),
-                    )),
-              )
             ],
           ),
         ),
@@ -96,13 +72,28 @@ class _CartPageState extends State<CartPage> {
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Icon(
-                          Icons.shopping_cart_rounded,
-                          size: 160,
-                          color: Colors.blue,
+                        Stack(
+                          alignment: AlignmentDirectional.center,
+                          children: [
+                            Icon(
+                              Icons.shopping_bag_outlined,
+                              size: 160,
+                              color: Colors.blue,
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.only(top: 40.0),
+                              child: Center(
+                                child: Text(
+                                  '!',
+                                  style: TextStyle(
+                                      fontSize: 70, color: Colors.blue),
+                                ),
+                              ),
+                            ),
+                          ],
                         ),
                         Text(
-                          'Your Cart is empty!',
+                          'No Previous Orders',
                           style: TextStyle(
                               fontSize: 18,
                               color: Colors.black,
@@ -112,7 +103,14 @@ class _CartPageState extends State<CartPage> {
                           height: 10,
                         ),
                         Text(
-                          'Explore Yodawy and start shopping now',
+                          'All your Previous Orders will be  ',
+                          style: TextStyle(fontSize: 16, color: Colors.black54),
+                        ),
+                        SizedBox(
+                          height: 4,
+                        ),
+                        Text(
+                          ' displayed here',
                           style: TextStyle(fontSize: 16, color: Colors.black54),
                         ),
                       ],
@@ -130,7 +128,7 @@ class _CartPageState extends State<CartPage> {
                                 builder: (context) => MyHomePage()));
                       },
                       child: Text(
-                        'EXPLORE YODAWY',
+                        'START ORDERING',
                         style: TextStyle(
                           fontSize: 20,
                           color: Colors.white,
@@ -149,22 +147,6 @@ class _CartPageState extends State<CartPage> {
               padding: EdgeInsetsDirectional.all(20),
               child: Column(
                 children: [
-                  Row(
-                    children: [
-                      Icon(
-                        Icons.access_time_rounded,
-                        color: Colors.blue,
-                        size: 24,
-                      ),
-                      Text(
-                        ' Deliviry within 1 hour',
-                        style: TextStyle(
-                            color: Colors.black,
-                            fontSize: 16,
-                            fontWeight: FontWeight.w600),
-                      )
-                    ],
-                  ),
                   SizedBox(
                     height: 4,
                   ),
@@ -177,7 +159,8 @@ class _CartPageState extends State<CartPage> {
                                 onTap: () {
                                   int? pointer;
                                   for (int i = 0; i <= pro.length; i++) {
-                                    if (Cart[index]['_id'] == pro[i]['_id']) {
+                                    if (MyOrdes[index]['_id'] ==
+                                        pro[i]['_id']) {
                                       pointer = i;
                                     }
                                   }
@@ -204,12 +187,12 @@ class _CartPageState extends State<CartPage> {
                                                 alignment:
                                                     AlignmentDirectional.center,
                                                 child: Image.network(
-                                                  '${Cart[index]['path']}',
+                                                  '${MyOrdes[index]['path']}',
                                                   height: 90,
                                                   width: 80,
                                                 ),
                                               ),
-                                              Cart[index]['nostok']
+                                              MyOrdes[0]['nostok']
                                                   ? Text('')
                                                   : Transform.rotate(
                                                       angle: -math.pi / 4,
@@ -222,14 +205,15 @@ class _CartPageState extends State<CartPage> {
                                                                     .center,
                                                             height: 20,
 //                                        width: 95,
-                                                            color: Cart[index]
+                                                            color: MyOrdes[
+                                                                        index]
                                                                     ['stock']
                                                                 ? HexColor(
                                                                     '#FE4646')
                                                                 : HexColor(
                                                                     '#9D9D9D'),
                                                             child: Text(
-                                                              Cart[index]
+                                                              MyOrdes[index]
                                                                       ['stock']
                                                                   ? 'Low Stock'
                                                                   : 'Out of Stock',
@@ -260,7 +244,7 @@ class _CartPageState extends State<CartPage> {
                                                 Expanded(
                                                   flex: 3,
                                                   child: Text(
-                                                    '${(Cart[index]['name']).toUpperCase()}',
+                                                    '${(MyOrdes[index]['name']).toUpperCase()}',
                                                     style: TextStyle(
                                                         color: Colors.black,
                                                         fontSize: 18),
@@ -276,7 +260,7 @@ class _CartPageState extends State<CartPage> {
                                                       alignment:
                                                           AlignmentDirectional
                                                               .topEnd,
-                                                      child: !(Cart[index]
+                                                      child: !(MyOrdes[index]
                                                               ['selected'])
                                                           ? IconButton(
                                                               icon: Icon(
@@ -288,12 +272,13 @@ class _CartPageState extends State<CartPage> {
                                                               ),
                                                               onPressed: () {
                                                                 setState(() {
-                                                                  Cart[index][
-                                                                      'selected'] = !Cart[
+                                                                  MyOrdes[index]
+                                                                      [
+                                                                      'selected'] = !MyOrdes[
                                                                           index]
                                                                       [
                                                                       'selected'];
-                                                                  Fav.add(Cart[
+                                                                  Fav.add(MyOrdes[
                                                                       index]);
                                                                   saveFavtData();
                                                                 });
@@ -308,8 +293,9 @@ class _CartPageState extends State<CartPage> {
                                                               ),
                                                               onPressed: () {
                                                                 setState(() {
-                                                                  Cart[index][
-                                                                      'selected'] = !Cart[
+                                                                  MyOrdes[index]
+                                                                      [
+                                                                      'selected'] = !MyOrdes[
                                                                           index]
                                                                       [
                                                                       'selected'];
@@ -320,7 +306,7 @@ class _CartPageState extends State<CartPage> {
                                                                       i++) {
                                                                     print(
                                                                         index);
-                                                                    if (Cart[index]
+                                                                    if (MyOrdes[index]
                                                                             [
                                                                             '_id'] ==
                                                                         Fav[i][
@@ -346,7 +332,7 @@ class _CartPageState extends State<CartPage> {
                                                         showAlertDialog(
                                                             context,
                                                             index,
-                                                            Cart[index]
+                                                            MyOrdes[index]
                                                                 ['name']);
                                                       },
                                                       icon: Icon(
@@ -362,7 +348,7 @@ class _CartPageState extends State<CartPage> {
                                               ],
                                             ),
                                             Text(
-                                              '${Cart[index]['form']}',
+                                              '${MyOrdes[index]['form']}',
                                               style: TextStyle(
                                                   color: Colors.black,
                                                   fontSize: 13),
@@ -371,7 +357,7 @@ class _CartPageState extends State<CartPage> {
                                               height: 3,
                                             ),
                                             Text(
-                                              'EGP ${Cart[index]['price']}',
+                                              'EGP ${MyOrdes[index]['price']}',
                                               style: TextStyle(
                                                 fontSize: 18,
                                                 fontWeight: FontWeight.w900,
@@ -381,9 +367,10 @@ class _CartPageState extends State<CartPage> {
                                             SizedBox(
                                               height: 3.5,
                                             ),
-                                            !(!Cart[index]['nostok'] &&
-                                                    (Cart[index]['stock'] ||
-                                                        !Cart[index]['stock']))
+                                            !(!MyOrdes[index]['nostok'] &&
+                                                    (MyOrdes[index]['stock'] ||
+                                                        !MyOrdes[index]
+                                                            ['stock']))
                                                 ? Row(
                                                     children: [
                                                       Icon(
@@ -418,10 +405,12 @@ class _CartPageState extends State<CartPage> {
                                             SizedBox(
                                               height: 3.5,
                                             ),
-                                            !(!Cart[index]['nostok'] &&
-                                                    (Cart[index]['stock'] ||
-                                                        !Cart[index]['stock']))
-                                                ? !(Cart[index]['selectedAdd'])
+                                            !(!MyOrdes[index]['nostok'] &&
+                                                    (MyOrdes[index]['stock'] ||
+                                                        !MyOrdes[index]
+                                                            ['stock']))
+                                                ? !(MyOrdes[index]
+                                                        ['selectedAdd'])
                                                     ? Container(
                                                         width: 100,
                                                         height: 35,
@@ -456,11 +445,14 @@ class _CartPageState extends State<CartPage> {
 //                                                              print(total);
 //                                                      print(
 //                                                          pro[index].quantity);
-
-                                                              Cart[index][
-                                                                  'selectedAdd'] = !Cart[
-                                                                      index][
-                                                                  'selectedAdd'];
+                                                              Cart.add(MyOrdes[
+                                                                  index]);
+                                                              MyOrdes[index][
+                                                                      'selectedAdd'] =
+                                                                  !MyOrdes[
+                                                                          index]
+                                                                      [
+                                                                      'selectedAdd'];
                                                             });
                                                           },
                                                         ),
@@ -499,31 +491,31 @@ class _CartPageState extends State<CartPage> {
 //                                                                      isadded =
 //                                                                          false;
 
-                                                                    if (Cart[index]
+                                                                    if (MyOrdes[index]
                                                                             .quantity <
                                                                         1) {
-                                                                      Cart[index]
+                                                                      MyOrdes[index]
                                                                               [
                                                                               'selectedAdd'] =
                                                                           false;
-                                                                      Cart.removeAt(
+                                                                      MyOrdes.removeAt(
                                                                           index);
-                                                                      saveCartData();
-                                                                      Cart[index]
+                                                                      saveMyOrdesData();
+                                                                      MyOrdes[index]
                                                                           [
                                                                           'Qty'] = 1;
-                                                                    } else if (Cart[index]
+                                                                    } else if (MyOrdes[index]
                                                                             [
                                                                             'Qty'] ==
                                                                         1) {
                                                                       showAlertDialog(
                                                                           context,
                                                                           index,
-                                                                          Cart[index]
+                                                                          MyOrdes[index]
                                                                               [
                                                                               'name']);
                                                                     } else {
-                                                                      Cart[index]
+                                                                      MyOrdes[index]
                                                                           [
                                                                           'Qty']--;
                                                                       for (int i =
@@ -534,8 +526,8 @@ class _CartPageState extends State<CartPage> {
                                                                         print(
                                                                             index);
 //                                                                print(
-//                                                                    Cart[i].id);
-                                                                        if (Cart[index]['_id'] ==
+//                                                                    MyOrdes[i].id);
+                                                                        if (MyOrdes[index]['_id'] ==
                                                                             pro[i]['_id']) {
                                                                           pro[i]
                                                                               [
@@ -557,7 +549,7 @@ class _CartPageState extends State<CartPage> {
                                                                 color: HexColor(
                                                                     '#FF9D46'),
                                                                 child: Text(
-                                                                  '${Cart[index]['Qty']}',
+                                                                  '${MyOrdes[index]['Qty']}',
                                                                   style: TextStyle(
                                                                       color: Colors
                                                                           .white),
@@ -578,7 +570,8 @@ class _CartPageState extends State<CartPage> {
 //                                                                            .price;
 //                                                                    print(
 //                                                                        totalPrice);
-                                                                    Cart[index][
+                                                                    MyOrdes[index]
+                                                                        [
                                                                         'Qty']++;
                                                                     for (int i =
                                                                             0;
@@ -588,8 +581,8 @@ class _CartPageState extends State<CartPage> {
                                                                       print(
                                                                           index);
 //                                                                print(
-//                                                                    Cart[i].id);
-                                                                      if (Cart[index]
+//                                                                    MyOrdes[i].id);
+                                                                      if (MyOrdes[index]
                                                                               [
                                                                               '_id'] ==
                                                                           pro[i]
@@ -631,9 +624,9 @@ class _CartPageState extends State<CartPage> {
                                                       ),
                                                       onPressed: () {
                                                         setState(() {
-                                                          Cart[index][
+                                                          MyOrdes[index][
                                                                   'selectedAdd'] =
-                                                              !Cart[index][
+                                                              !MyOrdes[index][
                                                                   'selectedAdd'];
                                                         });
                                                       },
@@ -653,7 +646,7 @@ class _CartPageState extends State<CartPage> {
                               endIndent: 15,
                               indent: 15,
                             ),
-                        itemCount: Cart.length),
+                        itemCount: MyOrdes.length),
                   ),
                   Container(
                     height: 120,
@@ -675,15 +668,11 @@ class _CartPageState extends State<CartPage> {
                               minWidth: double.infinity,
                               onPressed: () {
                                 setState(() {
-                                  for (int i = 0; i < Cart.length; i++) {
-                                    MyOrdes.add(Cart[i]);
-                                  }
-                                  saveMyOrdesData();
-                                  Cart.clear();
+                                  MyOrdes.clear();
                                 });
                               },
                               child: Text(
-                                'CHECKOUT',
+                                'DELETE ALL',
                                 style: TextStyle(
                                   color: Colors.white,
                                   fontSize: 20,
@@ -731,7 +720,7 @@ class _CartPageState extends State<CartPage> {
             height: 12,
           ),
           Text(
-            'Remove item From Cart',
+            'Remove item From MyOrdes',
             style: TextStyle(
                 fontSize: 18, fontWeight: FontWeight.bold, color: Colors.black),
           ),
@@ -746,7 +735,7 @@ class _CartPageState extends State<CartPage> {
             height: 8,
           ),
           Text(
-            '$name from cart?',
+            '$name from MyOrdes?',
             style: TextStyle(fontSize: 14, color: Colors.black54),
           ),
           SizedBox(
@@ -763,15 +752,15 @@ class _CartPageState extends State<CartPage> {
                     print('this is length${pro.length}');
                     try {
                       if (pro.length == 0) {
-                        Cart.removeAt(index);
-                        saveCartData();
+                        MyOrdes.removeAt(index);
+                        saveMyOrdesData();
                       } else {
                         for (int i = 0; i <= pro.length; i++) {
                           print(" this i $i");
-                          if (Cart[index]['_id'] == pro[i]['_id']) {
+                          if (MyOrdes[index]['_id'] == pro[i]['_id']) {
                             print(" this i $i");
-                            Cart.removeAt(index);
-                            saveCartData();
+                            MyOrdes.removeAt(index);
+                            saveMyOrdesData();
                             selectedAdd[i] = false;
                             isadded = false;
                             break;
@@ -779,8 +768,8 @@ class _CartPageState extends State<CartPage> {
                         }
                       }
                     } catch (e) {
-                      Cart.removeAt(index);
-                      saveCartData();
+                      MyOrdes.removeAt(index);
+                      saveMyOrdesData();
                     }
 
                     Navigator.of(context).pop();
