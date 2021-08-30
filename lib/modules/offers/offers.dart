@@ -1,12 +1,8 @@
-import 'package:carousel_pro_nullsafety/carousel_pro_nullsafety.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_app_test/layout/Product/Products.dart';
 import 'components/TopPicksAll.dart';
-import 'package:flutter_app_test/models/carouselmodel.dart';
-import 'package:flutter_app_test/models/offersofday.dart';
 import 'package:flutter_app_test/models/toppicksmodel.dart';
 import 'package:flutter_app_test/modules/offers/components/carousel.dart';
-import 'package:flutter_app_test/modules/offers/components/offers_of_day.dart';
 import 'package:flutter_app_test/modules/offers/components/toppicks.dart';
 import 'dart:async';
 import 'dart:convert';

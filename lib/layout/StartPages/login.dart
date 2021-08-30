@@ -2,8 +2,6 @@ import 'package:country_list_pick/country_list_pick.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_app_test/Data/Users/userData.dart';
 import 'splashScreen.dart';
-// import 'package:intl_phone_field/intl_phone_field.dart';
-// import 'package:intl_phone_number_input/intl_phone_number_input.dart';
 
 class LoginScreen extends StatefulWidget {
   @override

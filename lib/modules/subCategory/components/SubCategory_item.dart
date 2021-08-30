@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_app_test/models/category_model.dart';
 
 class SubCategoryIteM extends StatelessWidget {
   final String path;

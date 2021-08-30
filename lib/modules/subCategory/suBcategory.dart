@@ -3,9 +3,6 @@ import 'package:flutter_app_test/Data/Api/SubCategory/SubCategBrandsApi.dart';
 import 'package:flutter_app_test/Data/Api/SubCategory/subCategbradFutBuild.dart';
 import 'package:flutter_app_test/Data/Api/SubCategory/subCategoryApi.dart';
 import 'package:flutter_app_test/Data/Api/SubCategory/subCtegoryFuterBuilder.dart';
-import 'package:flutter_app_test/layout/Product/Products.dart';
-import 'package:flutter_app_test/models/brand_model.dart';
-import 'package:flutter_app_test/models/category_model.dart';
 import 'package:flutter_app_test/modules/brands/brandspage.dart';
 import 'package:flutter_app_test/shared/components.dart';
 

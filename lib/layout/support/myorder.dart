@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_app_test/modules/offers/components/carousel.dart';
 
 class MyOrderScreen extends StatefulWidget {
   @override

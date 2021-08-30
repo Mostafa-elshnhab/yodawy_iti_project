@@ -1,6 +1,5 @@
 import 'package:carousel_pro_nullsafety/carousel_pro_nullsafety.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_app_test/layout/Product/Products.dart';
 import 'package:flutter_app_test/models/carouselmodel.dart';
 
 class CarouselItem extends StatelessWidget {

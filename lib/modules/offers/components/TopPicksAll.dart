@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app_test/layout/Cart/CartData.dart';
-import 'package:flutter_app_test/layout/Product/Products.dart';
 import 'package:flutter_app_test/models/toppicksmodel.dart';
 import 'package:flutter_app_test/modules/offers/components/toppicks.dart';
 import 'package:hexcolor/hexcolor.dart';

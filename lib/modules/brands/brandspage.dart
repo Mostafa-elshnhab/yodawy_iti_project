@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app_test/Data/Api/SubCategory/SubCategBrandsApi.dart';
-import 'package:flutter_app_test/models/brands_page.dart';
 import 'package:flutter_app_test/modules/brands/components/brandpageitem.dart';
 import 'package:flutter_app_test/shared/components.dart';
 
@@ -42,8 +41,7 @@ class _BrandsPageState extends State<BrandsPage> {
                       itemBuilder: (context, index) {
                         String path = snapshot.data![index]['path'];
                         return BrandPageItem(
-                            path: path,
-                            press: () => print('${brandPage[index].title}'));
+                            path: path, press: () => print(''));
                       });
                 } else if (snapshot.hasError) {
                   return Expanded(

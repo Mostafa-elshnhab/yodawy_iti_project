@@ -3,7 +3,6 @@ import 'package:flutter_app_test/Data/Api/Products/ProductsApiFun.dart';
 import 'package:flutter_app_test/layout/Cart/CartData.dart';
 import 'package:flutter_app_test/layout/Cart/CartPage.dart';
 import 'package:flutter_app_test/layout/Product/Products.dart';
-import 'package:flutter_app_test/shared/components.dart';
 import 'package:hexcolor/hexcolor.dart';
 
 class Search extends StatefulWidget {

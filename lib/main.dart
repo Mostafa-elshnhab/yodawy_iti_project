@@ -9,6 +9,7 @@ import 'layout/StartPages/StartSlider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'dart:async';
+
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
@@ -68,6 +69,7 @@ class splash extends State<SplashScreen> {
       }
       return getfav;
     }
+
     List<Map> getOrder() {
       List<String> messagesString = prefs.getStringList('MyOrdesData') ?? [];
       List<Map> getOrder = [];
@@ -92,7 +94,7 @@ class splash extends State<SplashScreen> {
         print('jgjhgjhgjhgjh$name');
         Cart = getCart();
         Fav = getfav();
-        MyOrdes =getOrder();
+        MyOrdes = getOrder();
       });
       return;
     }

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_app_test/models/brand_model.dart';
 
 class BrandItem extends StatelessWidget {
   final String path;

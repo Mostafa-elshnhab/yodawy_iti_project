@@ -1,8 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_app_test/Data/Api/SubCategory/subCategoryApi.dart';
 import 'package:flutter_app_test/layout/Product/Products.dart';
-import 'package:flutter_app_test/modules/subCategory/components/SubCategory_item.dart';
 import 'package:flutter_app_test/modules/subCategory/components/brand_item.dart';
 
 import 'SubCategBrandsApi.dart';
