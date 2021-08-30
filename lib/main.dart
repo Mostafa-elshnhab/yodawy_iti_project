@@ -1,17 +1,14 @@
 import 'dart:convert';
-
 import 'package:flutter/material.dart';
+import 'package:flutter_app_test/layout/MyOrders/MyOrdersData.dart';
 import 'layout/HomeScreens/Home.dart';
 import 'Data/Users/userData.dart';
 import 'layout/Cart/CartData.dart';
 import 'layout/FavoriteItems/FavData.dart';
 import 'layout/StartPages/StartSlider.dart';
-import 'layout/StartPages/login.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'dart:async';
-import './models/product_model.dart';
-
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
@@ -71,6 +68,16 @@ class splash extends State<SplashScreen> {
       }
       return getfav;
     }
+    List<Map> getOrder() {
+      List<String> messagesString = prefs.getStringList('MyOrdesData') ?? [];
+      List<Map> getOrder = [];
+      if (messagesString.isNotEmpty) {
+        messagesString.forEach((element) {
+          getOrder.add(json.decode(element));
+        });
+      }
+      return getOrder;
+    }
 
     if (Phone != '') {
       print(Phone);
@@ -85,7 +92,7 @@ class splash extends State<SplashScreen> {
         print('jgjhgjhgjhgjh$name');
         Cart = getCart();
         Fav = getfav();
-        print('cart from herrrrrr $Cart');
+        MyOrdes =getOrder();
       });
       return;
     }
