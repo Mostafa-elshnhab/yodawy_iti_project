@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app_test/layout/BuyAgain/buyAgainPage.dart';
 import 'package:flutter_app_test/layout/FavoriteItems/FavPage.dart';
 import 'package:flutter_app_test/layout/MyOrders/MyOrdersPage.dart';
 import 'package:flutter_app_test/layout/settings/settings.dart';
@@ -64,10 +65,8 @@ Widget createDrawer(context, name) {
                         fontWeight: FontWeight.bold),
                   ),
                   onTap: () {
-                    // Update the state of the app
-                    // ...
-                    // Then close the drawer
-                    Navigator.pop(context);
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => BuyAgain()));
                   },
                 ),
                 ListTile(
