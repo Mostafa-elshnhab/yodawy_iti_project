@@ -42,20 +42,24 @@ class _VouchersState extends State<Vouchers> {
                 backgroundColor: Colors.transparent,
                 elevation: 0,
                 centerTitle: true,
-                title: Text(
-                  ''
-                ),
+                title: Text(''),
               ),
               Padding(
                 padding: const EdgeInsets.only(left: 15.0),
                 child: Text(
                   'Vouchers',
-                  style: TextStyle(fontSize: 24.0, fontWeight: FontWeight.bold , color: Colors.white),
+                  style: TextStyle(
+                      fontSize: 24.0,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.white),
                 ),
               ),
               Padding(
                 padding: const EdgeInsets.only(left: 15.0),
-                child: Text('Select voucher to redeem' , style: TextStyle(color: Colors.white , fontSize: 18.0),),
+                child: Text(
+                  'Select voucher to redeem',
+                  style: TextStyle(color: Colors.white, fontSize: 18.0),
+                ),
               ),
             ],
           ),
@@ -71,17 +75,17 @@ class _VouchersState extends State<Vouchers> {
                 height: 250.0,
                 child: Center(
                   child: Container(
-                    width: (MediaQuery.of(context).size.width) - 50.0 ,
+                    width: (MediaQuery.of(context).size.width) - 50.0,
                     height: 200.0,
                     color: voucherBody,
                     child: GestureDetector(
-                      onTap: (){
-                          setState(() {
-                            mainColor = Colors.white;
-                            starColor = Colors.white;
-                            voucherBody = Colors.blue[700];
-                            btnColor = Colors.orange;
-                          });
+                      onTap: () {
+                        setState(() {
+                          mainColor = Colors.white;
+                          starColor = Colors.white;
+                          voucherBody = Colors.blue[700];
+                          btnColor = Colors.orange;
+                        });
                         print('Voucher Clicked');
                       },
                       child: Padding(
@@ -92,71 +96,85 @@ class _VouchersState extends State<Vouchers> {
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
                                 Icon(
-                                    Icons.star,
+                                  Icons.star,
                                   size: 10.0,
                                   color: mainColor,
                                 ),
-                                SizedBox(width: 15.0,),
+                                SizedBox(
+                                  width: 15.0,
+                                ),
                                 Icon(
                                   Icons.star,
                                   size: 10.0,
                                   color: mainColor,
                                 ),
-                                SizedBox(width: 15.0,),
+                                SizedBox(
+                                  width: 15.0,
+                                ),
                                 Icon(
                                   Icons.star,
                                   size: 10.0,
                                   color: mainColor,
                                 ),
-                                SizedBox(width: 15.0,),
+                                SizedBox(
+                                  width: 15.0,
+                                ),
                                 Icon(
                                   Icons.star,
                                   size: 10.0,
                                   color: mainColor,
                                 ),
-                                SizedBox(width: 15.0,),
+                                SizedBox(
+                                  width: 15.0,
+                                ),
                                 Icon(
                                   Icons.star,
                                   size: 10.0,
                                   color: mainColor,
                                 ),
-                                SizedBox(width: 15.0,),
+                                SizedBox(
+                                  width: 15.0,
+                                ),
                                 Icon(
                                   Icons.star,
                                   size: 10.0,
                                   color: mainColor,
                                 ),
-                                SizedBox(width: 15.0,),
+                                SizedBox(
+                                  width: 15.0,
+                                ),
                                 Icon(
                                   Icons.star,
                                   size: 10.0,
                                   color: mainColor,
                                 ),
-                                SizedBox(width: 15.0,),
+                                SizedBox(
+                                  width: 15.0,
+                                ),
                                 Icon(
                                   Icons.star,
                                   size: 10.0,
                                   color: mainColor,
                                 ),
-                                SizedBox(width: 15.0,),
+                                SizedBox(
+                                  width: 15.0,
+                                ),
                                 Icon(
                                   Icons.star,
                                   size: 10.0,
                                   color: mainColor,
                                 ),
-                                SizedBox(width: 15.0,),
+                                SizedBox(
+                                  width: 15.0,
+                                ),
                                 Icon(
                                   Icons.star,
                                   size: 10.0,
                                   color: mainColor,
                                 ),
-                                SizedBox(width: 15.0,),
-                                Icon(
-                                  Icons.star,
-                                  size: 10.0,
-                                  color: mainColor,
+                                SizedBox(
+                                  width: 15.0,
                                 ),
-                                SizedBox(width: 15.0,),
                                 Icon(
                                   Icons.star,
                                   size: 10.0,
@@ -164,24 +182,30 @@ class _VouchersState extends State<Vouchers> {
                                 ),
                               ],
                             ),
-                            SizedBox(height: 15.0,),
+                            SizedBox(
+                              height: 15.0,
+                            ),
                             Row(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
                                 Icon(
-                                    Icons.star,
+                                  Icons.star,
                                   color: starColor,
                                   size: 35.0,
                                 ),
-                                SizedBox(width: 10.0,),
+                                SizedBox(
+                                  width: 10.0,
+                                ),
                                 Text(
-                                    'EGP 30',
+                                  'EGP 30',
                                   style: TextStyle(
                                     fontSize: 45.0,
                                     color: mainColor,
                                   ),
                                 ),
-                                SizedBox(width: 10.0,),
+                                SizedBox(
+                                  width: 10.0,
+                                ),
                                 Icon(
                                   Icons.star,
                                   color: starColor,
@@ -189,7 +213,9 @@ class _VouchersState extends State<Vouchers> {
                                 ),
                               ],
                             ),
-                            SizedBox(height: 5.0,),
+                            SizedBox(
+                              height: 5.0,
+                            ),
                             Row(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
@@ -201,13 +227,17 @@ class _VouchersState extends State<Vouchers> {
                                       color: mainColor,
                                       width: 30.0,
                                     ),
-                                    SizedBox(height: 5.0,),
+                                    SizedBox(
+                                      height: 5.0,
+                                    ),
                                     Container(
                                       height: 2.0,
                                       color: mainColor,
                                       width: 40.0,
                                     ),
-                                    SizedBox(height: 5.0,),
+                                    SizedBox(
+                                      height: 5.0,
+                                    ),
                                     Container(
                                       height: 2.0,
                                       color: mainColor,
@@ -215,15 +245,19 @@ class _VouchersState extends State<Vouchers> {
                                     ),
                                   ],
                                 ),
-                                SizedBox(width: 15.0,),
+                                SizedBox(
+                                  width: 15.0,
+                                ),
                                 Text(
-                                    'Voucher',
+                                  'Voucher',
                                   style: TextStyle(
                                     fontSize: 28.0,
                                     color: mainColor,
                                   ),
                                 ),
-                                SizedBox(width: 15.0,),
+                                SizedBox(
+                                  width: 15.0,
+                                ),
                                 Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
@@ -232,13 +266,17 @@ class _VouchersState extends State<Vouchers> {
                                       color: mainColor,
                                       width: 30.0,
                                     ),
-                                    SizedBox(height: 5.0,),
+                                    SizedBox(
+                                      height: 5.0,
+                                    ),
                                     Container(
                                       height: 2.0,
                                       color: mainColor,
                                       width: 40.0,
                                     ),
-                                    SizedBox(height: 5.0,),
+                                    SizedBox(
+                                      height: 5.0,
+                                    ),
                                     Container(
                                       height: 2.0,
                                       color: mainColor,
@@ -248,10 +286,22 @@ class _VouchersState extends State<Vouchers> {
                                 ),
                               ],
                             ),
-                            SizedBox(height: 5.0,),
-                            Text('This Voucher Expires on' , style: TextStyle(color: mainColor , fontSize: 12.0),),
-                            Text('1 January 2022' , style: TextStyle(color: mainColor , fontSize: 12.0),),
-                            SizedBox(height: 5.0,),
+                            SizedBox(
+                              height: 5.0,
+                            ),
+                            Text(
+                              'This Voucher Expires on',
+                              style:
+                                  TextStyle(color: mainColor, fontSize: 12.0),
+                            ),
+                            Text(
+                              '1 January 2022',
+                              style:
+                                  TextStyle(color: mainColor, fontSize: 12.0),
+                            ),
+                            SizedBox(
+                              height: 5.0,
+                            ),
                             Row(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
@@ -260,67 +310,81 @@ class _VouchersState extends State<Vouchers> {
                                   size: 10.0,
                                   color: mainColor,
                                 ),
-                                SizedBox(width: 15.0,),
+                                SizedBox(
+                                  width: 15.0,
+                                ),
                                 Icon(
                                   Icons.star,
                                   size: 10.0,
                                   color: mainColor,
                                 ),
-                                SizedBox(width: 15.0,),
+                                SizedBox(
+                                  width: 15.0,
+                                ),
                                 Icon(
                                   Icons.star,
                                   size: 10.0,
                                   color: mainColor,
                                 ),
-                                SizedBox(width: 15.0,),
+                                SizedBox(
+                                  width: 15.0,
+                                ),
                                 Icon(
                                   Icons.star,
                                   size: 10.0,
                                   color: mainColor,
                                 ),
-                                SizedBox(width: 15.0,),
+                                SizedBox(
+                                  width: 15.0,
+                                ),
                                 Icon(
                                   Icons.star,
                                   size: 10.0,
                                   color: mainColor,
                                 ),
-                                SizedBox(width: 15.0,),
+                                SizedBox(
+                                  width: 15.0,
+                                ),
                                 Icon(
                                   Icons.star,
                                   size: 10.0,
                                   color: mainColor,
                                 ),
-                                SizedBox(width: 15.0,),
+                                SizedBox(
+                                  width: 15.0,
+                                ),
                                 Icon(
                                   Icons.star,
                                   size: 10.0,
                                   color: mainColor,
                                 ),
-                                SizedBox(width: 15.0,),
+                                SizedBox(
+                                  width: 15.0,
+                                ),
                                 Icon(
                                   Icons.star,
                                   size: 10.0,
                                   color: mainColor,
                                 ),
-                                SizedBox(width: 15.0,),
+                                SizedBox(
+                                  width: 15.0,
+                                ),
                                 Icon(
                                   Icons.star,
                                   size: 10.0,
                                   color: mainColor,
                                 ),
-                                SizedBox(width: 15.0,),
+                                SizedBox(
+                                  width: 15.0,
+                                ),
                                 Icon(
                                   Icons.star,
                                   size: 10.0,
                                   color: mainColor,
                                 ),
-                                SizedBox(width: 15.0,),
-                                Icon(
-                                  Icons.star,
-                                  size: 10.0,
-                                  color: mainColor,
+                                SizedBox(
+                                  width: 15.0,
                                 ),
-                                SizedBox(width: 15.0,),
                                 Icon(
                                   Icons.star,
                                   size: 10.0,
@@ -346,27 +410,37 @@ class _VouchersState extends State<Vouchers> {
                           backgroundColor: Colors.white,
                           radius: 12.0,
                         ),
-                        SizedBox(height: 10.0,),
+                        SizedBox(
+                          height: 10.0,
+                        ),
                         CircleAvatar(
                           backgroundColor: Colors.white,
                           radius: 12.0,
                         ),
-                        SizedBox(height: 10.0,),
+                        SizedBox(
+                          height: 10.0,
+                        ),
                         CircleAvatar(
                           backgroundColor: Colors.white,
                           radius: 21.0,
                         ),
-                        SizedBox(height: 10.0,),
+                        SizedBox(
+                          height: 10.0,
+                        ),
                         CircleAvatar(
                           backgroundColor: Colors.white,
                           radius: 12.0,
                         ),
-                        SizedBox(height: 10.0,),
+                        SizedBox(
+                          height: 10.0,
+                        ),
                         CircleAvatar(
                           backgroundColor: Colors.white,
                           radius: 12.0,
                         ),
-                        SizedBox(height: 10.0,),
+                        SizedBox(
+                          height: 10.0,
+                        ),
                       ],
                     ),
                   ),
@@ -378,27 +452,37 @@ class _VouchersState extends State<Vouchers> {
                           backgroundColor: Colors.white,
                           radius: 12.0,
                         ),
-                        SizedBox(height: 10.0,),
+                        SizedBox(
+                          height: 10.0,
+                        ),
                         CircleAvatar(
                           backgroundColor: Colors.white,
                           radius: 12.0,
                         ),
-                        SizedBox(height: 10.0,),
+                        SizedBox(
+                          height: 10.0,
+                        ),
                         CircleAvatar(
                           backgroundColor: Colors.white,
                           radius: 21.0,
                         ),
-                        SizedBox(height: 10.0,),
+                        SizedBox(
+                          height: 10.0,
+                        ),
                         CircleAvatar(
                           backgroundColor: Colors.white,
                           radius: 12.0,
                         ),
-                        SizedBox(height: 10.0,),
+                        SizedBox(
+                          height: 10.0,
+                        ),
                         CircleAvatar(
                           backgroundColor: Colors.white,
                           radius: 12.0,
                         ),
-                        SizedBox(height: 10.0,),
+                        SizedBox(
+                          height: 10.0,
+                        ),
                       ],
                     ),
                   ),
@@ -411,66 +495,80 @@ class _VouchersState extends State<Vouchers> {
               padding: const EdgeInsets.all(20.0),
               child: MaterialButton(
                 onPressed: () {
-                  if(btnColor == Colors.grey)
-                    {
-                      return;
-                    }
-                  else{
-                    showDialog(context: context, builder: (context) => Center(
-                      child: Container(
-                        height: 325.0,
-                        child: AlertDialog(
-                          content: Column(
-                            children: [
-                              Icon(
-                                Icons.check_circle_outline_rounded,
-                                color: Colors.green,
-                                size: 60.0,
-                              ),
-                              SizedBox(height: 10.0,),
-                              Text(
-                                'Success!',
-                                style: TextStyle(fontWeight: FontWeight.bold , color: Colors.black , fontSize: 18.0),
-                              ),
-                              SizedBox(height: 10.0,),
-                              Text(
-                                'Your voucher worth EGP30 will be',
-                                style: TextStyle(fontWeight: FontWeight.bold , color: Colors.grey , fontSize: 14.0),
-                              ),
-                              Text(
-                                'redeemed with your next order',
-                                style: TextStyle(fontWeight: FontWeight.bold , color: Colors.grey , fontSize: 14.0),
-                              ),
-                              SizedBox(height: 5.0,),
-                              Container(
-                                child: Padding(
-                                  padding: const EdgeInsets.all(20.0),
-                                  child: MaterialButton(
-                                    onPressed: () {
-                                      Navigator.push(
-                                          context,
-                                          MaterialPageRoute(
-                                              builder: (context) => MyHomePage()));
-                                    },
-                                    child: Text(
-                                      'START ORDERING',
+                  if (btnColor == Colors.grey) {
+                    return;
+                  } else {
+                    showDialog(
+                        context: context,
+                        builder: (context) => Center(
+                              child: AlertDialog(
+                                content: Column(
+                                  mainAxisSize: MainAxisSize.min,
+                                  children: [
+                                    Icon(
+                                      Icons.check_circle_outline_rounded,
+                                      color: Colors.green,
+                                      size: 60.0,
+                                    ),
+                                    SizedBox(
+                                      height: 10.0,
+                                    ),
+                                    Text(
+                                      'Success!',
                                       style: TextStyle(
-                                        fontSize: 20,
-                                        color: Colors.white,
-                                        fontWeight: FontWeight.bold,
+                                          fontWeight: FontWeight.bold,
+                                          color: Colors.black,
+                                          fontSize: 18.0),
+                                    ),
+                                    SizedBox(
+                                      height: 10.0,
+                                    ),
+                                    Text(
+                                      'Your voucher worth EGP30 will be',
+                                      style: TextStyle(
+                                          fontWeight: FontWeight.bold,
+                                          color: Colors.grey,
+                                          fontSize: 14.0),
+                                    ),
+                                    Text(
+                                      'redeemed with your next order',
+                                      style: TextStyle(
+                                          fontWeight: FontWeight.bold,
+                                          color: Colors.grey,
+                                          fontSize: 14.0),
+                                    ),
+                                    SizedBox(
+                                      height: 5.0,
+                                    ),
+                                    Container(
+                                      child: Padding(
+                                        padding: const EdgeInsets.all(20.0),
+                                        child: MaterialButton(
+                                          onPressed: () {
+                                            Navigator.push(
+                                                context,
+                                                MaterialPageRoute(
+                                                    builder: (context) =>
+                                                        MyHomePage()));
+                                          },
+                                          child: Text(
+                                            'START ORDERING',
+                                            style: TextStyle(
+                                              fontSize: 18,
+                                              color: Colors.white,
+                                              fontWeight: FontWeight.bold,
+                                            ),
+                                          ),
+                                          minWidth: double.infinity,
+                                          height: 50,
+                                          color: Colors.orange,
+                                        ),
                                       ),
                                     ),
-                                    minWidth: double.infinity,
-                                    height: 50,
-                                    color: Colors.orange,
-                                  ),
+                                  ],
                                 ),
                               ),
-                            ],
-                          ),
-                        ),
-                      ),
-                    ));
+                            ));
                     // Navigator.push(
                     //     context,
                     //     MaterialPageRoute(
