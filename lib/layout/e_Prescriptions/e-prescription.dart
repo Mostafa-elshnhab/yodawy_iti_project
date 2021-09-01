@@ -40,6 +40,7 @@ class Prescriptions extends StatelessWidget {
                     Navigator.pop(context);
                   },
                 ),
+                centerTitle: true,
                 title: Container(
                     // width: double.infinity ,
                     child: Column(
@@ -58,71 +59,79 @@ class Prescriptions extends StatelessWidget {
       ),
       body: SingleChildScrollView(
         child: Padding(
-          padding: const EdgeInsets.all(10),
-          child: Container(
-            height: 120,
-            width: double.infinity,
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(3),
-              border: Border.all(
-                width: 1,
-                color: Colors.black12,
+          padding: const EdgeInsets.all(15),
+          child: GestureDetector(
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => PrescriptionsDetail()),
+              );
+            },
+            child: Container(
+              width: double.infinity,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(3),
+                border: Border.all(
+                  width: 1,
+                  color: Colors.black12,
+                ),
               ),
-            ),
-            child: Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.start,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Text(
-                      'August 2021',
-                      style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          fontSize: 16,
-                          color: Colors.orange),
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Text(
+                        'August 2021',
+                        style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 16,
+                            color: Colors.orange),
+                      ),
                     ),
-                  ),
-                  SizedBox(
-                    height: 5,
-                  ),
-                  Text(
-                    ' Dr. Dr. Sara Mohamed Elsayed ',
-                    style: TextStyle(height: 1.5, fontSize: 13),
-                  ),
-                  GestureDetector(
-                    onTap: () {
-                      print('hi');
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => PrescriptionsDetail()),
-                      );
-                    },
-                    child: Row(
+                    SizedBox(
+                      height: 3,
+                    ),
+                    Text(
+                      ' Dr. Dr. Sara Mohamed Elsayed ',
+                      style: TextStyle(height: 1.5, fontSize: 13),
+                    ),
+                    SizedBox(
+                      height: 4,
+                    ),
+                    Row(
                       children: [
-                        Text(
-                          'Application trial',
-                          style: TextStyle(color: Colors.blue),
-                        ),
-                        SizedBox(
-                          width: 150,
+                        Expanded(
+                          child: Text(
+                            'Application trial',
+                            style: TextStyle(color: Colors.blue),
+                          ),
                         ),
                         Icon(
                           Icons.arrow_forward_ios_outlined,
                           color: Colors.orange,
                           size: 18,
                         ),
+                        SizedBox(
+                          width: 10,
+                        )
                       ],
                     ),
-                  ),
-                  Text(
-                    'Monday, 09 August 2021, 02:16 PM',
-                    style: TextStyle(color: Colors.grey),
-                  )
-                ],
+                    SizedBox(
+                      height: 4,
+                    ),
+                    Text(
+                      'Monday, 09 August 2021, 02:16 PM',
+                      style: TextStyle(color: Colors.grey),
+                    ),
+                    SizedBox(
+                      height: 6,
+                    )
+                  ],
+                ),
               ),
             ),
           ),
