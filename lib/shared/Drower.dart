@@ -6,6 +6,7 @@ import 'package:flutter_app_test/layout/e_Prescriptions/e-prescription.dart';
 import 'package:flutter_app_test/layout/settings/settings.dart';
 import 'package:flutter_app_test/layout/support/supportScreen.dart';
 import 'package:hexcolor/hexcolor.dart';
+import 'package:flutter_app_test/layout/Share&earn/share.dart';
 
 Widget createDrawer(context, name) {
   return Drawer(
@@ -186,7 +187,10 @@ Widget createDrawer(context, name) {
                     // Update the state of the app
                     // ...
                     // Then close the drawer
-                    Navigator.pop(context);
+                  
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (context) => ShareEarn()));
+                    
                   },
                 ),
                 SizedBox(

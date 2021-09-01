@@ -47,6 +47,7 @@ dependencies:
   firebase_auth: ^3.0.2
   flutter_secure_storage: ^4.2.1
   otp_text_field: ^1.1.1
+  share_plus: "^2.1.4"
 
 
 dev_dependencies:
@@ -64,6 +65,7 @@ flutter:
 
   assets:
     - assets/images/
+
 
 
   # An image asset can refer to one or more resolution-specific "variants", see
