@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_app_test/layout/BuyAgain/buyAgainPage.dart';
 import 'package:flutter_app_test/layout/FavoriteItems/FavPage.dart';
 import 'package:flutter_app_test/layout/MyOrders/MyOrdersPage.dart';
+import 'package:flutter_app_test/layout/e_Prescriptions/e-prescription.dart';
 import 'package:flutter_app_test/layout/Vouchers/vouchers.dart';
 import 'package:flutter_app_test/layout/settings/settings.dart';
 import 'package:flutter_app_test/layout/support/supportScreen.dart';
@@ -107,10 +108,10 @@ Widget createDrawer(context, name) {
                         fontWeight: FontWeight.bold),
                   ),
                   onTap: () {
-                    // Update the state of the app
-                    // ...
-                    // Then close the drawer
-                    Navigator.pop(context);
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => Prescriptions()));
                   },
                 ),
                 ListTile(
@@ -185,10 +186,9 @@ Widget createDrawer(context, name) {
                     // Update the state of the app
                     // ...
                     // Then close the drawer
-                  
-                      Navigator.push(context,
-                          MaterialPageRoute(builder: (context) => ShareEarn()));
-                    
+
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => ShareEarn()));
                   },
                 ),
                 SizedBox(
