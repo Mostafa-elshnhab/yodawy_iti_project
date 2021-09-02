@@ -676,14 +676,13 @@ class _CartPageState extends State<CartPage> {
                               minWidth: double.infinity,
                               onPressed: () {
                                 setState(() {
-                                  for (int i = 0; i < Cart.length; i++) {
-                                    MyOrdes.add(Cart[i]);
-                                  }
-                                  saveMyOrdesData();
-                                  // Cart.clear();
-                                  Navigator.push(context, MaterialPageRoute(builder: (context) => Checkout()));
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) => Checkout(
+                                                ind: 0,
+                                              )));
                                 });
-
                               },
                               child: Text(
                                 'CHECKOUT',
