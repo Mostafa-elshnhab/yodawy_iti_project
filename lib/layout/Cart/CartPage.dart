@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app_test/layout/Checkout/checkout.dart';
 import 'package:flutter_app_test/layout/FavoriteItems/FavData.dart';
 import 'package:flutter_app_test/layout/MyOrders/MyOrdersData.dart';
 import 'package:flutter_app_test/layout/Product/pandoalData.dart';
@@ -679,8 +680,10 @@ class _CartPageState extends State<CartPage> {
                                     MyOrdes.add(Cart[i]);
                                   }
                                   saveMyOrdesData();
-                                  Cart.clear();
+                                  // Cart.clear();
+                                  Navigator.push(context, MaterialPageRoute(builder: (context) => Checkout()));
                                 });
+
                               },
                               child: Text(
                                 'CHECKOUT',
