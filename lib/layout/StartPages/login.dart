@@ -114,7 +114,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                 onChanged: (value) {
                                   setState(() {
                                     countNum = value.length;
-                                    if (countNum == 10) {
+                                    if (countNum == 11) {
                                       bgColor = Colors.blue;
                                     } else {
                                       bgColor = Colors.grey;
@@ -155,7 +155,7 @@ class _LoginScreenState extends State<LoginScreen> {
                             onPressed: () async {
                               if (FormKey.currentState!.validate()) {
                                 setState(() {
-                                  if (countNum == 10) {
+                                  if (countNum == 11) {
                                     layer = Colors.grey.withOpacity(.8);
                                     Usres.phone = "${controlphone.text}";
                                     Navigator.push(
