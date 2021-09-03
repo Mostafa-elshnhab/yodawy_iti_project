@@ -31,7 +31,7 @@ class _VerifyScreenState extends State<VerifyScreen> {
       buttonName = "Resend";
     });
     authClass
-        .verifyPhoneNumber("+20 ${Usres.phone}", context, setData)
+        .verifyPhoneNumber("+2 ${Usres.phone}", context, setData)
         .then((value) => print('sasa'));
     startTimer();
   }
