@@ -42,3 +42,10 @@ Future<List> getprouDataFB(id) async {
 
   return dataw;
 }
+
+Future<List> getProductByIDFB(id) async {
+  http.Response response = await http
+      .get(Uri.parse("https://yodawy.herokuapp.com/products/?_id=$id"));
+  List data = json.decode(response.body);
+  return data;
+}

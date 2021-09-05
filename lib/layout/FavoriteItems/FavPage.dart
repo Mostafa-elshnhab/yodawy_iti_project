@@ -127,17 +127,17 @@ class _FavPageState extends State<FavPage> {
                               selected: true,
                               title: GestureDetector(
                                 onTap: () {
-                                  int? pointer;
-                                  for (int i = 0; i <= pro.length; i++) {
-                                    if (Fav[index]['_id'] == pro[i]['_id']) {
-                                      pointer = i;
-                                    }
-                                  }
+//                                  int? pointer;
+//                                  for (int i = 0; i <= pro.length; i++) {
+//                                    if (Fav[index]['_id'] == pro[i]['_id']) {
+//                                      pointer = i;
+//                                    }
+//                                  }
                                   Navigator.push(
                                       context,
                                       MaterialPageRoute(
-                                          builder: (context) =>
-                                              ProductDetalis(pointer!)));
+                                          builder: (context) => ProductDetalis(
+                                              Fav[index]['_id'])));
                                 },
                                 child: Container(
                                   width: double.infinity,
