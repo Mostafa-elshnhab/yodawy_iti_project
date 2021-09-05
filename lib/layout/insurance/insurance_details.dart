@@ -190,6 +190,7 @@ class InsuranceDetails extends StatelessWidget {
                     ),
                     child: MaterialButton(
                       onPressed: () {
+                        //checking the length of different texts
                         if (firstNumber.text.length != 2 ||
                             chars.text.length != 2 ||
                             secondNumber.text.length != 5 ||
