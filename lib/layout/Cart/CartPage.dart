@@ -3,6 +3,7 @@ import 'package:flutter_app_test/layout/FavoriteItems/FavData.dart';
 import 'package:flutter_app_test/layout/MyOrders/MyOrdersData.dart';
 import 'package:flutter_app_test/layout/Product/pandoalData.dart';
 import 'package:flutter_app_test/layout/Product/Products.dart';
+import 'package:flutter_app_test/layout/Product/product_detalis.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'dart:math' as math;
 
@@ -175,17 +176,17 @@ class _CartPageState extends State<CartPage> {
                               selected: true,
                               title: GestureDetector(
                                 onTap: () {
-                                  int? pointer;
-                                  for (int i = 0; i <= pro.length; i++) {
-                                    if (Cart[index]['_id'] == pro[i]['_id']) {
-                                      pointer = i;
-                                    }
-                                  }
-//                                  Navigator.push(
-//                                      context,
-//                                      MaterialPageRoute(
-//                                          builder: (context) =>
-//                                              ProductDetalis(pointer!)));
+//                                  int? pointer;
+//                                  for (int i = 0; i <= pro.length; i++) {
+//                                    if (Cart[index]['_id'] == pro[i]['_id']) {
+//                                      pointer = i;
+//                                    }
+//                                  }
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) => ProductDetalis(
+                                              Cart[index]['_id'])));
                                 },
                                 child: Container(
                                   width: double.infinity,
@@ -429,12 +430,12 @@ class _CartPageState extends State<CartPage> {
                                                             BoxDecoration(
                                                           border: Border.all(
                                                               color:
-                                                                  Colors.blue),
+                                                                  Colors.grey),
                                                           borderRadius:
                                                               BorderRadius
                                                                   .circular(20),
                                                         ),
-                                                        child: TextButton(
+                                                        child: Center(
                                                           child: Text(
                                                             'ADD',
                                                             style: TextStyle(
@@ -442,27 +443,9 @@ class _CartPageState extends State<CartPage> {
                                                                   FontWeight
                                                                       .bold,
                                                               color:
-                                                                  Colors.blue,
+                                                                  Colors.grey,
                                                             ),
                                                           ),
-                                                          onPressed: () {
-                                                            setState(() {
-//                                                              isadded = true;
-//                                                              total = total + 1;
-//                                                              totalPrice += 1 *
-//                                                                  pro[index]
-//                                                                      .price;
-//                                                              print(totalPrice);
-//                                                              print(total);
-//                                                      print(
-//                                                          pro[index].quantity);
-
-                                                              Cart[index][
-                                                                  'selectedAdd'] = !Cart[
-                                                                      index][
-                                                                  'selectedAdd'];
-                                                            });
-                                                          },
                                                         ),
                                                       )
                                                     : Container(

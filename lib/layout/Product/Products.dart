@@ -17,8 +17,6 @@ String? idc;
 final selectedAdd = List.filled(100, false);
 bool isadded = false;
 
-List<dynamic> ProductData = [];
-
 class Products extends StatefulWidget {
   String? Text;
   int? Counter;
@@ -101,7 +99,7 @@ class _ProductsState extends State<Products> {
                     if (snapshot.hasData) {
                       datafun[counter!].then((value) {
                         setState(() {
-                          ProductData = value;
+//                          ProductData = value;
                         });
                       });
                       return ListView.separated(
@@ -124,7 +122,7 @@ class _ProductsState extends State<Products> {
                                   context,
                                   MaterialPageRoute(
                                       builder: (context) =>
-                                          ProductDetalis(index)));
+                                          ProductDetalis(id)));
                             },
                             child: ListTile(
                               selected: true,
