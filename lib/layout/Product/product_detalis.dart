@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app_test/Data/Api/Products/ProductsApiFun.dart';
+import 'package:flutter_app_test/Data/Users/userData.dart';
 import 'package:flutter_app_test/layout/Cart/CartData.dart';
 import 'package:flutter_app_test/layout/Cart/CartPage.dart';
 import 'package:flutter_app_test/layout/FavoriteItems/FavData.dart';
@@ -11,11 +12,13 @@ import 'dart:math' as math;
 import 'Products.dart';
 
 String? idP;
+bool? selectedAd;
 
 class ProductDetalis extends StatefulWidget {
   String id;
-  ProductDetalis(this.id) {
+  ProductDetalis(this.id, {bool? select}) {
     idP = this.id;
+    selectedAd = select;
   }
 
   @override
@@ -27,7 +30,6 @@ class _ProductDetailsState extends State<ProductDetalis> {
   _ProductDetailsState() {}
   List<dynamic> ProductData = [];
   bool selected = false;
-  bool selectedAdd = false;
   String? name;
   String? path;
   double? Price;
@@ -45,9 +47,9 @@ class _ProductDetailsState extends State<ProductDetalis> {
 
   @override
   Widget build(BuildContext context) {
-    if (Qty > 1) {
-      selectedAdd = true;
-    }
+//    if (Qty > 1) {
+//      selectedAd = true;
+//    }
     return Scaffold(
         appBar: PreferredSize(
           preferredSize: Size.fromHeight(70.0),
@@ -376,14 +378,22 @@ class _ProductDetailsState extends State<ProductDetalis> {
                     color: Colors.white,
                     child: Padding(
                         padding: const EdgeInsets.all(8.0),
-                        child: !selectedAdd
+                        child: !selectedAd!
                             ? MaterialButton(
                                 onPressed: () {
                                   setState(() {
-                                    selectedAdd = true;
+                                    selectedAd = true;
                                     print(selectedAdd);
                                     Cart.add(ProductData[0]);
                                     saveCartData();
+                                    total = total + 1;
+                                    totalPrice += 1 * Price!;
+                                    for (int i = 0; i <= pro.length; i++) {
+                                      if (idP == pro[i]['_id']) {
+                                        selectedAdd[i] = true;
+                                        break;
+                                      }
+                                    }
                                   });
                                 },
                                 child: Text(
@@ -396,7 +406,37 @@ class _ProductDetailsState extends State<ProductDetalis> {
                                 ),
                                 color: Colors.orange,
                               )
-                            : Container(
+                            :
+//                          MaterialButton(
+//                                  onPressed: () {
+//                                    setState(() {
+//                                      for (int i = 0; i <= Cart.length; i++) {
+//                                        print(" this i $i");
+//                                        if (Cart[i]['_id'] ==
+//                                            ProductData[0]['_id']) {
+//                                          print(" this i $i");
+//                                          Cart.removeAt(i);
+//                                          saveCartData();
+//                                          break;
+//                                        }
+//                                      }
+//                                    });
+//                                    selectedAd = false;
+//                                    total = total - 1;
+//                                    totalPrice -= 1 * Price!;
+//                                  },
+//                                  child: Text(
+//                                    'REMOVE FROM CART',
+//                                    style: TextStyle(
+//                                      color: Colors.white,
+//                                      fontSize: 18,
+//                                      fontWeight: FontWeight.bold,
+//                                    ),
+//                                  ),
+//                                  color: Colors.grey,
+//                                )
+
+                            Container(
 //                        width: 100,
 //                        height: 35,
                                 decoration: BoxDecoration(
@@ -411,15 +451,6 @@ class _ProductDetailsState extends State<ProductDetalis> {
                                       child: TextButton(
                                         onPressed: () {
                                           setState(() {
-//                            total = total - 1;
-//                            print(total);
-//                            totalPrice -= 1 *
-//                                pro[index]
-//                                    .price;
-//                            print(totalPrice);
-//                            if (total == 0) {
-//                              isadded = false;
-//                            }
                                             if (Qty <= 1) {
                                               setState(() {
                                                 for (int i = 0;
@@ -434,11 +465,25 @@ class _ProductDetailsState extends State<ProductDetalis> {
                                                     break;
                                                   }
                                                 }
+                                                for (int i = 0;
+                                                    i <= pro.length;
+                                                    i++) {
+                                                  if (idP == pro[i]['_id']) {
+                                                    selectedAdd[i] = false;
+                                                    break;
+                                                  }
+                                                }
                                               });
-                                              selectedAdd = false;
+                                              selectedAd = false;
 
                                               Qty = 0;
+                                              total = total - 1;
+                                              print(total);
+                                              totalPrice -= 1 * Price!;
                                             } else {
+                                              total = total - 1;
+                                              print(total);
+                                              totalPrice -= 1 * Price!;
                                               Qty--;
                                             }
                                           });
@@ -469,6 +514,9 @@ class _ProductDetailsState extends State<ProductDetalis> {
                                       child: TextButton(
                                         onPressed: () {
                                           setState(() {
+                                            total = total + 1;
+                                            print(total);
+                                            totalPrice += 1 * Price!;
                                             Qty++;
                                           });
                                         },

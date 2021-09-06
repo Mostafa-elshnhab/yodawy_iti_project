@@ -1,12 +1,12 @@
-import 'dart:convert';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_app_test/Data/Api/Products/ProductsApiFun.dart';
+import 'package:flutter_app_test/Data/Users/userData.dart';
 import 'package:flutter_app_test/layout/Cart/CartData.dart';
-import 'package:flutter_app_test/layout/Cart/CartPage.dart';
 import 'package:flutter_app_test/layout/FavoriteItems/FavData.dart';
+import 'package:flutter_app_test/layout/HomeScreens/Home.dart';
 import 'package:flutter_app_test/layout/Product/pandoalData.dart';
 import 'package:flutter_app_test/layout/Product/product_detalis.dart';
+import 'package:flutter_app_test/shared/ButtomContainer.dart';
 import 'package:flutter_app_test/shared/components.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'dart:math' as math;
@@ -15,7 +15,6 @@ String? text;
 int? counter;
 String? idc;
 final selectedAdd = List.filled(100, false);
-bool isadded = false;
 
 class Products extends StatefulWidget {
   String? Text;
@@ -32,12 +31,11 @@ class Products extends StatefulWidget {
 }
 
 class _ProductsState extends State<Products> {
-  int total = 0;
-  double totalPrice = 0;
 //  bool selected = false;
 //  bool selectedAdd = false;
 
   final selected = List.filled(100, false);
+
   final Qty = List.filled(100, 1);
 
   List<Future<List>> datafun = [
@@ -46,56 +44,25 @@ class _ProductsState extends State<Products> {
     getProductSerchDataFB(text),
     getprouDataFB(idc),
   ];
-//  @override
-//  void initState() {
-//    super.initState();
-
-//  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-//      bottomNavigationBar: BottomAppBar(
-//        child: Container(
-//          height: 50.0,
-//          width: double.maxFinite,
-//          decoration: BoxDecoration(
-//            color: Colors.deepOrange,
-//          ),
-//          child: Row(
-//            mainAxisSize: MainAxisSize.max,
-//            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-//            children: <Widget>[
-//              IconButton(
-//                icon: Icon(Icons.arrow_forward),
-//                onPressed: () {},
-//              ),
-//              IconButton(
-//                icon: Icon(Icons.arrow_downward),
-//                onPressed: () {},
-//              ),
-//              IconButton(
-//                icon: Icon(Icons.arrow_left),
-//                onPressed: () {},
-//              ),
-//              IconButton(
-//                icon: Icon(Icons.arrow_upward),
-//                onPressed: () {},
-//              ),
-//            ],
-//          ),
-//        ),
-//      ),
       appBar: appBarBuilder('$text', context),
       body: Column(
-//        crossAxisAlignment: CrossAxisAlignment.center,
-//        mainAxisSize: MainAxisSize.max,
-//        mainAxisAlignment: MainAxisAlignment.end,
         children: [
           Expanded(
               child: FutureBuilder<List>(
                   future: datafun[counter!],
                   builder: (context, snapshot) {
+                    if (total > 0) {
+                      isadded = true;
+                    }
+                    if (Cart.length == 0) {
+                      isadded = false;
+                      total = 0;
+                      totalPrice = 0;
+                    }
                     if (snapshot.hasData) {
                       datafun[counter!].then((value) {
                         setState(() {
@@ -121,8 +88,10 @@ class _ProductsState extends State<Products> {
                               Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                      builder: (context) =>
-                                          ProductDetalis(id)));
+                                      builder: (context) => ProductDetalis(
+                                            id,
+                                            select: selectedAdd[index],
+                                          )));
                             },
                             child: ListTile(
                               selected: true,
@@ -347,15 +316,11 @@ class _ProductsState extends State<Products> {
                                                             Cart.add(snapshot
                                                                 .data![index]);
                                                             saveCartData();
-                                                            isadded = true;
                                                             total = total + 1;
                                                             totalPrice +=
                                                                 1 * Price;
                                                             print(totalPrice);
                                                             print(total);
-//                                                      print(
-//                                                          pro[index].quantity);
-
                                                             selectedAdd[index] =
                                                                 !selectedAdd[
                                                                     index];
@@ -363,7 +328,56 @@ class _ProductsState extends State<Products> {
                                                         },
                                                       ),
                                                     )
-                                                  : Container(
+                                                  :
+//                                          Container(
+//                                                      width: 100,
+//                                                      height: 35,
+//                                                      decoration: BoxDecoration(
+//                                                        border: Border.all(
+//                                                            color: Colors.grey),
+//                                                        borderRadius:
+//                                                            BorderRadius
+//                                                                .circular(20),
+//                                                      ),
+//                                                      child: TextButton(
+//                                                        child: Text(
+//                                                          'REMOVE',
+//                                                          style: TextStyle(
+//                                                            fontWeight:
+//                                                                FontWeight.bold,
+//                                                            color: Colors.grey,
+//                                                          ),
+//                                                        ),
+//                                                        onPressed: () {
+//                                                          setState(() {
+//                                                            total = total - 1;
+//                                                            totalPrice -=
+//                                                                1 * Price;
+//                                                            if (total == 0) {
+//                                                              isadded = false;
+//                                                              totalPrice = 0;
+//                                                            }
+//                                                            selectedAdd[index] =
+//                                                                false;
+//
+//                                                            for (int i = 0;
+//                                                                i <=
+//                                                                    Cart.length;
+//                                                                i++) {
+////
+//                                                              if (id ==
+//                                                                  Cart[i]
+//                                                                      ['_id']) {
+//                                                                Cart.removeAt(
+//                                                                    i);
+//                                                                saveCartData();
+//                                                              }
+//                                                            }
+//                                                          });
+//                                                        },
+//                                                      ),
+//                                                    )
+                                                  Container(
                                                       width: 100,
                                                       height: 35,
                                                       decoration: BoxDecoration(
@@ -392,6 +406,8 @@ class _ProductsState extends State<Products> {
                                                                       0) {
                                                                     isadded =
                                                                         false;
+                                                                    totalPrice =
+                                                                        0;
                                                                   }
                                                                   if (Qty[index] <=
                                                                       1) {
@@ -543,71 +559,7 @@ class _ProductsState extends State<Products> {
                       )),
                     );
                   })),
-          isadded
-              ? GestureDetector(
-                  onTap: () {
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => CartPage()));
-                  },
-                  child: Container(
-                    height: 50,
-                    width: double.maxFinite,
-                    decoration: BoxDecoration(
-                      color: HexColor('#FF9D46'),
-                    ),
-                    child: Padding(
-                      padding: const EdgeInsets.all(10.0),
-                      child: Row(
-                        children: [
-                          Padding(
-                            padding: const EdgeInsetsDirectional.only(end: 20),
-                            child: Container(
-                              decoration: BoxDecoration(
-                                  border: Border.all(color: Colors.white),
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(5.0))),
-                              width: 25,
-                              height: 30,
-                              child: Center(
-                                child: Text(
-                                  '$total',
-                                  style: TextStyle(
-                                      color: Colors.white,
-                                      fontSize: 15,
-                                      fontWeight: FontWeight.bold),
-                                ),
-                              ),
-                            ),
-                          ),
-                          Expanded(
-                              flex: 3,
-                              child: Container(
-                                alignment: Alignment.center,
-                                child: Center(
-                                  child: Text(
-                                    'VIEW CART',
-                                    style: TextStyle(
-                                        color: Colors.white,
-                                        fontSize: 15,
-                                        fontWeight: FontWeight.bold),
-                                  ),
-                                ),
-                              )),
-                          Expanded(
-                              flex: 1,
-                              child: Container(
-                                alignment: Alignment.centerRight,
-                                child: Text(
-                                  'EGP $totalPrice',
-                                  style: TextStyle(color: Colors.white),
-                                ),
-                              )),
-                        ],
-                      ),
-                    ),
-                  ),
-                )
-              : SizedBox()
+          isadded ? TotalContainer(context) : SizedBox()
         ],
       ),
     );

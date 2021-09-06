@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app_test/Data/Users/userData.dart';
 import 'package:flutter_app_test/layout/FavoriteItems/FavData.dart';
 import 'package:flutter_app_test/layout/MyOrders/MyOrdersData.dart';
 import 'package:flutter_app_test/layout/Product/pandoalData.dart';
@@ -6,7 +7,6 @@ import 'package:flutter_app_test/layout/Product/Products.dart';
 import 'package:flutter_app_test/layout/Product/product_detalis.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'dart:math' as math;
-
 import '../HomeScreens/Home.dart';
 import 'CartData.dart';
 
@@ -186,7 +186,9 @@ class _CartPageState extends State<CartPage> {
                                       context,
                                       MaterialPageRoute(
                                           builder: (context) => ProductDetalis(
-                                              Cart[index]['_id'])));
+                                                Cart[index]['_id'],
+                                                select: true,
+                                              )));
                                 },
                                 child: Container(
                                   width: double.infinity,
@@ -756,7 +758,7 @@ class _CartPageState extends State<CartPage> {
                             Cart.removeAt(index);
                             saveCartData();
                             selectedAdd[i] = false;
-                            isadded = false;
+//                            isadded = false;
                             break;
                           }
                         }
