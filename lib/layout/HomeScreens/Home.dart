@@ -1,4 +1,6 @@
+import 'dart:async';
 import 'dart:io';
+import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -7,8 +9,8 @@ import 'package:flutter_app_test/Data/Api/Brands/allbrandsApi.dart';
 import 'package:flutter_app_test/Data/Api/Category/CtegoryFuterBuilder.dart';
 import 'package:flutter_app_test/Data/Api/Category/categoryApi.dart';
 import 'package:flutter_app_test/Data/Users/userData.dart';
+import 'package:flutter_app_test/notification/notificationservice.dart';
 import '../insurance/insurance_details.dart';
-import 'package:flutter_app_test/models/HomePrandsModel.dart';
 import 'package:flutter_app_test/models/insurance_card.dart';
 import 'package:flutter_app_test/modules/offers/offers.dart';
 import 'package:flutter_app_test/shared/Doctors.dart';
@@ -23,10 +25,11 @@ import '../Cart/CartData.dart';
 import '../Cart/CartPage.dart';
 import '../insurance/Insurance.dart';
 import 'Medication.dart';
-import '../Product/Products.dart';
 import '../Search/FisrtSearch.dart';
 import '../TalkToDoctor/requestScreen.dart';
 import '../insurance/insuranceNotLogin.dart';
+import 'package:timezone/timezone.dart' as tz;
+import 'package:timezone/data/latest.dart' as tz;
 
 int current = 0;
 
@@ -51,6 +54,29 @@ class _MyHomePageState extends State<MyHomePage> {
     Offers(),
     InsuranceNotLogin(),
   ];
+  Timer? timer;
+  @override
+  void initState() {
+    super.initState();
+    var rng = new Random();
+    timer = Timer.periodic(Duration(minutes: 3), (Timer t) {
+      tz.initializeTimeZones();
+      if (Cart.length != 0) {
+        print('random$rng');
+        NotificationService().showNotification(
+            1 + rng.nextInt(100),
+            "hi ${Usres.name}",
+            "${Cart.length}items are still in your cart",
+            1);
+      }
+    });
+  }
+
+  @override
+  void dispose() {
+    timer?.cancel();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {

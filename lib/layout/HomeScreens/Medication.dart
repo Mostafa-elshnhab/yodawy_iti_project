@@ -5,7 +5,6 @@ import 'package:flutter_app_test/models/Doctors_models.dart';
 import 'package:flutter_app_test/shared/Doctors.dart';
 import 'package:flutter_app_test/shared/components.dart';
 import 'package:hexcolor/hexcolor.dart';
-
 import '../insurance/Insurance.dart';
 import '../Product/Products.dart';
 import '../TalkToDoctor/requestScreen.dart';

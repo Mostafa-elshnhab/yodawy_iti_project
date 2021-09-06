@@ -1,7 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_app_test/layout/support/writeDetail.dart';
-import 'package:hexcolor/hexcolor.dart';
 
 class HowCanScreen extends StatefulWidget {
   @override

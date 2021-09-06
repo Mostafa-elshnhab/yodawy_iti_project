@@ -1,12 +1,8 @@
-import 'package:flutter/animation.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_app_test/layout/support/FAQ.dart';
 import 'package:flutter_app_test/layout/support/howCan.dart';
 import 'package:flutter_app_test/layout/support/myorder.dart';
-import 'package:hexcolor/hexcolor.dart';
-
-// import '../../../../support/lib/accordion.dart';
 
 class SupportScreen extends StatelessWidget {
   @override

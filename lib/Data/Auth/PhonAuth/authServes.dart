@@ -25,6 +25,10 @@ class AuthClass {
     PhoneVerificationCompleted verificationCompleted =
         (PhoneAuthCredential phoneAuthCredential) async {
       showSnackBar(context, "Verification Completed");
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => WelcomeScreen()),
+      );
     };
     PhoneVerificationFailed verificationFailed =
         (FirebaseAuthException exception) {

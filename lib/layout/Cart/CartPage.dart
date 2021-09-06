@@ -1,9 +1,12 @@
+import 'dart:async';
+import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:flutter_app_test/Data/Users/userData.dart';
+import 'package:flutter_app_test/layout/Checkout/checkout.dart';
 import 'package:flutter_app_test/layout/FavoriteItems/FavData.dart';
-import 'package:flutter_app_test/layout/MyOrders/MyOrdersData.dart';
 import 'package:flutter_app_test/layout/Product/pandoalData.dart';
 import 'package:flutter_app_test/layout/Product/Products.dart';
+import 'package:flutter_app_test/notification/notificationservice.dart';
 import 'package:flutter_app_test/layout/Product/product_detalis.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'dart:math' as math;
@@ -17,6 +20,12 @@ class CartPage extends StatefulWidget {
 
 class _CartPageState extends State<CartPage> {
   bool isempty = true;
+
+  @override
+  void initState() {
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     if (Cart.length == 0) {
@@ -660,11 +669,12 @@ class _CartPageState extends State<CartPage> {
                               minWidth: double.infinity,
                               onPressed: () {
                                 setState(() {
-                                  for (int i = 0; i < Cart.length; i++) {
-                                    MyOrdes.add(Cart[i]);
-                                  }
-                                  saveMyOrdesData();
-                                  Cart.clear();
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) => Checkout(
+                                                ind: 0,
+                                              )));
                                 });
                               },
                               child: Text(

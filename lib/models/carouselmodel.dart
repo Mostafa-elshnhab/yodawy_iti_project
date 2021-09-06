@@ -1,5 +1,3 @@
-import 'package:flutter/material.dart';
-
 class CarouselModel {
   final String carouselImg, productName;
   final int id;

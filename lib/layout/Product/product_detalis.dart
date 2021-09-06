@@ -5,7 +5,6 @@ import 'package:flutter_app_test/layout/Cart/CartData.dart';
 import 'package:flutter_app_test/layout/Cart/CartPage.dart';
 import 'package:flutter_app_test/layout/FavoriteItems/FavData.dart';
 import 'package:flutter_app_test/layout/Product/pandoalData.dart';
-import 'package:flutter_app_test/models/product_model.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'dart:math' as math;
 
@@ -26,7 +25,6 @@ class ProductDetalis extends StatefulWidget {
 }
 
 class _ProductDetailsState extends State<ProductDetalis> {
-  List<product> ditale = [];
   _ProductDetailsState() {}
   List<dynamic> ProductData = [];
   bool selected = false;

@@ -1,5 +1,3 @@
-import 'package:flutter/material.dart';
-
 class TopPicksModel {
   final String imgpath, productName;
   final int id;
