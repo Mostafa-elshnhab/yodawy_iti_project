@@ -10,60 +10,11 @@ class Address extends StatefulWidget {
 }
 
 class _Address extends State<Address> {
-  late LocationData myLocation;
-  var location = new Location();
-
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
         Expanded(child: Container(child: Image.asset('assets/images/loc.PNG'))),
-//        Container(
-//          margin: EdgeInsets.all(20),
-//          width: MediaQuery.of(context).size.width,
-//          height: 50,
-//          decoration: BoxDecoration(
-//            borderRadius: BorderRadius.circular(5),
-//            color: Colors.orange,
-//          ),
-//          child: TextButton(
-//            child: Text(
-//              'ADD ADDRESS',
-//              style: TextStyle(color: Colors.white, fontSize: 20),
-//            ),
-//            onPressed: () async {
-//              var serviceEnable = await location.serviceEnabled();
-//              if (!serviceEnable) {
-//                serviceEnable = await location.requestService();
-//                if (!serviceEnable) {
-//                  return;
-//                }
-//              }
-//
-//              var permission = await location.hasPermission();
-//              if (permission == PermissionStatus.denied) {
-//                permission = await location.requestPermission();
-//                if (permission != PermissionStatus.granted) {
-//                  return;
-//                }
-//              }
-//
-//              myLocation = await location.getLocation();
-//              print(myLocation);
-//              //get lat,long
-//
-//              final availableMaps = await MapLauncher.installedMaps;
-//              print(
-//                  availableMaps); // [AvailableMap { mapName: Google Maps, mapType: google }, ...]
-//
-//              await availableMaps.first.showMarker(
-//                coords: Coords(myLocation.longitude!.toDouble(),
-//                    myLocation.latitude!.toDouble()),
-//                title: "location",
-//              );
-//            },
-//          ),
-//        ),
       ],
     );
   }

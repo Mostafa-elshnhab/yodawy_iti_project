@@ -6,6 +6,7 @@ import 'package:flutter_app_test/layout/Checkout/checkout.dart';
 import 'package:flutter_app_test/layout/FavoriteItems/FavData.dart';
 import 'package:flutter_app_test/layout/Product/pandoalData.dart';
 import 'package:flutter_app_test/layout/Product/Products.dart';
+import 'package:flutter_app_test/layout/StartPages/login.dart';
 import 'package:flutter_app_test/notification/notificationservice.dart';
 import 'package:flutter_app_test/layout/Product/product_detalis.dart';
 import 'package:hexcolor/hexcolor.dart';
@@ -672,9 +673,11 @@ class _CartPageState extends State<CartPage> {
                                   Navigator.push(
                                       context,
                                       MaterialPageRoute(
-                                          builder: (context) => Checkout(
-                                                ind: 0,
-                                              )));
+                                          builder: (context) => isLoggedIn
+                                              ? Checkout(
+                                                  ind: 0,
+                                                )
+                                              : LoginScreen()));
                                 });
                               },
                               child: Text(

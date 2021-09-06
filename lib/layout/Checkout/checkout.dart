@@ -7,6 +7,8 @@ import 'package:flutter_app_test/layout/Checkout/confirmation.dart';
 import 'package:flutter_app_test/layout/Checkout/payment.dart';
 import 'package:flutter_app_test/layout/HomeScreens/Home.dart';
 import 'package:flutter_app_test/layout/MyOrders/MyOrdersData.dart';
+import 'package:location/location.dart';
+import 'package:map_launcher/map_launcher.dart';
 
 int indedx = 0;
 
@@ -29,6 +31,7 @@ class _CheckoutState extends State<Checkout>
   ];
   bool isAddresConferm = false;
   bool ispayConferm = false;
+  bool isAddedAddres = false;
   final List<Widget> tapPages = [
     Address(),
     Payment(),
@@ -54,21 +57,65 @@ class _CheckoutState extends State<Checkout>
         length: tapPages.length, vsync: this, initialIndex: indedx);
   }
 
+  late LocationData myLocation;
+  var location = new Location();
   @override
   Widget build(BuildContext context) {
     final List<Widget> buttons = [
-      TextButton(
-        child: Text(
-          'CONFIRM ADDRESS',
-          style: TextStyle(color: Colors.white, fontSize: 20),
-        ),
-        onPressed: () {
-          setState(() {
-            _tabController!.animateTo(1);
-            isAddresConferm = true;
-          });
-        },
-      ),
+      isAddedAddres
+          ? TextButton(
+              child: Text(
+                'CONFIRM ADDRESS',
+                style: TextStyle(color: Colors.white, fontSize: 20),
+              ),
+              onPressed: () {
+                setState(() {
+                  _tabController!.animateTo(1);
+                  isAddresConferm = true;
+                });
+              },
+            )
+          : TextButton(
+              child: Text(
+                'ADD ADDRESS',
+                style: TextStyle(color: Colors.white, fontSize: 20),
+              ),
+              onPressed: () async {
+                setState(() {
+                  isAddedAddres = true;
+                });
+
+                var serviceEnable = await location.serviceEnabled();
+                if (!serviceEnable) {
+                  serviceEnable = await location.requestService();
+                  if (!serviceEnable) {
+                    return;
+                  }
+                }
+
+                var permission = await location.hasPermission();
+                if (permission == PermissionStatus.denied) {
+                  permission = await location.requestPermission();
+                  if (permission != PermissionStatus.granted) {
+                    return;
+                  }
+                }
+
+                myLocation = await location.getLocation();
+                print(myLocation);
+                //get lat,long
+
+                final availableMaps = await MapLauncher.installedMaps;
+                print(
+                    availableMaps); // [AvailableMap { mapName: Google Maps, mapType: google }, ...]
+
+                await availableMaps.first.showMarker(
+                  coords: Coords(myLocation.longitude!.toDouble(),
+                      myLocation.latitude!.toDouble()),
+                  title: "location",
+                );
+              },
+            ),
       TextButton(
         child: Text(
           'CONFIRM PAYMENT METHOD',
@@ -93,6 +140,7 @@ class _CheckoutState extends State<Checkout>
             }
             saveMyOrdesData();
             Cart.clear();
+            saveCartData();
             Navigator.push(
                 context, MaterialPageRoute(builder: (context) => MyHomePage()));
           });

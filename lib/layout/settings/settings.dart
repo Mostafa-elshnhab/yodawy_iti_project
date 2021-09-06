@@ -4,6 +4,8 @@ import 'package:flutter_app_test/layout/settings/info.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../StartPages/StartSlider.dart';
 import 'location1.dart';
+import 'package:location/location.dart';
+import 'package:map_launcher/map_launcher.dart';
 
 class Settings extends StatefulWidget {
   const Settings({Key? key}) : super(key: key);
@@ -20,6 +22,8 @@ class _SettingsState extends State<Settings> {
     setState(() {
       isLoggedIn = false;
       prefs.setString('phone', '');
+      prefs.setStringList("CartData", []);
+      prefs.setStringList("favData", []);
       print('sasa$isLoggedIn');
     });
   }
@@ -68,14 +72,14 @@ class _SettingsState extends State<Settings> {
               Icon(
                 icon,
                 color: Color.fromRGBO(255, 154, 0, 1),
-                size: 25,
+                size: 20,
               ),
               SizedBox(
                 width: 10,
               ),
               Text(
                 txt,
-                style: TextStyle(fontSize: 20),
+                style: TextStyle(fontSize: 18),
               )
             ],
           ),

@@ -342,7 +342,7 @@ class _homeState extends State<home> {
                             children: [
                               Text(
                                 widget.isLogin!
-                                    ? 'YOU EAENED EGP30'
+                                    ? 'YOU EARNED EGP30'
                                     : 'SIGN & GET EGP30',
                                 style: TextStyle(
                                   fontSize: 25,
@@ -892,51 +892,61 @@ class _homeState extends State<home> {
                     SizedBox(
                       height: 25,
                     ),
-                    Row(
-                      children: [
-                        Text(
-                          'Talk to a Doctor',
-                          style: TextStyle(
-                              fontSize: 20, fontWeight: FontWeight.w900),
-                        ),
-                        Expanded(
-                          child: Container(
-                            alignment: AlignmentDirectional.centerEnd,
-                            child: TextButton(
-                                onPressed: () {
-                                  Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                          builder: (context) => Doctors()));
-                                },
-                                child: Text(
-                                  'View All',
-                                  style: TextStyle(
-                                      fontSize: 15,
-                                      fontWeight: FontWeight.w500),
-                                )),
-                          ),
-                        ),
-                      ],
-                    ),
-                    SizedBox(
-                      height: 10,
-                    ),
-                    Padding(
-                      padding:
-                          const EdgeInsetsDirectional.only(start: 10, end: 10),
-                      child: GridView.count(
-                          shrinkWrap: true,
-                          physics: NeverScrollableScrollPhysics(),
-                          crossAxisCount: 3,
-                          crossAxisSpacing: 12.0,
-                          mainAxisSpacing: 0.0,
-                          children: List.generate(doctor.length, (index) {
-                            return Center(
-                              child: doctorCard(doctor: doctor[index]),
-                            );
-                          })),
-                    ),
+                    isLoggedIn
+                        ? Column(
+                            children: [
+                              Row(
+                                children: [
+                                  Text(
+                                    'Talk to a Doctor',
+                                    style: TextStyle(
+                                        fontSize: 20,
+                                        fontWeight: FontWeight.w900),
+                                  ),
+                                  Expanded(
+                                    child: Container(
+                                      alignment: AlignmentDirectional.centerEnd,
+                                      child: TextButton(
+                                          onPressed: () {
+                                            Navigator.push(
+                                                context,
+                                                MaterialPageRoute(
+                                                    builder: (context) =>
+                                                        Doctors()));
+                                          },
+                                          child: Text(
+                                            'View All',
+                                            style: TextStyle(
+                                                fontSize: 15,
+                                                fontWeight: FontWeight.w500),
+                                          )),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                              SizedBox(
+                                height: 10,
+                              ),
+                              Padding(
+                                padding: const EdgeInsetsDirectional.only(
+                                    start: 10, end: 10),
+                                child: GridView.count(
+                                    shrinkWrap: true,
+                                    physics: NeverScrollableScrollPhysics(),
+                                    crossAxisCount: 3,
+                                    crossAxisSpacing: 12.0,
+                                    mainAxisSpacing: 0.0,
+                                    children:
+                                        List.generate(doctor.length, (index) {
+                                      return Center(
+                                        child:
+                                            doctorCard(doctor: doctor[index]),
+                                      );
+                                    })),
+                              ),
+                            ],
+                          )
+                        : SizedBox(),
                     SizedBox(
                       height: 10,
                     ),

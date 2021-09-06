@@ -670,6 +670,7 @@ class _MyOrdesPageState extends State<MyOrdesPage> {
                               onPressed: () {
                                 setState(() {
                                   MyOrdes.clear();
+                                  saveMyOrdesData();
                                 });
                               },
                               child: Text(
