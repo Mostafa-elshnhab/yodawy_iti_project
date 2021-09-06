@@ -10,36 +10,67 @@ class RequestScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          toolbarHeight: 100,
-           // backgroundColor: Colors.redAccent,
-          title: Container(
-
-            child: Column(
-               crossAxisAlignment: CrossAxisAlignment.start,
-
-               children: [
-                 GestureDetector(
-                   child: Icon(
-                      Icons.arrow_back_ios_rounded ,
-                        ),
-                   onTap: (){
-                   //  print('hi');
-                   },
-                 ),
-                SizedBox(height: 15,) ,
-
-                Text('Request a Doctor\'s Call' , style: TextStyle(fontSize: 22 , fontWeight: FontWeight.w600), ),
-                Text('Powered by estshara' , style: TextStyle(fontSize: 16  ,
-                     ), ),
+        appBar: PreferredSize(
+        preferredSize: Size.fromHeight(125.0),
+        child: Container(
+          decoration: BoxDecoration(
+            gradient: LinearGradient(
+              begin: Alignment.topLeft,
+              end: Alignment.bottomRight,
+              colors: <Color>[
+                Color(0xFF179FDB),
+                Color(0xFF179FDB),
+                Color(0xFF21B3E4),
+                Color(0xFF2ECBEE),
               ],
+              tileMode: TileMode.clamp,
             ),
           ),
-          automaticallyImplyLeading: false,
-
-
-
+          child: Column(
+            children: [
+              AppBar(
+                toolbarHeight: 100,
+                automaticallyImplyLeading: false,
+                backgroundColor: Colors.transparent,
+                elevation: 0,
+                //leadingWidth: 30,
+                title: Container(
+                  width: double.infinity,
+                  // height: 100,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      GestureDetector(
+                        child: Icon(
+                          Icons.arrow_back_ios_rounded,
+                        ),
+                        onTap: () {
+                          Navigator.pop(context);
+                        },
+                      ),
+                      SizedBox(
+                        height: 10,
+                      ),
+                      Text(
+                        'Request a Doctor\'s Call',
+                        style: TextStyle(
+                            fontSize: 20, fontWeight: FontWeight.w600),
+                      ),
+                      Text(
+                        'Powered by estshara',
+                        style: TextStyle(
+                          fontSize: 18,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            ],
+          ),
         ),
+      ),
+
 
         body: Column(
           children: [
