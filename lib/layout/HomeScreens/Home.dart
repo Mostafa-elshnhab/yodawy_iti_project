@@ -1010,7 +1010,7 @@ const List<Insurance> insurance = const <Insurance>[
   const Insurance(
       title: 'Roche',
       path:
-          'http://logok.org/wp-content/uploads/2015/03/Roche-logo-880x660.png'),
+          'https://logosvector.net/wp-content/uploads/2012/11/roche-logo-vector.png'),
   const Insurance(
       title: 'MediConsult',
       path:

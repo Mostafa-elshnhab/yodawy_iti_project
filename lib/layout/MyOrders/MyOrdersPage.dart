@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app_test/Data/Users/userData.dart';
 import 'package:flutter_app_test/layout/Cart/CartData.dart';
 import 'package:flutter_app_test/layout/FavoriteItems/FavData.dart';
 import 'package:flutter_app_test/layout/Product/pandoalData.dart';
@@ -762,7 +763,7 @@ class _MyOrdesPageState extends State<MyOrdesPage> {
                             MyOrdes.removeAt(index);
                             saveMyOrdesData();
                             selectedAdd[i] = false;
-                            isadded = false;
+//                            isadded = false;
                             break;
                           }
                         }

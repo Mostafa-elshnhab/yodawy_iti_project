@@ -31,3 +31,6 @@ class Usres {
 
 bool isLoggedIn = false;
 List<String>? userdata;
+double totalPrice = 0;
+int total = 0;
+bool isadded = false;
