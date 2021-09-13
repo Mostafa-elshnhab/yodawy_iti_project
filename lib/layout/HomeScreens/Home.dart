@@ -1016,7 +1016,7 @@ const List<Insurance> insurance = const <Insurance>[
   const Insurance(
       title: 'Unicare',
       path:
-          'https://scontent-hbe1-1.xx.fbcdn.net/v/t1.6435-9/204018665_326063172428226_9185403464257846728_n.jpg?_nc_cat=109&ccb=1-4&_nc_sid=973b4a&_nc_ohc=qljqKlAoTEYAX-e6R8w&_nc_ht=scontent-hbe1-1.xx&oh=9153621d19e058c1870be84788d1d18b&oe=6137DB28'),
+          'https://unicare-egypt.com/wp/wp-content/uploads/2019/11/Unicare-Blue.png'),
   const Insurance(
       title: 'Roche',
       path:
@@ -1028,7 +1028,7 @@ const List<Insurance> insurance = const <Insurance>[
   const Insurance(
       title: 'AMC',
       path:
-          'https://scontent-hbe1-1.xx.fbcdn.net/v/t1.6435-9/51590767_2370739323154908_6668983354735460352_n.png?_nc_cat=103&ccb=1-4&_nc_sid=973b4a&_nc_ohc=gbP26FsFjT8AX-YBxUW&_nc_ht=scontent-hbe1-1.xx&oh=ed0691781f07ee6705c68299cf292978&oe=6137D81A'),
+          'https://www.hotlinesegypt.com/wp-content/uploads/2019/04/%D8%A7%D9%84%D8%A3%D9%87%D9%84%D9%8A-%D9%84%D9%84%D8%AE%D8%AF%D9%85%D8%A7%D8%AA-%D8%A7%D9%84%D8%B7%D8%A8%D9%8A%D8%A9-19462-372x400.png'),
 ];
 
 class insuranceCard extends StatelessWidget {
