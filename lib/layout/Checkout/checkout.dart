@@ -7,6 +7,7 @@ import 'package:flutter_app_test/layout/Checkout/confirmation.dart';
 import 'package:flutter_app_test/layout/Checkout/payment.dart';
 import 'package:flutter_app_test/layout/HomeScreens/Home.dart';
 import 'package:flutter_app_test/layout/MyOrders/MyOrdersData.dart';
+import 'package:flutter_app_test/shared/AddressDetails.dart';
 import 'package:location/location.dart';
 import 'package:map_launcher/map_launcher.dart';
 
@@ -109,11 +110,17 @@ class _CheckoutState extends State<Checkout>
                 print(
                     availableMaps); // [AvailableMap { mapName: Google Maps, mapType: google }, ...]
 
-                await availableMaps.first.showMarker(
-                  coords: Coords(myLocation.longitude!.toDouble(),
-                      myLocation.latitude!.toDouble()),
-                  title: "location",
-                );
+                await availableMaps.first
+                    .showMarker(
+                        coords: Coords(myLocation.longitude!.toDouble(),
+                            myLocation.latitude!.toDouble()),
+                        title: "location",
+                        zoom: 19)
+                    .then((value) => Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => AdressDetails(1))));
+                ;
               },
             ),
       TextButton(
